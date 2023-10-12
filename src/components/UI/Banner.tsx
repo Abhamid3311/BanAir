@@ -1,0 +1,68 @@
+import Slider from "react-slick";
+import { bannerData } from "../utils/StaticData";
+import { CSSProperties } from 'react';
+import { Button } from "flowbite-react";
+import Link from "next/link";
+
+
+
+
+export default function Banner() {
+
+    //Slick Slider Settings
+    const settings = {
+        dots: true,
+        fade: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    };
+
+    return (
+        <div><div>
+            <Slider {...settings}>
+                {
+                    bannerData.map(data => <BannerItem key={data.id} data={data} />)
+                }
+            </Slider>
+        </div></div>
+    )
+};
+
+
+const BannerItem = ({ data }) => {
+    const { id, title, desc, btn, btnLink, img } = data;
+
+    const containerStyle: CSSProperties = {
+        backgroundImage: `linear-gradient(rgba(0, 53, 128, 0.8), rgba(0, 53, 128, 0.8)), url(${img})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        overflow: 'hidden',
+        position: 'relative',
+        width: '100%',
+        height: '100vh'
+    };
+
+
+
+    return (
+        <div style={containerStyle} className=" text-white">
+
+            <div className=" max-w-7xl mx-auto flex items-center h-4/5">
+                <div className="w-full lg:w-1/2">
+                    <h1 className="text-2xl lg:text-5xl font-bold text-start mb-3 w-full">{title}</h1>
+                    <p className="text-sm lg:text-base">{desc}</p>
+
+                    <Link href={btnLink}>  <Button color="warning" className="px-3 lg:px-6 font-bold mt-3">{btn}</Button></Link>
+
+
+                </div>
+            </div>
+
+
+        </div >
+    )
+}

@@ -5,8 +5,6 @@ import { Button } from "flowbite-react";
 import Link from "next/link";
 
 
-
-
 export default function Banner() {
 
     //Slick Slider Settings
@@ -43,16 +41,13 @@ const BannerItem = ({ data }) => {
         overflow: 'hidden',
         position: 'relative',
         width: '100%',
-        height: '100vh'
     };
 
-
-
     return (
-        <div style={containerStyle} className=" text-white">
+        <div style={containerStyle} className=" text-white h-full lg:h-[90vh]">
 
-            <div className=" max-w-7xl mx-auto flex items-center h-4/5">
-                <div className="w-full lg:w-1/2">
+            <div className=" max-w-7xl mx-auto px-5 lg:px-0 flex items-center h-4/5 ">
+                <div className="w-full lg:w-1/2 py-10 lg:py-0">
                     <h1 className="text-2xl lg:text-5xl font-bold text-start mb-3 w-full">{title}</h1>
                     <p className="text-sm lg:text-base">{desc}</p>
 
@@ -61,8 +56,6 @@ const BannerItem = ({ data }) => {
 
                 </div>
             </div>
-
-
         </div >
     )
 }

@@ -60,7 +60,21 @@ export const flightData = [
         endDate: "16 Jun 2022",
         price: "980",
         type: 'Economy',
-        img: ""
+        status: "Available",
+        ratings: 5,
+        img: "/assetes/flightDeal/offer_img01.jpg",
+        desc: "Flights to London take you to a city of unforgettable landmarks. Buckingham Palace, Wembley Stadium, Big Ben, Regent’s Park, Camden Town, Notting Hill, the London Underground – the list of things to do and see in London is endless. (This includes giant Ferris wheel the London Eye, the perfect vantage point for taking it all in).",
+        reviews: [
+            {
+                user: "john@gmail.com",
+                review: "This is a nice journy"
+            },
+            {
+                user: "sansa@gmail.com",
+                review: "This is a awesome journy in kingslanding"
+            },
+        ],
+        
     },
     {
         id: 2,
@@ -70,7 +84,8 @@ export const flightData = [
         endDate: "16 Jun 2022",
         price: "290",
         type: 'Economy',
-        img: ""
+        img: "/assetes/flightDeal/offer_img02.jpg",
+        desc: "Flights to London take you to a city of unforgettable landmarks. Buckingham Palace, Wembley Stadium, Big Ben, Regent’s Park, Camden Town, Notting Hill, the London Underground – the list of things to do and see in London is endless. (This includes giant Ferris wheel the London Eye, the perfect vantage point for taking it all in)."
     },
     {
         id: 3,
@@ -80,7 +95,8 @@ export const flightData = [
         endDate: "16 Jun 2022",
         price: "792",
         type: 'Economy',
-        img: ""
+        img: "/assetes/flightDeal/offer_img03.jpg",
+        desc: "Flights to London take you to a city of unforgettable landmarks. Buckingham Palace, Wembley Stadium, Big Ben, Regent’s Park, Camden Town, Notting Hill, the London Underground – the list of things to do and see in London is endless. (This includes giant Ferris wheel the London Eye, the perfect vantage point for taking it all in)."
     },
     {
         id: 4,
@@ -90,7 +106,8 @@ export const flightData = [
         endDate: "16 Jun 2022",
         price: "350",
         type: 'Economy',
-        img: ""
+        img: "/assetes/flightDeal/offer_img04.jpg",
+        desc: "Flights to London take you to a city of unforgettable landmarks. Buckingham Palace, Wembley Stadium, Big Ben, Regent’s Park, Camden Town, Notting Hill, the London Underground – the list of things to do and see in London is endless. (This includes giant Ferris wheel the London Eye, the perfect vantage point for taking it all in)."
     },
     {
         id: 5,
@@ -100,6 +117,15 @@ export const flightData = [
         endDate: "16 Jun 2022",
         price: "980",
         type: 'Economy',
-        img: ""
+        img: "/assetes/flightDeal/offer_img05.jpg",
+        desc: "Flights to London take you to a city of unforgettable landmarks. Buckingham Palace, Wembley Stadium, Big Ben, Regent’s Park, Camden Town, Notting Hill, the London Underground – the list of things to do and see in London is endless. (This includes giant Ferris wheel the London Eye, the perfect vantage point for taking it all in)."
     },
+];
+
+export const whereWeFly = [
+    {
+        _id: '1',
+        country: "Bangladesh",
+        place: "Dhaka",
+    }
 ]

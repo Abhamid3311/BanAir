@@ -1,0 +1,464 @@
+{
+    "deal": [
+        {
+            "id": 1,
+            "from": "Dubai",
+            "startDate": "09 Jun 2022",
+            "to": "Maldives",
+            "endDate": "16 Jun 2022",
+            "price": "980",
+            "type": "Economy",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dG91cnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+            "desc": "Flights to London take you to a city of unforgettable landmarks. Buckingham Palace, Wembley Stadium, Big Ben, Regent’s Park, Camden Town, Notting Hill, the London Underground – the list of things to do and see in London is endless. (This includes giant Ferris wheel the London Eye, the perfect vantage point for taking it all in).",
+            "reviews": [
+                {
+                    "user": "john@gmail.com",
+                    "review": "This is a nice journey"
+                },
+                {
+                    "user": "sansa@gmail.com",
+                    "review": "This is an awesome journey in King's Landing"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "from": "New York",
+            "startDate": "15 Jul 2022",
+            "to": "Paris",
+            "endDate": "22 Jul 2022",
+            "price": "1200",
+            "type": "Business",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://images.unsplash.com/photo-1606820854416-439b3305ff39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Experience the charm of Paris with its iconic landmarks such as the Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, and Montmartre. Enjoy exquisite cuisine, art, and culture in the heart of France.",
+            "reviews": [
+                {
+                    "user": "michael@gmail.com",
+                    "review": "Paris is always a good idea!"
+                },
+                {
+                    "user": "emily@gmail.com",
+                    "review": "The City of Love lived up to its name."
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "from": "Tokyo",
+            "startDate": "20 Aug 2022",
+            "to": "Sydney",
+            "endDate": "27 Aug 2022",
+            "price": "1500",
+            "type": "First Class",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://images.unsplash.com/photo-1606820854416-439b3305ff39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Discover the vibrant city of Sydney with its stunning Opera House, Harbour Bridge, Bondi Beach, and diverse cultural scene. Experience the perfect blend of urban and natural beauty.",
+            "reviews": [
+                {
+                    "user": "adam@gmail.com",
+                    "review": "Sydney is a must-visit destination!"
+                },
+                {
+                    "user": "olivia@gmail.com",
+                    "review": "Breathtaking views and amazing experiences."
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "from": "London",
+            "startDate": "10 Sep 2022",
+            "to": "Dubai",
+            "endDate": "17 Sep 2022",
+            "price": "900",
+            "type": "Economy",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://images.unsplash.com/photo-1465778893808-9b3d1b443be4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
+            "desc": "Discover the fusion of modernity and tradition in Dubai, with its impressive skyscrapers, luxurious shopping malls, desert adventures, and vibrant nightlife.",
+            "reviews": [
+                {
+                    "user": "david@gmail.com",
+                    "review": "Dubai exceeded my expectations!"
+                },
+                {
+                    "user": "sarah@gmail.com",
+                    "review": "An unforgettable trip to the desert paradise."
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "from": "Los Angeles",
+            "startDate": "05 Oct 2022",
+            "to": "Tokyo",
+            "endDate": "12 Oct 2022",
+            "price": "1100",
+            "type": "Premium Economy",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Experience the unique blend of modernity and tradition in Tokyo, Japan. Explore the bustling city, visit historic temples, and savor delicious Japanese cuisine.",
+            "reviews": [
+                {
+                    "user": "jessica@gmail.com",
+                    "review": "Tokyo is a city like no other!"
+                },
+                {
+                    "user": "peter@gmail.com",
+                    "review": "A truly enriching cultural experience."
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "from": "Paris",
+            "startDate": "15 Nov 2022",
+            "to": "New York",
+            "endDate": "22 Nov 2022",
+            "price": "1300",
+            "type": "Business",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://images.unsplash.com/photo-1529171696861-bac785a44828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+            "desc": "Discover the vibrant energy of New York City with its iconic landmarks such as Times Square, Statue of Liberty, Central Park, and Broadway shows. Immerse yourself in the city that never sleeps.",
+            "reviews": [
+                {
+                    "user": "alex@gmail.com",
+                    "review": "New York, the city of dreams!"
+                },
+                {
+                    "user": "laura@gmail.com",
+                    "review": "An unforgettable journey through the Big Apple."
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "from": "Sydney",
+            "startDate": "20 Dec 2022",
+            "to": "London",
+            "endDate": "27 Dec 2022",
+            "price": "1100",
+            "type": "Premium Economy",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://images.unsplash.com/photo-1529171696861-bac785a44828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+            "desc": "Explore the historic and cultural richness of London with its iconic landmarks and vibrant neighborhoods. Immerse yourself in a city that seamlessly blends the old and the new.",
+            "reviews": [
+                {
+                    "user": "nathan@gmail.com",
+                    "review": "London stole my heart!"
+                },
+                {
+                    "user": "mia@gmail.com",
+                    "review": "An amazing journey filled with history and beauty."
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "from": "Maldives",
+            "startDate": "10 Jan 2023",
+            "to": "Dubai",
+            "endDate": "17 Jan 2023",
+            "price": "850",
+            "type": "Economy",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://plus.unsplash.com/premium_photo-1667076650491-ed0a5fd12d17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80",
+            "desc": "Experience the pristine beauty of the Maldives with its crystal-clear waters, overwater bungalows, and vibrant marine life. Enjoy a relaxing and luxurious escape in this tropical paradise.",
+            "reviews": [
+                {
+                    "user": "grace@gmail.com",
+                    "review": "Paradise on Earth!"
+                },
+                {
+                    "user": "mark@gmail.com",
+                    "review": "A truly rejuvenating experience in the Maldives."
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "from": "Dubai",
+            "startDate": "14 Feb 2023",
+            "to": "New York",
+            "endDate": "21 Feb 2023",
+            "price": "1200",
+            "type": "Business",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://images.unsplash.com/photo-1541300613939-71366b37c92e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1810&q=80",
+            "desc": "Discover the vibrant energy and diverse culture of New York City, known for its iconic skyline, world-class museums, and Broadway shows. Immerse yourself in the city's endless possibilities.",
+            "reviews": [
+                {
+                    "user": "kevin@gmail.com",
+                    "review": "New York, the city that never disappoints!"
+                },
+                {
+                    "user": "jenny@gmail.com",
+                    "review": "An incredible journey through the concrete jungle."
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "from": "Tokyo",
+            "startDate": "20 Mar 2023",
+            "to": "Paris",
+            "endDate": "27 Mar 2023",
+            "price": "1400",
+            "type": "Premium Economy",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://plus.unsplash.com/premium_photo-1667076650491-ed0a5fd12d17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80",
+            "desc": "Experience the charm of Paris with its iconic landmarks such as the Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, and Montmartre. Enjoy exquisite cuisine, art, and culture in the heart of France.",
+            "reviews": [
+                {
+                    "user": "sophie@gmail.com",
+                    "review": "Paris, a city of art and love!"
+                },
+                {
+                    "user": "daniel@gmail.com",
+                    "review": "A dreamy experience in the City of Light."
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "from": "London",
+            "startDate": "15 Apr 2023",
+            "to": "Sydney",
+            "endDate": "22 Apr 2023",
+            "price": "1300",
+            "type": "Business",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://images.unsplash.com/photo-1541300613939-71366b37c92e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1810&q=80",
+            "desc": "Discover the vibrant city of Sydney with its stunning Opera House, Harbour Bridge, Bondi Beach, and diverse cultural scene. Experience the perfect blend of urban and natural beauty.",
+            "reviews": [
+                {
+                    "user": "max@gmail.com",
+                    "review": "Sydney, a city to remember!"
+                },
+                {
+                    "user": "lily@gmail.com",
+                    "review": "An amazing journey filled with adventures."
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "from": "New York",
+            "startDate": "10 May 2023",
+            "to": "Dubai",
+            "endDate": "17 May 2023",
+            "price": "950",
+            "type": "Economy",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Discover the fusion of modernity and tradition in Dubai, with its impressive skyscrapers, luxurious shopping malls, desert adventures, and vibrant nightlife.",
+            "reviews": [
+                {
+                    "user": "johnny@gmail.com",
+                    "review": "Dubai, a city of wonders!"
+                },
+                {
+                    "user": "sophia@gmail.com",
+                    "review": "An unforgettable trip to the desert oasis."
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "from": "Los Angeles",
+            "startDate": "18 Jun 2023",
+            "to": "Tokyo",
+            "endDate": "25 Jun 2023",
+            "price": "1150",
+            "type": "Premium Economy",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://plus.unsplash.com/premium_photo-1667066299337-5e145ca839ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80",
+            "desc": "Experience the unique blend of modernity and tradition in Tokyo, Japan. Explore the bustling city, visit historic temples, and savor delicious Japanese cuisine.",
+            "reviews": [
+                {
+                    "user": "chris@gmail.com",
+                    "review": "Tokyo, a city of contrasts and beauty!"
+                },
+                {
+                    "user": "mia@gmail.com",
+                    "review": "An unforgettable cultural experience."
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "from": "Paris",
+            "startDate": "20 Jul 2023",
+            "to": "New York",
+            "endDate": "27 Jul 2023",
+            "price": "1200",
+            "type": "Business",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Discover the vibrant energy of New York City with its iconic landmarks such as Times Square, Statue of Liberty, Central Park, and Broadway shows. Immerse yourself in the city that never sleeps.",
+            "reviews": [
+                {
+                    "user": "nina@gmail.com",
+                    "review": "New York, the city that never disappoints!"
+                },
+                {
+                    "user": "matt@gmail.com",
+                    "review": "An amazing journey through the concrete jungle."
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "from": "Sydney",
+            "startDate": "15 Aug 2023",
+            "to": "London",
+            "endDate": "22 Aug 2023",
+            "price": "1100",
+            "type": "Premium Economy",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://plus.unsplash.com/premium_photo-1667066299337-5e145ca839ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80",
+            "desc": "Explore the historic and cultural richness of London with its iconic landmarks and vibrant neighborhoods. Immerse yourself in a city that seamlessly blends the old and the new.",
+            "reviews": [
+                {
+                    "user": "jonathan@gmail.com",
+                    "review": "London stole my heart!"
+                },
+                {
+                    "user": "emma@gmail.com",
+                    "review": "An amazing journey filled with history and beauty."
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "from": "Maldives",
+            "startDate": "10 Sep 2023",
+            "to": "Dubai",
+            "endDate": "17 Sep 2023",
+            "price": "870",
+            "type": "Economy",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://images.unsplash.com/photo-1615277716590-d87d101caa70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Experience the pristine beauty of the Maldives with its crystal-clear waters, overwater bungalows, and vibrant marine life. Enjoy a relaxing and luxurious escape in this tropical paradise.",
+            "reviews": [
+                {
+                    "user": "sara@gmail.com",
+                    "review": "Paradise on Earth!"
+                },
+                {
+                    "user": "jack@gmail.com",
+                    "review": "A truly rejuvenating experience in the Maldives."
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "from": "Dubai",
+            "startDate": "15 Oct 2023",
+            "to": "New York",
+            "endDate": "22 Oct 2023",
+            "price": "1300",
+            "type": "Business",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://images.unsplash.com/photo-1615277716590-d87d101caa70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Discover the vibrant energy and diverse culture of New York City, known for its iconic skyline, world-class museums, and Broadway shows. Immerse yourself in the city's endless possibilities.",
+            "reviews": [
+                {
+                    "user": "james@gmail.com",
+                    "review": "New York, the city that never disappoints!"
+                },
+                {
+                    "user": "lisa@gmail.com",
+                    "review": "An incredible journey through the concrete jungle."
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "from": "Tokyo",
+            "startDate": "20 Nov 2023",
+            "to": "Paris",
+            "endDate": "27 Nov 2023",
+            "price": "1400",
+            "type": "Premium Economy",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://images.unsplash.com/photo-1569949380643-6e746ecaa3bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Experience the charm of Paris with its iconic landmarks such as the Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, and Montmartre. Enjoy exquisite cuisine, art, and culture in the heart of France.",
+            "reviews": [
+                {
+                    "user": "andrew@gmail.com",
+                    "review": "Paris, a city of art and love!"
+                },
+                {
+                    "user": "sophie@gmail.com",
+                    "review": "A dreamy experience in the City of Light."
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "from": "London",
+            "startDate": "15 Dec 2023",
+            "to": "Sydney",
+            "endDate": "22 Dec 2023",
+            "price": "1200",
+            "type": "Business",
+            "status": "Available",
+            "ratings": 5,
+            "img": "https://images.unsplash.com/photo-1569949380643-6e746ecaa3bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Discover the vibrant city of Sydney with its stunning Opera House, Harbour Bridge, Bondi Beach, and diverse cultural scene. Experience the perfect blend of urban and natural beauty.",
+            "reviews": [
+                {
+                    "user": "mia@gmail.com",
+                    "review": "Sydney, a city to remember!"
+                },
+                {
+                    "user": "michael@gmail.com",
+                    "review": "An amazing journey filled with adventures."
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "from": "New York",
+            "startDate": "10 Jan 2024",
+            "to": "Dubai",
+            "endDate": "17 Jan 2024",
+            "price": "950",
+            "type": "Economy",
+            "status": "Available",
+            "ratings": 4,
+            "img": "https://images.unsplash.com/photo-1616895727759-dd84a2690433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "desc": "Discover the fusion of modernity and tradition in Dubai, with its impressive skyscrapers, luxurious shopping malls, desert adventures, and vibrant nightlife.",
+            "reviews": [
+                {
+                    "user": "emily@gmail.com",
+                    "review": "Dubai, a city of wonders!"
+                },
+                {
+                    "user": "adam@gmail.com",
+                    "review": "An unforgettable trip to the desert oasis."
+                }
+            ]
+        }
+    ]
+}

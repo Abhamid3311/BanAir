@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { serviceOffer } from '../utils/StaticData';
 import Image from 'next/image';
+import { IFlightDeal } from '../utils/Types';
 
-export default function FlightSearch() {
+export default function FlightSearch({ flights, filterdData }: { flights: IFlightDeal[], filterdData: IFlightDeal[] }) {
+
+
     return (
         <div className='bg-lightBg text-textClr min-h-screen'>
             <div className=''>
                 <div >
-
+                    {filterdData.length}
                 </div>
 
                 <FlightDeal />
-                <FlightOfferDeal />
+                <FlightOfferDeal randomFlights={filterdData} />
 
             </div>
         </div>
@@ -42,15 +45,70 @@ const FlightDeal = () => {
 
 
 
-const FlightOfferDeal = () => {
+const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) => {
+
+    const firstValue = randomFlights[0];
+    const otherFourValue = randomFlights?.filter(data => data.id !== firstValue.id);
+
+    console.log(firstValue, otherFourValue)
+
+
     return (
-        <div className='max-w-7xl mx-auto px-5 lg:px-0'>
+        <div className='max-w-7xl mx-auto px-5 lg:px-0 py-10'>
             <div>
-                <p className='text-secondary text-sm font-bold'>OFFER DEALS</p>
+                <p className='text-secondary text-sm font-bold'>FEATURED DEALS</p>
                 <h1 className='text-3xl font-bold '>Flight Offer Deals</h1>
+            </div>
+
+            <div className='flex items-start gap-10 my-8'>
+                <div className='w-full lg:w-1/2'>
+                    <div className="w-full  bg-white border border-gray-200 rounded-lg shadow ">
+                        <a href="#">
+                            <img className="rounded-t-lg w-full h-[460px]" src={firstValue?.img} alt="" />
+                        </a>
+                        <div className="p-4">
+                            <h1 className=" text-2xl font-bold tracking-tight text-gray-900 ">{`${firstValue?.from} to ${firstValue?.to}`}</h1>
+                            <p className=' mb-2 text-primary'> <span className='font-bold mr-1'>{firstValue?.startDate}</span> to <span className='font-bold ml-1'>{firstValue?.endDate}</span> </p>
+
+                            <p className='text-sm lg:text-base  text-primary'>{firstValue?.type} From</p>
+                            <h3 className='text-xl font-bold'>$ {firstValue?.price}</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className='w-full lg:w-1/2  grid grid-cols-1 lg:grid-cols-2 gap-8'>
+                    {
+                        otherFourValue.map(data => <FlightCard key={data?.id} data={data} />)
+                    }
+
+                </div>
             </div>
 
         </div>
     );
 };
+
+
+
+const FlightCard = ({ data }) => {
+    const { id, from, to, startDate, endDate, price, img, type } = data;
+    return (
+
+        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
+            <a href="#">
+                <Image className="rounded-t-lg w-full h-[148px]" src={img} alt="" width={244} height={148} />
+            </a>
+            <div className="p-4">
+                <h1 className=" text-xl font-bold tracking-tight text-gray-900 ">{`${from} to ${to}`}</h1>
+                <p className='text-sm  mb-2 text-primary'> <span className='font-bold mr-1'>{startDate}</span> to <span className='font-bold ml-1'>{endDate}</span> </p>
+
+                <p className='text-sm  text-primary'>{type} From</p>
+                <h3 className='text-lg font-bold'>$ {price}</h3>
+            </div>
+        </div>
+
+    );
+};
+
 

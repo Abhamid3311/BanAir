@@ -6,3 +6,24 @@ export interface IBannerData {
     btnLink: string;
     img: string;
 }
+
+
+export interface IFlightDeal {
+    id: number;
+    from: string;
+    startDate: string;
+    to: string;
+    endDate: string;
+    price: string;
+    type: string;
+    status: string;
+    ratings: number;
+    img: string;
+    desc: string;
+    reviews: IReview[];
+}
+
+interface IReview {
+    user: string;
+    review: string;
+}

@@ -3,7 +3,7 @@ import { serviceOffer } from '../../utils/StaticData';
 import Image from 'next/image';
 import { IFlightDeal } from '../../utils/Types';
 
-export default function FlightSearch({ flights, filterdData }: { flights: IFlightDeal[], filterdData: IFlightDeal[] }) {
+export default function FlightSearch({ filterdData }: { filterdData: IFlightDeal[] }) {
 
 
     return (
@@ -86,7 +86,7 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
 
 
 
-const FlightCard = ({ data }) => {
+const FlightCard = ({ data }: { data: IFlightDeal }) => {
     const { id, from, to, startDate, endDate, price, img, type } = data;
     return (
 

@@ -5,6 +5,7 @@ import { baseUrl } from '@/components/utils/url';
 import { IFlightDeal, ITestimonial } from '@/components/utils/Types';
 import Testimonials from '@/components/UI/Home/Testimonials';
 import Destinations from '@/components/UI/Home/Destinations';
+import Packages from '@/components/UI/Home/Packages';
 
 
 export default function Home({ flights, filterdData, testimonials }: { flights: IFlightDeal[], filterdData: IFlightDeal[], testimonials: ITestimonial[] }) {
@@ -16,6 +17,7 @@ export default function Home({ flights, filterdData, testimonials }: { flights: 
       <Banner />
       <FlightSearch filterdData={filterdData} />
       <Destinations />
+      <Packages flights={flights} />
       <Testimonials testimonials={testimonials} />
     </div>
   )

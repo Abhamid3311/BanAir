@@ -27,3 +27,11 @@ interface IReview {
     user: string;
     review: string;
 }
+
+export interface ITestimonial {
+    id: number;
+    name: string;
+    desi: string;
+    country: string;
+    comment: string;
+}

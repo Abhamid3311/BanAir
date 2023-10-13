@@ -9,13 +9,8 @@ export default function FlightSearch({ flights, filterdData }: { flights: IFligh
     return (
         <div className='bg-lightBg text-textClr min-h-screen'>
             <div className=''>
-                <div >
-                    {filterdData.length}
-                </div>
-
                 <FlightDeal />
                 <FlightOfferDeal randomFlights={filterdData} />
-
             </div>
         </div>
     )
@@ -50,7 +45,7 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
     const firstValue = randomFlights[0];
     const otherFourValue = randomFlights?.filter(data => data.id !== firstValue.id);
 
-    console.log(firstValue, otherFourValue)
+    // console.log(firstValue, otherFourValue)
 
 
     return (
@@ -60,24 +55,24 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
                 <h1 className='text-3xl font-bold '>Flight Offer Deals</h1>
             </div>
 
-            <div className='flex items-start gap-10 my-8'>
+            <div className='flex flex-col lg:flex-row items-start gap-5 lg:gap-6 my-8'>
                 <div className='w-full lg:w-1/2'>
                     <div className="w-full  bg-white border border-gray-200 rounded-lg shadow ">
                         <a href="#">
-                            <img className="rounded-t-lg w-full h-[460px]" src={firstValue?.img} alt="" />
+                            <img className="rounded-t-lg w-full h-full lg:h-[460px]" src={firstValue?.img} alt="" />
                         </a>
                         <div className="p-4">
                             <h1 className=" text-2xl font-bold tracking-tight text-gray-900 ">{`${firstValue?.from} to ${firstValue?.to}`}</h1>
                             <p className=' mb-2 text-primary'> <span className='font-bold mr-1'>{firstValue?.startDate}</span> to <span className='font-bold ml-1'>{firstValue?.endDate}</span> </p>
 
                             <p className='text-sm lg:text-base  text-primary'>{firstValue?.type} From</p>
-                            <h3 className='text-xl font-bold'>$ {firstValue?.price}</h3>
+                            <h3 className='text-xl font-bold'>${firstValue?.price}</h3>
                         </div>
                     </div>
                 </div>
 
 
-                <div className='w-full lg:w-1/2  grid grid-cols-1 lg:grid-cols-2 gap-8'>
+                <div className='w-full lg:w-1/2  grid grid-cols-2 lg:grid-cols-2 gap-2 lg:gap-6'>
                     {
                         otherFourValue.map(data => <FlightCard key={data?.id} data={data} />)
                     }
@@ -99,12 +94,12 @@ const FlightCard = ({ data }) => {
             <a href="#">
                 <Image className="rounded-t-lg w-full h-[148px]" src={img} alt="" width={244} height={148} />
             </a>
-            <div className="p-4">
-                <h1 className=" text-xl font-bold tracking-tight text-gray-900 ">{`${from} to ${to}`}</h1>
-                <p className='text-sm  mb-2 text-primary'> <span className='font-bold mr-1'>{startDate}</span> to <span className='font-bold ml-1'>{endDate}</span> </p>
+            <div className="p-2 lg:p-4">
+                <h1 className=" text-base lg:text-xl font-bold tracking-tight text-gray-900 ">{`${from} to ${to}`}</h1>
+                <p className='text-xs lg:text-sm  mb-2 text-primary'> <span className='font-bold '>{startDate}</span> to <span className='font-bold '>{endDate}</span> </p>
 
-                <p className='text-sm  text-primary'>{type} From</p>
-                <h3 className='text-lg font-bold'>$ {price}</h3>
+                <p className='text-xs lg:text-sm  text-primary'>{type} From</p>
+                <h3 className='text-lg font-bold'>${price}</h3>
             </div>
         </div>
 

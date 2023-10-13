@@ -20,13 +20,13 @@ export default function Banner() {
     };
 
     return (
-        <div><div>
+        <div className="w-full">
             <Slider {...settings}>
                 {
                     bannerData.map(data => <BannerItem key={data.id} data={data} />)
                 }
             </Slider>
-        </div></div>
+        </div>
     )
 };
 
@@ -36,15 +36,11 @@ const BannerItem = ({ data }) => {
 
     const containerStyle: CSSProperties = {
         backgroundImage: `linear-gradient(rgba(0, 53, 128, 0.8), rgba(0, 53, 128, 0.8)), url(${img})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        overflow: 'hidden',
-        position: 'relative',
-        width: '100%',
+
     };
 
     return (
-        <div style={containerStyle} className=" text-white h-full lg:h-[90vh]">
+        <div style={containerStyle} className=" text-white h-full lg:h-[90vh] w-full banner-img">
 
             <div className=" max-w-7xl mx-auto px-5 lg:px-0 flex items-center h-4/5 ">
                 <div className="w-full lg:w-1/2 py-10 lg:py-0">

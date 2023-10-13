@@ -460,5 +460,56 @@
                 }
             ]
         }
+    ],
+    "testimonial": [
+        {
+            "id": 1,
+            "name": "John Kabir",
+            "desi": "Actor",
+            "country": "Bangladesh",
+            "comment": "This is the best air service I have ever experienced. Keep going BDAIR, wishing you the best of fortune."
+        },
+        {
+            "id": 2,
+            "name": "Alice Smith",
+            "desi": "Engineer",
+            "country": "United States",
+            "comment": "Had a fantastic experience with BDAIR. The service was exceptional, and the staff was very helpful during my journey."
+        },
+        {
+            "id": 3,
+            "name": "Mohammed Ahmed",
+            "desi": "Business Analyst",
+            "country": "United Arab Emirates",
+            "comment": "Great service from BDAIR. Comfortable flights and friendly staff made my journey enjoyable. Looking forward to flying with them again."
+        },
+        {
+            "id": 4,
+            "name": "Sophie Brown",
+            "desi": "Teacher",
+            "country": "United Kingdom",
+            "comment": "BDAIR provided an amazing travel experience. Smooth flights and great customer service. Highly recommended for a delightful journey!"
+        },
+        {
+            "id": 5,
+            "name": "Carlos Rodriguez",
+            "desi": "Entrepreneur",
+            "country": "Spain",
+            "comment": "Impressed with the quality of service from BDAIR. Flights were punctual, and the overall journey was very pleasant. Will choose them again for future trips."
+        },
+        {
+            "id": 6,
+            "name": "Lina Kim",
+            "desi": "Designer",
+            "country": "South Korea",
+            "comment": "Had a wonderful experience traveling with BDAIR. The flights were comfortable, and the in-flight service was excellent. Highly recommend BDAIR for a great travel experience."
+        },
+        {
+            "id": 7,
+            "name": "Ahmed Hassan",
+            "desi": "Doctor",
+            "country": "Egypt",
+            "comment": "BDAIR exceeded my expectations. Flights were on time, and the cabin crew was attentive. Would recommend to others seeking a hassle-free and comfortable journey."
+        }
     ]
 }

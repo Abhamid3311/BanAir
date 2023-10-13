@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import Header from './Header'
 import Footers from './Footer';
 
-interface RootLayoutProps {
+export interface RootLayoutProps {
     children: ReactNode;
 }
 

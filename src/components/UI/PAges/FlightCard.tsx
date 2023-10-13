@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { TbArrowsExchange } from 'react-icons/tb'
 
 export default function FlightCard({ flight }: { flight: IFlightDeal }) {
-    console.log(flight)
     const { id, from, to, startDate, endDate, price, img, type } = flight;
+
+
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
             <a href="#">
@@ -20,7 +21,7 @@ export default function FlightCard({ flight }: { flight: IFlightDeal }) {
                     </div>
                     <h1 className=" text-base lg:text-xl font-bold tracking-tight "> {to}</h1>
                 </div>
-                <hr className='my-2'/>
+                <hr className='my-2' />
 
 
                 <div className='text-start'>

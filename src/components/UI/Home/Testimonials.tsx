@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import { FaUserCircle } from "react-icons/fa";
 
 export default function Testimonials({ testimonials }: { testimonials: ITestimonial[] }) {
-    console.log(testimonials);
+    // console.log(testimonials);
 
     const settings = {
         className: "center",

@@ -25,11 +25,12 @@ export default function Header() {
             </div>
 
             <Navbar.Collapse>
-                <Navbar.Link active className='text-white active:text-secondary'><Link href={"/"}>Home </Link></Navbar.Link>
-                <Navbar.Link className='text-white active:text-secondary' ><Link href={"/"}>About </Link></Navbar.Link>
-                <Navbar.Link className='text-white active:text-secondary'><Link href={"/"}>Book </Link></Navbar.Link>
-                <Navbar.Link className='text-white active:text-secondary' ><Link href={"/"}>Loyalty </Link></Navbar.Link>
-                <Navbar.Link className='text-white active:text-secondary'><Link href={"/"}>Contacts </Link></Navbar.Link>
+                <Navbar.Link active className='text-white active:text-secondary'><Link href={"/"}>HOME</Link></Navbar.Link>
+                <Navbar.Link className='text-white active:text-secondary'><Link href={"/booking"}>BOOKING</Link></Navbar.Link>
+                <Navbar.Link className='text-white active:text-secondary'><Link href={"/"}>WHERE WE FLY</Link></Navbar.Link>
+                <Navbar.Link className='text-white active:text-secondary' ><Link href={"/"}>ABOUT US </Link></Navbar.Link>
+                <Navbar.Link className='text-white active:text-secondary' ><Link href={"/"}>LOYALITY </Link></Navbar.Link>
+                <Navbar.Link className='text-white active:text-secondary'><Link href={"/"}>HELP </Link></Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     )

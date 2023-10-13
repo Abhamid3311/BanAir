@@ -1,8 +1,7 @@
 import React from 'react'
 import { ITestimonial } from '../../utils/Types'
 import Slider from 'react-slick';
-import styles from '../../styles/Testimonial.module.css';
-
+import { FaUserCircle } from "react-icons/fa";
 
 export default function Testimonials({ testimonials }: { testimonials: ITestimonial[] }) {
     console.log(testimonials);
@@ -16,7 +15,7 @@ export default function Testimonials({ testimonials }: { testimonials: ITestimon
         autoplaySpeed: 2000,
         speed: 500,
         infinite: true,
-        centerPadding: "30px",
+        centerPadding: "20px",
         slidesToShow: 3,
         responsive: [
             {
@@ -58,14 +57,19 @@ export default function Testimonials({ testimonials }: { testimonials: ITestimon
                 <div className='py-10'>
                     <Slider {...settings} className='py-5'>
                         {
-                            testimonials?.map(testi => <div key={testi.id} className='px-5 bg-lightBg'>
+                            testimonials?.map(testi => <div key={testi.id} className='px-3 bg-lightBg'>
                                 <div className='p-4 bg-white rounded-md relative  shadow-md  h-[200px] m-2'>
                                     <p className='text-sm lg:text-base'>{testi.comment}</p>
 
 
                                     <div className='mt-3 absolute bottom-3 left-4'>
-                                        <h1 className='text-lg font-bold text-primary'>{testi.name}</h1>
-                                        <p className='text-sm italic'><span>{testi.desi}</span>, <span>{testi.country}</span></p>
+                                        <div className='flex items-center gap-2'>
+                                            <FaUserCircle className="text-4xl" />
+                                            <div>
+                                                <h1 className='text-lg font-bold text-primary'>{testi.name}</h1>
+                                                <p className='text-sm italic'><span>{testi.desi}</span>, <span>{testi.country}</span></p>
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div>

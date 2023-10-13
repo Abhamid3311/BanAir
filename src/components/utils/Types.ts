@@ -35,3 +35,12 @@ export interface ITestimonial {
     country: string;
     comment: string;
 }
+
+export interface IPlans {
+    id: number;
+    name: string;
+    Title: string;
+    subTitle: string;
+    desc: string;
+    img: string;
+}

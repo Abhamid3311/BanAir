@@ -15,12 +15,9 @@ export default function Packages({ flights }: { flights: IFlightDeal[] }) {
                         flights.map(flight => <FlightCard key={flight.id} flight={flight} />).slice(0, 8)
                     }
 
-
-
                 </div>
 
             </div>
-
         </div>
     )
 }

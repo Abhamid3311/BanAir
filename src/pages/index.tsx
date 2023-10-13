@@ -6,6 +6,7 @@ import { IFlightDeal, ITestimonial } from '@/components/utils/Types';
 import Testimonials from '@/components/UI/Home/Testimonials';
 import Destinations from '@/components/UI/Home/Destinations';
 import Packages from '@/components/UI/Home/Packages';
+import Plans from '@/components/UI/Home/Plans';
 
 
 export default function Home({ flights, filterdData, testimonials }: { flights: IFlightDeal[], filterdData: IFlightDeal[], testimonials: ITestimonial[] }) {
@@ -19,6 +20,7 @@ export default function Home({ flights, filterdData, testimonials }: { flights: 
       <Destinations />
       <Packages flights={flights} />
       <Testimonials testimonials={testimonials} />
+      <Plans />
     </div>
   )
 }

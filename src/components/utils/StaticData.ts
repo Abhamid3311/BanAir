@@ -51,12 +51,37 @@ export const serviceOffer = [
 ];
 
 
-export const testimonialData = [
+export const experiencePlan = [
     {
         id: 1,
-        name: 'John Kabir',
-        desi: "Actor",
-        country: "Bangladesh",
-        commenmt: "This is best Air Service I ever faced. keep going BDAIR wish you best fortune"
-    }
+        name: 'First Class',
+        Title: "World’s Best First Class 2020",
+        subTitle: "As close as it comes to your own private jet",
+        desc: "Whether you’re flying on the Emirates A380 or our game‑changing Boeing 777, you’ll experience the World’s Best First Class 2020. Discover why our customers voted for us in the TripAdvisor Travellers’ Choice Awards.",
+        img: "/assetes/first-class-dessert-.png"
+    },
+    {
+        id: 2,
+        name: 'Business Class',
+        Title: "Luxury down to the last stitch",
+        subTitle: "This is Business Class redefined",
+        desc: "Unwind in the perfect living space. Enjoy gourmet cuisine and up to 6,500 channels of entertainment, or take a stroll to the onboard lounge.",
+        img: "/assetes/business-class-meal-w800x600.png"
+    },
+    {
+        id: 3,
+        name: 'Premium Economy',
+        Title: "Welcome to your new comfort ",
+        subTitle: "Raise your comfort to Premium Economy",
+        desc: "The new Emirates Premium Economy has arrived on the latest Emirates A380. Watch our tour of the cabin and discover why it’s worth the upgrade.",
+        img: "/assetes/premium-economy-menu-w800x600.png"
+    },
+    {
+        id: 4,
+        name: 'Economy Class',
+        Title: "You get  more in Emirates Economy",
+        subTitle: "Taste the flavours of your destination",
+        desc: "With thousands of channels, onboard Wi-Fi and regional cuisine, you can expect more in Emirates Economy Class.",
+        img: "/assetes/economy-class-.png"
+    },
 ]

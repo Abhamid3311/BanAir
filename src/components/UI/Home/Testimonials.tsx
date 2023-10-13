@@ -51,10 +51,10 @@ export default function Testimonials({ testimonials }: { testimonials: ITestimon
             <div className='max-w-7xl mx-auto px-5 lg:px-0 py-8  text-textClr'>
                 <div>
                     <p className='text-secondary text-sm font-bold'>WHAT OUR CLIENT SAYS</p>
-                    <h1 className='text-3xl font-bold '>Testimonials</h1>
+                    <h1 className='text-2xl lg:text-3xl font-bold '>Testimonials</h1>
                 </div>
 
-                <div className='py-10'>
+                <div className=''>
                     <Slider {...settings} className='py-5'>
                         {
                             testimonials?.map(testi => <div key={testi.id} className='px-3 bg-lightBg'>

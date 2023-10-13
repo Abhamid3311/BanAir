@@ -27,8 +27,8 @@ const FlightDeal = () => {
                 serviceOffer.map(data => <div key={data.id} className='bg-white text-primary p-5 rounded-md w-full flex items-center gap-3 shadow-md hover:shadow-xl'>
                     <Image src={data.icon} alt={data.title} width={53} height={53} />
                     <div>
-                        <h1 className='text-2xl font-bold text-textClr'>{data.title}</h1>
-                        <p>{data.desc}</p>
+                        <h1 className='text-lg lg:text-2xl font-bold text-textClr'>{data.title}</h1>
+                        <p className='text-sm lg:text-base'>{data.desc}</p>
                     </div>
 
                 </div>)
@@ -52,7 +52,7 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
         <div className='max-w-7xl mx-auto px-5 lg:px-0 py-10'>
             <div>
                 <p className='text-secondary text-sm font-bold'>FEATURED DEALS</p>
-                <h1 className='text-3xl font-bold '>Flight Offer Deals</h1>
+                <h1 className='text-2xl lg:text-3xl font-bold '>Flight Offer Deals</h1>
             </div>
 
             <div className='flex flex-col lg:flex-row items-start gap-5 lg:gap-6 my-8'>
@@ -62,8 +62,8 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
                             <img className="rounded-t-lg w-full h-full lg:h-[460px]" src={firstValue?.img} alt="" />
                         </a>
                         <div className="p-4">
-                            <h1 className=" text-2xl font-bold tracking-tight text-gray-900 ">{`${firstValue?.from} to ${firstValue?.to}`}</h1>
-                            <p className=' mb-2 text-primary'> <span className='font-bold mr-1'>{firstValue?.startDate}</span> to <span className='font-bold ml-1'>{firstValue?.endDate}</span> </p>
+                            <h1 className=" text-xl lg:text-2xl font-bold tracking-tight text-gray-900 ">{`${firstValue?.from} to ${firstValue?.to}`}</h1>
+                            <p className=' mb-2 text-primary'> <span className='font-semibold mr-1'>{firstValue?.startDate}</span> to <span className='font-semibold ml-1'>{firstValue?.endDate}</span> </p>
 
                             <p className='text-sm lg:text-base  text-primary'>{firstValue?.type} From</p>
                             <h3 className='text-xl font-bold'>${firstValue?.price}</h3>
@@ -96,7 +96,7 @@ const FlightCard = ({ data }: { data: IFlightDeal }) => {
             </a>
             <div className="p-2 lg:p-4">
                 <h1 className=" text-base lg:text-xl font-bold tracking-tight text-gray-900 ">{`${from} to ${to}`}</h1>
-                <p className='text-xs lg:text-sm  mb-2 text-primary'> <span className='font-bold '>{startDate}</span> to <span className='font-bold '>{endDate}</span> </p>
+                <p className='text-xs lg:text-sm  mb-2 text-primary'> <span className='font-bold '>{startDate}</span> - <span className='font-bold '>{endDate}</span> </p>
 
                 <p className='text-xs lg:text-sm  text-primary'>{type} From</p>
                 <h3 className='text-lg font-bold'>${price}</h3>

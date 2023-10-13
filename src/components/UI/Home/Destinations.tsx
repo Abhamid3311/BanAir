@@ -8,7 +8,7 @@ const Destinations = () => {
 
 
     return (
-        <div className=" text-white h-full py-14 bg-lightBg  destination-banner ">
+        <div className=" text-white h-full py-10 lg:py-14 bg-lightBg  destination-banner ">
 
             <div className=" max-w-7xl mx-auto px-5 lg:px-0 flex items-center  ">
                 <div className="w-full lg:w-1/2 py-10 lg:py-0">
@@ -16,10 +16,11 @@ const Destinations = () => {
                     <h1 className="text-2xl lg:text-5xl font-bold text-start my-3 w-full">Your Great Destination</h1>
                     <p className="text-sm lg:text-base">Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account</p>
 
-                    <div className='flex items-center gap-6 my-5 w-full jus'>
-                        <div className='flex items-center justify-between gap-10 bg-white rounded-md p-4'>
+                    <div className='flex flex-col lg:flex-row items-start lg:items-center gap-6 my-5 w-full '>
+
+                        <div className='flex  items-center justify-between gap-5 lg:gap-10 bg-white rounded-md p-4 w-full'>
                             <div >
-                                <h2 className='text-4xl font-bold text-textClr'>7200+</h2>
+                                <h2 className='text-xl lg:text-4xl font-bold text-textClr'>7200+</h2>
                                 <p className='text-primary text-sm lg:text-base'>Happy Customers</p>
                             </div>
 
@@ -27,9 +28,9 @@ const Destinations = () => {
                         </div>
 
 
-                        <div className='flex items-center justify-between gap-10 bg-white rounded-md p-4'>
+                        <div className='flex items-center justify-between gap-5 lg:gap-10 bg-white rounded-md p-4 w-full'>
                             <div >
-                                <h2 className='text-4xl font-bold text-textClr'>100%</h2>
+                                <h2 className='text-xl lg:text-4xl font-bold text-textClr'>100%</h2>
                                 <p className='text-primary text-sm lg:text-base'>Client Setisfied</p>
                             </div>
 
@@ -37,7 +38,9 @@ const Destinations = () => {
                         </div>
                     </div>
 
-                    <p>Discover the latest offers & news and start planning  <span className='bg-secondary px-3 py-1 rounded-full text-white text-bold ml-2'><Link href={"/"}>CONTACT US</Link></span>    </p>
+                    <p className='text-sm lg:text-base text-center lg:text-start'>Discover the latest offers & news and start planning
+                        <Link href={"/"} className='bg-secondary px-3 py-0.5 ml-2 text-xs lg:text-base rounded-full text-white  '>CONTACT US</Link>
+                    </p>
 
 
 

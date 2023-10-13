@@ -10,7 +10,7 @@ export default function Plans() {
             <div className='max-w-7xl mx-auto px-5 lg:px-0 py-8  text-textClr'>
                 <div>
                     <p className='text-secondary text-sm font-bold'>FLIGHT PLANS</p>
-                    <h1 className='text-3xl font-bold '>Make It An Incredible Journey</h1>
+                    <h1 className='text-2xl lg:text-3xl font-bold '>Make It An Incredible Journey</h1>
                 </div>
 
                 <div className='flex flex-col lg:flex-row items-start gap-5 lg:gap-6 my-8'>
@@ -18,8 +18,8 @@ export default function Plans() {
                         <div className="w-full  bg-white border border-gray-200 rounded-lg shadow ">
 
                             <div className="p-4 text-start ">
-                                <h1 className="  tracking-tight  mb-4 text-primary">DUBAI AND UAE</h1>
-                                <p className=' text-gray-900 text-4xl '>Discover Dubai </p>
+                                <h1 className="text-sm lg:text-base  tracking-tight  mb-2 lg:mb-4 text-primary">DUBAI AND UAE</h1>
+                                <p className=' text-gray-900 text-xl lg:text-4xl '>Discover Dubai </p>
                                 <Link href="/" className='text-sm underline text-primary'>Learn More</Link>
                             </div>
 

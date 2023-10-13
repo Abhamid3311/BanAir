@@ -7,6 +7,7 @@ import Testimonials from '@/components/UI/Home/Testimonials';
 import Destinations from '@/components/UI/Home/Destinations';
 import Packages from '@/components/UI/Home/Packages';
 import Plans from '@/components/UI/Home/Plans';
+import BackToTopButton from '@/components/UI/PAges/BackToTopButton';
 
 
 export default function Home({ flights, filterdData, testimonials }: { flights: IFlightDeal[], filterdData: IFlightDeal[], testimonials: ITestimonial[] }) {
@@ -21,6 +22,7 @@ export default function Home({ flights, filterdData, testimonials }: { flights: 
       <Packages flights={flights} />
       <Testimonials testimonials={testimonials} />
       <Plans />
+      <BackToTopButton />
     </div>
   )
 }

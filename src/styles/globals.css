@@ -16,3 +16,11 @@
 .slick-next {
     display: none !important;
 }
+
+.destination-banner {
+    background-image: url("/assetes/destination_bg.jpg");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}

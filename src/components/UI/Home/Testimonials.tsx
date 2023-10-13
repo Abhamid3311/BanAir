@@ -1,5 +1,5 @@
 import React from 'react'
-import { ITestimonial } from '../utils/Types'
+import { ITestimonial } from '../../utils/Types'
 import Slider from 'react-slick';
 import styles from '../../styles/Testimonial.module.css';
 

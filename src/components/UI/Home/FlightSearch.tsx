@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { serviceOffer } from '../utils/StaticData';
+import { serviceOffer } from '../../utils/StaticData';
 import Image from 'next/image';
-import { IFlightDeal } from '../utils/Types';
+import { IFlightDeal } from '../../utils/Types';
 
 export default function FlightSearch({ flights, filterdData }: { flights: IFlightDeal[], filterdData: IFlightDeal[] }) {
 
@@ -22,7 +22,7 @@ export default function FlightSearch({ flights, filterdData }: { flights: IFligh
 
 const FlightDeal = () => {
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl mx-auto px-5 lg:px-0 py-20'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-10 max-w-7xl mx-auto px-5 lg:px-0 py-10 lg:py-20'>
             {
                 serviceOffer.map(data => <div key={data.id} className='bg-white text-primary p-5 rounded-md w-full flex items-center gap-3 shadow-md hover:shadow-xl'>
                     <Image src={data.icon} alt={data.title} width={53} height={53} />

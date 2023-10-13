@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import { bannerData } from "../utils/StaticData";
+import { bannerData } from "../../utils/StaticData";
 import { CSSProperties } from 'react';
 import { Button } from "flowbite-react";
 import Link from "next/link";
@@ -20,7 +20,7 @@ export default function Banner() {
     };
 
     return (
-        <div className="w-full">
+        <div className="w-full bg-lightBg">
             <Slider {...settings}>
                 {
                     bannerData.map(data => <BannerItem key={data.id} data={data} />)

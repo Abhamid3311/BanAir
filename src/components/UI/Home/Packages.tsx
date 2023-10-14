@@ -1,5 +1,7 @@
 import { IFlightDeal } from "@/components/utils/Types";
 import FlightCard from "../PAges/FlightCard";
+import { Button } from "flowbite-react";
+import Link from "next/link";
 
 export default function Packages({ flights }: { flights: IFlightDeal[] }) {
     return (
@@ -15,6 +17,9 @@ export default function Packages({ flights }: { flights: IFlightDeal[] }) {
                         flights.map(flight => <FlightCard key={flight.id} flight={flight} />).slice(0, 8)
                     }
 
+                </div>
+                <div className="flex items-center justify-center mt-7">
+                    <Link href={"/where-we-fly"}><Button color="warning" className="px-4">VIEW MORE</Button></Link>
                 </div>
 
             </div>

@@ -32,3 +32,39 @@
     background-repeat: no-repeat;
     width: 100%;
 }
+
+
+/* Card  */
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: all 0.5s linear;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #4F1131;
+    background: -webkit-linear-gradient(to right, #e35d5b, #4F1131);
+    background: linear-gradient(to right, #e35d5b, #4F1131);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s linear;
+}
+
+.card:hover .overlay {
+    left: 0;
+}
+
+.card:hover .normal-text {
+    opacity: 0;
+}

@@ -1,5 +1,6 @@
-import { Button, Navbar } from 'flowbite-react';
+import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
 import Link from 'next/link';
+import { FaUserCircle } from 'react-icons/fa';
 
 
 export default function Header() {
@@ -18,10 +19,23 @@ export default function Header() {
 
 
             <div className="flex md:order-2">
-                <Link href={"/signUp"}>
+                {/*  <Link href={"/signUp"}>
                     <Button color="warning" className="px-1 lg:px-2 font-bold ">
                         SignUp / Login
-                    </Button></Link>
+                    </Button>
+                </Link> */}
+
+                <Dropdown arrowIcon={false} inline label={<FaUserCircle className="text-3xl text-secondary " />} >
+                    <Dropdown.Header>
+                        <span className="block text-sm">Bonnie Green</span>
+                        <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+                    </Dropdown.Header>
+                    <Dropdown.Item> <Link href={"/dashboard"}>Dashboard</Link></Dropdown.Item>
+                    <Dropdown.Item>Settings</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item>Sign out</Dropdown.Item>
+                </Dropdown>
+
                 <Navbar.Toggle />
             </div>
 

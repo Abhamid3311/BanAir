@@ -28,7 +28,7 @@ export default function PackagesDetails({ packageDetails }: { packageDetails: IF
             <div className='bg-lightBg text-textClr py-10'>
                 <div className='max-w-5xl mx-auto flex flex-col lg:flex-row px-5 lg:px-0 items-center  gap-3 bg-white shadow-md rounded-md '>
 
-                    <div className='w-full lg:w-1/2 h-[420px]'>
+                    <div className='w-full lg:w-1/2 h-full lg:h-[420px]'>
                         <img src={img} alt={from} className='w-full h-full rounded-l-md' />
                     </div>
 

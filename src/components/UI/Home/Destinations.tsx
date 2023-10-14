@@ -17,7 +17,7 @@ const Destinations = () => {
                     <h1 className="text-2xl lg:text-5xl font-bold text-start my-3 w-full">Your Great Destination</h1>
                     <p className="text-sm lg:text-base">Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account</p>
 
-                    <div className='flex flex-col lg:flex-row items-start lg:items-center gap-6 my-5 w-full '>
+                    <div className='flex flex-col md:flex-row items-start md:items-center gap-6 my-5 w-full '>
 
                         <div className='flex  items-center justify-between gap-5 lg:gap-10 bg-white rounded-md p-4 w-full'>
                             <div >

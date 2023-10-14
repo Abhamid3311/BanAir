@@ -12,7 +12,7 @@ export default function Testimonials({ testimonials }: { testimonials: ITestimon
         focusOnSelect: true,
         dots: true,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 1000,
         speed: 500,
         infinite: true,
         centerPadding: "20px",
@@ -25,6 +25,14 @@ export default function Testimonials({ testimonials }: { testimonials: ITestimon
                     slidesToScroll: 3,
                     infinite: true,
                     dots: true
+                }
+            },
+            {
+                breakpoint: 900,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
                 }
             },
             {

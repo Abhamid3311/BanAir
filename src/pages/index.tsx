@@ -52,6 +52,7 @@ export const getStaticProps = async () => {
       flights: data,
       filterdData: selectedFlights,
       testimonials: data1,
-    }
+    },
+    revalidate: 60,
   }
 };

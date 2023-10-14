@@ -1,5 +1,6 @@
 import { Button } from 'flowbite-react';
 import Link from 'next/link';
+import CountUp from 'react-countup';
 import { BsGlobe } from 'react-icons/bs';
 import { PiUsersFourBold } from "react-icons/pi";
 
@@ -20,7 +21,9 @@ const Destinations = () => {
 
                         <div className='flex  items-center justify-between gap-5 lg:gap-10 bg-white rounded-md p-4 w-full'>
                             <div >
-                                <h2 className='text-xl lg:text-4xl font-bold text-textClr'>7200+</h2>
+                                <h2 className='text-xl lg:text-4xl font-bold text-textClr'>
+                                    <CountUp end={7200} />+</h2>
+
                                 <p className='text-primary text-sm lg:text-base'>Happy Customers</p>
                             </div>
 
@@ -30,7 +33,7 @@ const Destinations = () => {
 
                         <div className='flex items-center justify-between gap-5 lg:gap-10 bg-white rounded-md p-4 w-full'>
                             <div >
-                                <h2 className='text-xl lg:text-4xl font-bold text-textClr'>100%</h2>
+                                <h2 className='text-xl lg:text-4xl font-bold text-textClr'> <CountUp end={100} />%</h2>
                                 <p className='text-primary text-sm lg:text-base'>Client Setisfied</p>
                             </div>
 

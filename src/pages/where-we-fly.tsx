@@ -14,8 +14,8 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
         <div className='bg-lightBg'>
             <PageBanner>
                 <div className='text-center '>
-                    <h1 className='text-5xl font-bold  '>Where We Fly</h1>
-                    <p className='text-semibold   mt-2'><Link href={"/"}>HOME</Link> / <span className='text-secondary'>WHERE WE FLY</span></p>
+                    <h1 className='text-5xl font-bold  '>OUR PACKAGES</h1>
+                    <p className='text-semibold   mt-2'><Link href={"/"}>HOME</Link> / <span className='text-secondary'>OUR PACKAGES</span></p>
                 </div>
             </PageBanner>
             <div className='max-w-7xl mx-auto px-5 lg:px-0 py-10'>
@@ -27,7 +27,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                 </div>
 
                 <div>
-                  
+
                 </div>
 
 

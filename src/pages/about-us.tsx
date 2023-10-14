@@ -1,10 +1,13 @@
 import Destinations from '@/components/UI/Home/Destinations';
+import Testimonials from '@/components/UI/Home/Testimonials';
 import PageBanner from '@/components/UI/PAges/PageBanner'
 import RootLayout from '@/components/layouts/RootLayout';
+import { ITestimonial } from '@/components/utils/Types';
+import { baseUrl } from '@/components/utils/url';
 import Link from 'next/link';
 import React from 'react'
 
-export default function AboutPage() {
+export default function AboutPage({ testimonials }: { testimonials: ITestimonial[] }) {
     return (
         <div className='bg-lightBg'>
             <PageBanner>
@@ -14,8 +17,13 @@ export default function AboutPage() {
                 </div>
             </PageBanner>
 
-            <div>
+            <div className=''>
+                <div className='min-h-screen '>
+                    About Us
+
+                </div>
                 <Destinations />
+                <Testimonials testimonials={testimonials} />
             </div>
 
         </div>
@@ -25,4 +33,16 @@ export default function AboutPage() {
 
 AboutPage.getLayout = function getLayout(page) {
     return <RootLayout>{page}</RootLayout>;
+};
+
+
+export const getStaticProps = async () => {
+    const res1 = await fetch(`${baseUrl}/testimonial`);
+    const data1 = await res1.json();
+
+    return {
+        props: {
+            testimonials: data1,
+        }
+    }
 };

@@ -18,9 +18,10 @@ export default function Header() {
 
 
             <div className="flex md:order-2">
-                <Button color="warning" className="px-1 lg:px-2 font-bold ">
-                    SignUp / Login
-                </Button>
+                <Link href={"/signUp"}>
+                    <Button color="warning" className="px-1 lg:px-2 font-bold ">
+                        SignUp / Login
+                    </Button></Link>
                 <Navbar.Toggle />
             </div>
 

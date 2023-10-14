@@ -7,7 +7,11 @@ import { baseUrl } from '@/components/utils/url';
 import Link from 'next/link';
 import React from 'react'
 
+
 export default function AboutPage({ testimonials }: { testimonials: ITestimonial[] }) {
+   
+
+
     return (
         <div className='bg-lightBg'>
             <PageBanner>

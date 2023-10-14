@@ -1,9 +1,18 @@
 import PageBanner from '@/components/UI/PAges/PageBanner'
 import RootLayout from '@/components/layouts/RootLayout';
 import Link from 'next/link';
-import React from 'react'
+import { useGetFlightsQuery } from '../redux/api/api';
 
 export default function WhereWEFlyPage() {
+
+    const { data, isLoading } = useGetFlightsQuery(undefined);
+    if (isLoading) {
+        return <p>Loading....</p>
+    }
+
+    console.log(data);
+
+
     return (
         <div className='bg-lightBg'>
             <PageBanner>
@@ -11,8 +20,10 @@ export default function WhereWEFlyPage() {
                     <h1 className='text-5xl font-bold  '>Where We Fly</h1>
                     <p className='text-semibold   mt-2'><Link href={"/"}>HOME</Link> / <span className='text-secondary'>WHERE WE FLY</span></p>
                 </div>
-
             </PageBanner>
+            <div>
+                
+            </div>
         </div>
     )
 };

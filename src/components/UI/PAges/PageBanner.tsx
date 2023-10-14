@@ -3,7 +3,7 @@ import React from 'react';
 
 const PageBanner = ({ children }: RootLayoutProps) => {
     return (
-        <div className='w-full h-[30vh] bg-gray-200 flex items-center justify-center'>
+        <div className='w-full min-h-[30vh] page-Banner flex items-center justify-center text-white'>
             {children}
         </div>
     );

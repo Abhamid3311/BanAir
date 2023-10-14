@@ -8,7 +8,7 @@ export default function AboutPage() {
     return (
         <div className='bg-lightBg'>
             <PageBanner>
-                <div className='text-center text-textClr'>
+                <div className='text-center '>
                     <h1 className='text-5xl font-bold  '>About Us</h1>
                     <p className='text-semibold   mt-2'><Link href={"/"}>HOME</Link> / <span className='text-secondary'>ABOUT US</span></p>
                 </div>

@@ -7,7 +7,7 @@ export default function WhereWEFlyPage() {
     return (
         <div className='bg-lightBg'>
             <PageBanner>
-                <div className='text-center text-textClr'>
+                <div className='text-center '>
                     <h1 className='text-5xl font-bold  '>Where We Fly</h1>
                     <p className='text-semibold   mt-2'><Link href={"/"}>HOME</Link> / <span className='text-secondary'>WHERE WE FLY</span></p>
                 </div>

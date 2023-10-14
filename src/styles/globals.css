@@ -24,3 +24,11 @@
     background-repeat: no-repeat;
     width: 100%;
 }
+
+.page-Banner {
+    background-image: linear-gradient(rgba(0, 53, 128, 0.8), rgba(0, 53, 128, 0.8)), url("/assetes/slider_bg3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}

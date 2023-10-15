@@ -43,17 +43,20 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
         const filteredDeals = flightsPlan?.filter((book: IFlightDeal) => {
             const lowerCaseQuery = searchQuery?.toLowerCase();
             const hasMatchingCity = selectedCity.length === 0 || selectedCity.includes(book?.from) || selectedCity.includes(book?.to) || selectedCity.includes(book?.type);
+
+            const isWithinPriceRange = parseInt(book.price) <= priceSliderValue;
             return (
-                hasMatchingCity &&
+                hasMatchingCity && isWithinPriceRange &&
                 (book.from.toLowerCase().includes(lowerCaseQuery) ||
                     book.to.toLowerCase().includes(lowerCaseQuery) ||
-                    book.type.toLowerCase().includes(lowerCaseQuery)
+                    book.type.toLowerCase().includes(lowerCaseQuery) ||
+                    book.price.includes(lowerCaseQuery)
                 )
             )
         });
 
         setSearchedDeals(filteredDeals);
-    }, [flightsPlan, searchQuery, selectedCity]);
+    }, [flightsPlan, searchQuery, selectedCity, priceSliderValue]);
 
 
 
@@ -104,7 +107,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
             </PageBanner>
 
 
-            <div className='max-w-7xl mx-auto px-5 lg:px-0 py-10'>
+            <div className='max-w-7xl mx-auto px-3 lg:px-0 py-10'>
 
                 <div className='flex items-center justify-center my-5'>
                     {/*Search Filtering */}
@@ -132,12 +135,12 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                     </form>
                 </div>
 
-                <div className='flex items-start gap-5 '>
+                <div className='flex flex-col lg:flex-row  items-start gap-5 '>
 
                     <div className="w-full lg:w-1/5 bg-gray-200 px-2 pt-2 pb-10">
                         <h2 className="text-2xl font-bold text-center mb-10">Filter Deals</h2>
 
-
+                            {/* CheckBox Sorting */}
                         <div>
 
                             {/* CheckBox Sorting By City Name */}
@@ -272,7 +275,9 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
 
                         </div>
 
+                        
 
+                        {/* Price Range Sorting */}
                         <div>
                             <div className="mt-8">
                                 <label htmlFor="year-slider" className="block text-base font-medium text-gray-700">
@@ -282,9 +287,9 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                                     type="range"
                                     id="year-slider"
                                     name="year-slider"
-                                    min="0"
+                                    min="600"
                                     max="2000"
-                                    step="1"
+                                    step="10"
                                     value={priceSliderValue}
                                     onChange={(e) => handlePriceSliderChange(e.target.value)}
                                     className="mt-1 block w-full "
@@ -297,7 +302,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                     </div>
 
 
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full lg:w-4/5'>
+                    <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-5 w-full lg:w-4/5'>
                         {
                             searchedDeals?.map(data => <FlightCard key={data.id} flight={data} />)
                         }

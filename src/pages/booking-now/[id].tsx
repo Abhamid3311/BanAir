@@ -4,9 +4,12 @@ import { IFlightDeal } from "@/components/utils/Types";
 import { baseUrl } from "@/components/utils/url";
 import { Label, Select, TextInput } from "flowbite-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlightDeal }) {
-    console.log(purchaseDeals);
+    // console.log(purchaseDeals);
+    const [totalPerson, setTotalPerson] = useState(1);
+    console.log(totalPerson)
 
 
 
@@ -61,10 +64,10 @@ export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlight
 
                     <div className="flex flex-col lg:flex-row items-start gap-2 ">
                         <div className="w-full lg:w-3/4">
-                            <BookingInfo />
+                            <BookingInfo setTotalPerson={setTotalPerson} />
                         </div>
                         <div className="w-full lg:w-1/4">
-                            <PaymentInfo purchaseDeals={purchaseDeals} />
+                            <PaymentInfo purchaseDeals={purchaseDeals} totalPerson={totalPerson} />
                         </div>
                     </div>
 
@@ -99,7 +102,7 @@ export const getServerSideProps = async (context) => {
 };
 
 
-const BookingInfo = () => {
+const BookingInfo = ({ setTotalPerson }) => {
     return <>
         <div className="bg-white  rounded-md shadow-md mt-5">
             <div className="w-full bg-primary px-5 py-3 rounded-t-md">
@@ -219,7 +222,7 @@ const BookingInfo = () => {
 
                 <div className="w-full  my-3" id="select">
                     <div className="mb-2 block"><Label htmlFor="countries" value="Select Person*" /> </div>
-                    <Select id="countries" >
+                    <Select id="countries" onChange={(e) => setTotalPerson(e.target.value)}>
                         <option selected>1</option>
                         <option >2 </option>
                         <option>3 </option>
@@ -260,10 +263,10 @@ const BookingInfo = () => {
 };
 
 
-const PaymentInfo = ({ purchaseDeals }: { purchaseDeals: IFlightDeal }) => {
+const PaymentInfo = ({ purchaseDeals, totalPerson }: { purchaseDeals: IFlightDeal, totalPerson: number }) => {
     const { id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = purchaseDeals;
 
-    const mainPrice = parseFloat(price);  // Assuming price is a string or number representing the main price
+    const mainPrice = parseFloat(price) * totalPerson;  // Assuming price is a string or number representing the main price
     const tax = mainPrice * 0.05;
     const totalPrice = mainPrice + tax;
     const totalPayable = totalPrice - 10;
@@ -337,12 +340,12 @@ const PaymentInfo = ({ purchaseDeals }: { purchaseDeals: IFlightDeal }) => {
 
                             <div className="px-3 text-lg text-primary">
                                 <div className="flex items-center justify-between">
-                                    <p>Person  x 1</p>
-                                    <p>${price}</p>
+                                    <p>Person  x {totalPerson}</p>
+                                    <p>${price * totalPerson}</p>
                                 </div>
 
                                 <div className="flex items-center justify-between">
-                                    <p>Tax x 1</p>
+                                    <p>Tax-(5%)</p>
                                     <p>${tax.toFixed(2)}</p>
                                 </div>
                                 <hr />

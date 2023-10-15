@@ -15,7 +15,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
     const [searchedDeals, setSearchedDeals] = useState<IFlightDeal[]>([]);
     const [selectedCity, setSelectedCity] = useState<string[]>([]);
     const inputRef = useRef<HTMLInputElement | null>(null);
-    const [showSumerry, setShowSummery] = useState(false)
+    const [searched, setSearched] = useState(false);
     const [priceSliderValue, setPriceSliderValue] = useState<number>(1500);
 
     // Pagination
@@ -35,7 +35,8 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                 book.price.toLowerCase().includes(lowerCaseQuery)
             );
         });
-        setSearchedDeals(filteredDeals)
+        setSearchedDeals(filteredDeals);
+        setCurrentPage(1);
 
     }, [flightsPlan, searchQuery]);
 
@@ -68,6 +69,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
         e.preventDefault();
         if (inputRef.current) {
             setSearchQuery(inputRef.current.value);
+            setSearched(true);
         }
     };
 
@@ -131,7 +133,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                                     ref={inputRef}
                                     onChange={(e) => {
                                         setSearchQuery(e.target.value);
-                                        setShowSummery(true);
+                                        setSearched(true);
                                     }}
                                     className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 rounded-md shadow-md border-l-2 border border-gray-300 focus:ring-primary focus:border-primary "
                                     placeholder="Search deals..." required />
@@ -142,7 +144,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                                 </button>
                             </div>
                         </div>
-                        {showSumerry && <p className='text-sm text-red-500'>Total search result: {searchedDeals?.length}</p>}
+                        {searchQuery && <p className='text-sm text-red-500'>Total search result: {searchedDeals?.length}</p>}
                     </form>
                 </div>
 
@@ -319,6 +321,8 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                         }
                     </div>
                 </div>
+
+                {/* Pagination  */}
                 <div>
                     <Pagination
                         currentPage={currentPage}

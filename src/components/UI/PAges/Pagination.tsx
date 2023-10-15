@@ -1,10 +1,21 @@
+import { NextPage } from "next";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+interface PaginationProps {
+    postPerPage: number;
+    totalPost: number;
+    paginate: (pageNumber: number) => void;
+    handlePrevBtn: () => void;
+    handleNextBtn: () => void;
+    currentPage: number;
+}
 
 
 
-export default function Pagination({ postPerPage, totalPost, paginate, handlePrevBtn, handleNextBtn, currentPage }) {
+
+
+const Pagination: NextPage<PaginationProps> = ({ postPerPage, totalPost, paginate, handlePrevBtn, handleNextBtn, currentPage }) => {
     const pageNumber = [];
-    const totalPage = totalPost / 10;
+    const totalPage = Math.ceil(totalPost / postPerPage);
 
     //Get Page Btn
     for (let i = 1; i <= Math.ceil(totalPost / postPerPage); i++) {
@@ -47,3 +58,4 @@ export default function Pagination({ postPerPage, totalPost, paginate, handlePre
     );
 };
 
+export default Pagination;

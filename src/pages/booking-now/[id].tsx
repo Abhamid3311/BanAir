@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlightDeal }) {
     console.log(purchaseDeals);
 
-    const { id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = purchaseDeals;
+
 
     return (
         <>
@@ -64,14 +64,9 @@ export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlight
                             <BookingInfo />
                         </div>
                         <div className="w-full lg:w-1/4">
-                            <PaymentInfo />
+                            <PaymentInfo purchaseDeals={purchaseDeals} />
                         </div>
                     </div>
-
-
-
-
-
 
 
 
@@ -265,11 +260,123 @@ const BookingInfo = () => {
 };
 
 
-const PaymentInfo = () => {
+const PaymentInfo = ({ purchaseDeals }: { purchaseDeals: IFlightDeal }) => {
+    const { id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = purchaseDeals;
+
+    const mainPrice = parseFloat(price);  // Assuming price is a string or number representing the main price
+    const tax = mainPrice * 0.05;
+    const totalPrice = mainPrice + tax;
+    const totalPayable = totalPrice - 10;
+
+
     return <>
-        <div className="bg-white min-h-screen rounded-md shadow-md mt-5">
+        <div className="bg-white  rounded-md shadow-md mt-5">
             <div className="w-full bg-primary px-5 py-3 rounded-t-md">
-                <h2 className="text-white text-xl font-bold">Payment Info</h2>
+                <h2 className="text-white text-xl font-bold">Booking Info</h2>
+            </div>
+
+            <div className="py-2 px-2">
+
+                <div >
+                    <h2 className="text-2xl font-bold text-primary text-center"> {from} to {to}</h2>
+                    <h2 className="font-semibold  text-center"> {startDate} - {endDate}</h2>
+                    <hr className="my-2" />
+                </div>
+
+                <div className="mt-5 mb-10">
+                    <h2 className="font-bold text-primary  mb-2">Select Discount Option</h2>
+                    <hr />
+                    <div className=" px-2 py-3 ">
+                        <input type="text" placeholder="Enter Code" className=" border-primary rounded-md bg-lightBg" />
+                    </div>
+                </div>
+
+                <div className="mt-3">
+                    <h2 className="font-bold text-primary  mb-2">Your Preferred Bank</h2>
+                    <hr />
+                    <div className="grid grid-cols-2 px-2 gap-3 my-2">
+
+                        <Link href={"#"} className="bg-lightBg hover:bg-gray-200 duration-500 px-3 py-3 rounded-md shadow-sm hover:shadow-lg flex items-center justify-center">
+                            <img src="/assetes/paypal.png" alt="" srcSet="" />
+                        </Link >
+
+                        <Link href={"#"} className="bg-lightBg hover:bg-gray-200 duration-500 px-3 py-3 rounded-md shadow-sm hover:shadow-lg flex items-center justify-center">
+                            <img src="/assetes/bank_logo02.png" alt="" srcSet="" />
+                        </Link>
+
+                        <Link href={"#"} className="bg-lightBg hover:bg-gray-200 duration-500 px-3 py-3 rounded-md shadow-sm hover:shadow-lg flex items-center justify-center">
+                            <img src="/assetes/bank_logo03.png" alt="" srcSet="" />
+                        </Link>
+
+                        <Link href={"#"} className="bg-lightBg hover:bg-gray-200 duration-500 px-3 py-3 rounded-md shadow-sm hover:shadow-lg flex items-center justify-center">
+                            <img src="/assetes/bank_logo04.png" alt="" srcSet="" />
+                        </Link>
+
+                        <Link href={"#"} className="bg-lightBg hover:bg-gray-200 duration-500 px-3 py-3 rounded-md shadow-sm hover:shadow-lg flex items-center justify-center">
+                            <img src="/assetes/bank_logo05.png" alt="" srcSet="" />
+                        </Link>
+
+                        <Link href={"#"} className="bg-lightBg hover:bg-gray-200 duration-500 px-3 py-3 rounded-md shadow-sm hover:shadow-lg flex items-center justify-center">
+                            <img src="/assetes/bank_logo06.png" alt="" srcSet="" />
+                        </Link>
+                    </div>
+                    <hr />
+
+                </div>
+
+                <div className="mt-3">
+                    <h2 className="font-bold text-primary  mb-2">Your price summary</h2>
+                    <hr />
+
+                    <div className="">
+                        <div>
+                            <div className="flex items-center justify-between bg-gray-200 text-primary font-bold px-3 py-2 rounded-md">
+                                <h3>Details</h3>
+                                <h3>Amount</h3>
+                            </div>
+
+                            <div className="px-3 text-lg text-primary">
+                                <div className="flex items-center justify-between">
+                                    <p>Person  x 1</p>
+                                    <p>${price}</p>
+                                </div>
+
+                                <div className="flex items-center justify-between">
+                                    <p>Tax x 1</p>
+                                    <p>${tax.toFixed(2)}</p>
+                                </div>
+                                <hr />
+
+                                <div className="flex items-center justify-between">
+                                    <p>Total Airfare:</p>
+                                    <p>${totalPrice}</p>
+                                </div>
+
+                                <div className="flex items-center justify-between">
+                                    <p>Discount</p>
+                                    <p>- $10</p>
+                                </div>
+                                <hr />
+
+                                <div className="flex items-center justify-between">
+                                    <p>Total Payable</p>
+                                    <p>${totalPayable}.00</p>
+
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-center py-3">
+                                <Link href={"#"} className="bg-primary text-lightBg px-7 py-2 font-bold  rounded-md"> PAY NOW</Link>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
 
             </div>
 

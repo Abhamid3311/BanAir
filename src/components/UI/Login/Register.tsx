@@ -1,8 +1,8 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import Link from 'next/link';
 import React from 'react';
-import { FcGoogle } from 'react-icons/fc';
-import { AiOutlineGithub } from 'react-icons/ai';
+import SocialLogin from './SocialLogin';
+
 
 export default function Register() {
 
@@ -64,16 +64,9 @@ export default function Register() {
 
             <div className='text-lg  text-center my-5'>---- or ----</div>
 
-            <div >
-                <Button className='bg-[#4D82E5] mb-2 w-full'  >
-                    <FcGoogle className="mr-2 h-7 w-7 bg-white p-1 rounded-full" />
-                    <p className=' font-bold'> Sign in with Google </p>
-                </Button>
-                <Button color="dark" className='w-full'>
-                    <AiOutlineGithub className="mr-2 h-7 w-7  " />
-                    <p className=' font-bold'> Sign in with GitHub </p>
-                </Button>
-            </div>
+            <SocialLogin />
+
+          
 
             <p className='text-end text-sm mt-2'>Already have an account? <Link href={"/login"} className='hover:underline hover:text-secondary'>Login</Link></p>
 

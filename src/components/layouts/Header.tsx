@@ -1,9 +1,14 @@
 import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
 import Link from 'next/link';
 import { FaUserCircle } from 'react-icons/fa';
+import { useSession, signIn, signOut } from "next-auth/react"
 
 
 export default function Header() {
+    const { data: session } = useSession();
+
+    console.log(session?.user);
+
     return (
         <Navbar className='bg-textClr' >
             <Navbar.Brand href="/">
@@ -19,22 +24,30 @@ export default function Header() {
 
 
             <div className="flex md:order-2">
-                {/*  <Link href={"/signUp"}>
-                    <Button color="warning" className="px-1 lg:px-2 font-bold ">
-                        SignUp / Login
-                    </Button>
-                </Link> */}
 
-                <Dropdown arrowIcon={false} inline label={<FaUserCircle className="text-3xl text-secondary " />} >
-                    <Dropdown.Header>
-                        <span className="block text-sm">Bonnie Green</span>
-                        <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-                    </Dropdown.Header>
-                    <Dropdown.Item> <Link href={"/dashboard"}>Dashboard</Link></Dropdown.Item>
-                    <Dropdown.Item>Settings</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item>Sign out</Dropdown.Item>
-                </Dropdown>
+                {
+                    session?.user ?
+                        <Dropdown arrowIcon={false} inline label={<FaUserCircle className="text-3xl text-secondary " />} >
+                            <Dropdown.Header>
+                                <span className="block text-sm">Bonnie Green</span>
+                                <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+                            </Dropdown.Header>
+                            <Dropdown.Item> <Link href={"/dashboard"}>Dashboard</Link></Dropdown.Item>
+                            <Dropdown.Item>Settings</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item onClick={()=>signOut()}>Sign out</Dropdown.Item>
+                        </Dropdown>
+                        :
+                        <Link href={"/signUp"}>
+                            <Button color="warning" className="px-1 lg:px-2 font-bold ">
+                                SignUp / Login
+                            </Button>
+                        </Link>
+
+                }
+
+
+
 
                 <Navbar.Toggle />
             </div>

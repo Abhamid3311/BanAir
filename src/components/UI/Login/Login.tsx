@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { AiOutlineGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
+import SocialLogin from './SocialLogin';
 
 export default function Login() {
     return (
@@ -48,16 +49,7 @@ export default function Login() {
 
             <div className='text-lg  text-center my-5'>---- or ----</div>
 
-            <div >
-                <Button className='bg-[#4D82E5] mb-2 w-full'  >
-                    <FcGoogle className="mr-2 h-7 w-7 bg-white p-1 rounded-full" />
-                    <p className=' font-bold'> Sign in with Google </p>
-                </Button>
-                <Button color="dark" className='w-full'>
-                    <AiOutlineGithub className="mr-2 h-7 w-7  " />
-                    <p className=' font-bold'> Sign in with GitHub </p>
-                </Button>
-            </div>
+            <SocialLogin />
 
             <p className='text-end text-sm mt-2'>New in BDAir? create an accound <Link href={"/signUp"} className='hover:underline hover:text-secondary'>SignUp</Link></p>
 

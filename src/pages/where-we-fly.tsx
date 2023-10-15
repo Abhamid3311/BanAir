@@ -1,13 +1,13 @@
 import PageBanner from '@/components/UI/PAges/PageBanner'
 import RootLayout from '@/components/layouts/RootLayout';
 import Link from 'next/link';
-import { useGetFlightsQuery } from '../redux/api/api';
 import { baseUrl } from '@/components/utils/url';
 import { IFlightDeal } from '@/components/utils/Types';
 import FlightCard from '@/components/UI/PAges/FlightCard';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { Checkbox, Label } from 'flowbite-react';
+import Pagination from '@/components/UI/PAges/Pagination';
 
 export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDeal[] }) {
 
@@ -16,9 +16,12 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
     const [selectedCity, setSelectedCity] = useState<string[]>([]);
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [showSumerry, setShowSummery] = useState(false)
-
-
     const [priceSliderValue, setPriceSliderValue] = useState<number>(1500);
+
+    // Pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage] = useState(9);
+
 
 
     //Serached Filter Functionality
@@ -60,9 +63,6 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
 
 
 
-
-
-
     //Handle Search Bar Filter
     const handleSearchFilter = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -70,8 +70,6 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
             setSearchQuery(inputRef.current.value);
         }
     };
-
-
 
 
     //Handle CheckBox Filter
@@ -92,6 +90,19 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
     const handlePriceSliderChange = (value: string) => {
         setPriceSliderValue(parseInt(value));
     };
+
+    //Pagination Functionality
+
+    //Get Current posts
+    const indexOfLastPost = currentPage * postPerPage;
+    const indexOfFirstPost = indexOfLastPost - postPerPage;
+    const currentPosts = searchedDeals?.slice(indexOfFirstPost, indexOfLastPost);
+
+    //Change Page
+    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+    const handlePrevBtn = () => setCurrentPage(currentPage - 1);
+    const handleNextBtn = () => setCurrentPage(currentPage + 1);
+
 
 
     // console.log(yearSliderValue);
@@ -140,7 +151,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                     <div className="w-full lg:w-1/5 bg-gray-200 px-2 pt-2 pb-10">
                         <h2 className="text-2xl font-bold text-center mb-10">Filter Deals</h2>
 
-                            {/* CheckBox Sorting */}
+                        {/* CheckBox Sorting */}
                         <div>
 
                             {/* CheckBox Sorting By City Name */}
@@ -275,7 +286,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
 
                         </div>
 
-                        
+
 
                         {/* Price Range Sorting */}
                         <div>
@@ -304,10 +315,19 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
 
                     <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-5 w-full lg:w-4/5'>
                         {
-                            searchedDeals?.map(data => <FlightCard key={data.id} flight={data} />)
+                            currentPosts?.map(data => <FlightCard key={data.id} flight={data} />)
                         }
                     </div>
-
+                </div>
+                <div>
+                    <Pagination
+                        currentPage={currentPage}
+                        postPerPage={postPerPage}
+                        totalPost={searchedDeals?.length}
+                        handlePrevBtn={handlePrevBtn}
+                        handleNextBtn={handleNextBtn}
+                        paginate={paginate}
+                    />
 
                 </div>
 

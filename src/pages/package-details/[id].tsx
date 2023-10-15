@@ -45,7 +45,7 @@ export default function PackagesDetails({ packageDetails }: { packageDetails: IF
                         </div>
                         <p >Descriptions: </p><p className='mb-3'>{desc}</p>
 
-                        <Link href={'/purchase'}  > <Button color='warning'>Purchase Now</Button></Link>
+                        <Link href={`/booking-now/${id}`}  > <Button color='warning'>Purchase Now</Button></Link>
                     </div>
 
 
@@ -55,7 +55,7 @@ export default function PackagesDetails({ packageDetails }: { packageDetails: IF
                     <h1 className='text-2xl font-bold'>Reviews:</h1>
                     {
                         reviews.map((rev, index) => <div key={index} className='mt-3 flex gap-2 items-center'>
-                            <FaUserCircle className="text-3xl"/>
+                            <FaUserCircle className="text-3xl" />
                             <div>
                                 <h3 className='font-bold'>{rev.user}</h3>
                                 <p className='text-sm'>{rev.review}</p>
@@ -82,7 +82,7 @@ export const getServerSideProps = async (context) => {
     const { params } = context;
     const res = await fetch(`${baseUrl}/deal/${params.id}`);
     const data = await res.json();
-    console.log(data)
+    // console.log(data)
 
     return {
         props: {

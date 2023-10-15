@@ -27,7 +27,7 @@ export default function FlightCard({ flight }: { flight: IFlightDeal }) {
                             <h3 className='text-xl font-bold text-secondary '>${price}</h3>
                         </div>
                         <div className=' flex gap-3 mt-4 text-sm'>
-                            <Link href={'/purchase'} className='hover:bg-white bg-transparent hover:text-black text-white border-[1px] border-white rounded-md px-2 py-0.5'>Purchase Now</Link>
+                            <Link href={`/booking-now/${id}`} className='hover:bg-white bg-transparent hover:text-black text-white border-[1px] border-white rounded-md px-2 py-0.5'>Purchase Now</Link>
 
                             <Link href={`/package-details/${id}`} className='hover:bg-white bg-transparent hover:text-black text-white border-[1px] border-white rounded-md px-2 py-0.5'>View Details</Link>
                         </div>

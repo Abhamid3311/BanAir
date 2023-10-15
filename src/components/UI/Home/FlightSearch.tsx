@@ -72,7 +72,7 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
                                 <h3 className='text-xl font-bold mb-3'>${firstValue?.price}</h3>
 
                                 <Link
-                                    href={"/purchase"}
+                                    href={`/booking-now/${firstValue?.id}`}
                                     className='px-3 py-1 border-[1px] border-secondary text-secondary rounded-md bg-white hover:bg-secondary hover:text-textClr  '>
                                     Purchase Now</Link>
                             </div>
@@ -111,7 +111,7 @@ const FlightCard = ({ data }: { data: IFlightDeal }) => {
                     <h3 className='text-lg font-bold mb-2'>${price}</h3>
 
                     <Link
-                        href={"/purchase"}
+                        href={`/booking-now/${id}`}
                         className='px-3 py-1 border-[1px] border-secondary text-secondary rounded-md bg-white hover:bg-secondary hover:text-textClr'>
                         Purchase Now</Link>
                 </div>

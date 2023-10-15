@@ -30,8 +30,8 @@ export default function Sidebars() {
                     <Sidebar.ItemGroup>
                         <Sidebar.Item href="#" icon={HiUser} ><p> Profile</p> </Sidebar.Item>
                         <Sidebar.Item href="#" icon={HiShoppingBag} ><p> Logout</p> </Sidebar.Item>
-
                     </Sidebar.ItemGroup>
+
                 </Sidebar.Items>
             </Sidebar>
 

@@ -45,7 +45,7 @@ export default function Header() {
                             <Dropdown.Item onClick={() => signOut()}>Sign out</Dropdown.Item>
                         </Dropdown>
                         :
-                        <Link href={"/signUp"}>
+                        <Link href={"/login"}>
                             <Button color="warning" className="px-1 lg:px-2 font-bold ">
                                 SignUp / Login
                             </Button>

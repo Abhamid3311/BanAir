@@ -10,9 +10,15 @@ export const api = createApi({
         getFlights: builder.query({
             query: () => `/deal`,
         }),
-        
+        getUsers: builder.query({
+            query: () => `/users`,
+        }),
+        getDeals: builder.query({
+            query: () => `/users`,
+        }),
+
     }),
 })
 
 
-export const { useGetFlightsQuery } = api;
+export const { useGetFlightsQuery,useGetUsersQuery } = api;

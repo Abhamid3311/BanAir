@@ -11,7 +11,6 @@ export default function Feedback() {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const url = `${baseUrl}/testimonial`;
-
         axios.post(url, data)
             .then(function (response) {
                 console.log(response);
@@ -21,7 +20,6 @@ export default function Feedback() {
             .catch(function (error) {
                 console.log(error);
             });
-
     };
 
 

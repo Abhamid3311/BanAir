@@ -7,6 +7,7 @@ import { auth } from '@/components/utils/firebase';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import { baseUrl } from '@/components/utils/url';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 export default function Login() {
     const router = useRouter();
@@ -28,27 +29,41 @@ export default function Login() {
  */
 
 
-
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         const { email, password } = data;
 
-        signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                const user = userCredential?.user;
-                const email = user?.email;
-                const token = user?.accessToken;
+        try {
+            // Sign in and get user credentials
+            const userCredential = await signInWithEmailAndPassword(email, password);
+            const user = userCredential?.user;
+            const token = user?.accessToken;
 
-                window.localStorage.setItem("email", email!)
-                window.localStorage.setItem("token", token);
+            window.localStorage.setItem("email", user?.email || '');
+            window.localStorage.setItem("token", token || '');
 
-                toast.success("SignIn Successfully");
-                router.push("/dashboard")
-            })
-            .catch((error) => {
-                console.log(error);
-                toast.error("Login Failed!");
-            });
+            // Get user role
+            const response = await axios.get(`${baseUrl}/users/${email}`);
+            const userRole = response.data.role;
+
+            console.log(userRole);
+            toast.success("SignIn Successfully");
+
+            if (userRole === "admin") {
+                router.push("/Admin-dashboard");
+            } else if (userRole === "user") {
+                router.push("/dashboard");
+            }
+
+
+            // router.push("/dashboard");
+
+        } catch (error) {
+            console.error('Login failed:', error);
+            toast.error("Login Failed!");
+        }
     };
+
+
 
 
 

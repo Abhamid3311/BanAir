@@ -2,18 +2,21 @@ import React from 'react'
 import { RootLayoutProps } from './RootLayout'
 import Header from './Header'
 import Sidebars from './Sidebar'
+import DashboardHeader from './DashboardHeader'
+import { ToastContainer } from 'react-toastify'
 
 export default function UserDashboardLayout({ children }: RootLayoutProps) {
     return (
         <div>
             <>
-                <Header />
+                <DashboardHeader />
                 <div className='flex '>
                     <Sidebars />
                     <div>
                         {children}
                     </div>
                 </div>
+                <ToastContainer />
 
             </>
 

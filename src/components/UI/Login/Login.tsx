@@ -1,11 +1,12 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import Link from 'next/link';
-import React from 'react';
-import { AiOutlineGithub } from 'react-icons/ai';
-import { FcGoogle } from 'react-icons/fc';
 import SocialLogin from './SocialLogin';
+import { useRouter } from 'next/router'
 
 export default function Login() {
+    const router = useRouter();
+
+    
     return (
         <div className='w-96 bg-white p-5 rounded-md shadow-md'>
             <h1 className='text-center text-2xl font-bold text-primary mb-2'>Login</h1>

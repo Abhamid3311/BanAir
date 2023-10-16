@@ -8,7 +8,7 @@ import Image from 'next/image';
 export default function Header() {
     const { data: session } = useSession();
 
-    console.log(session?.user);
+    // console.log(session?.user);
 
     return (
         <Navbar className='bg-textClr' >

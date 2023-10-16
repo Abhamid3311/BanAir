@@ -44,3 +44,11 @@ export interface IPlans {
     desc: string;
     img: string;
 }
+
+export interface IUser {
+    name: string;
+    email: string;
+    phoneNumber: string;
+    password: string;
+    checkbox: boolean
+}

@@ -2,12 +2,11 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import Link from 'next/link';
 import React from 'react';
 import SocialLogin from './SocialLogin';
-import { useForm, SubmitHandler,FieldValues  } from 'react-hook-form';
+import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import { auth } from '@/components/utils/firebase';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import { baseUrl } from '@/components/utils/url';
-import { IUser } from '@/components/utils/Types';
 import { useRouter } from 'next/router'
 
 
@@ -27,7 +26,7 @@ export default function Register() {
         return <p>Loading...</p>;
     };
 
-    const onSubmit: SubmitHandler<FieldValues > = async (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         const { name, email, phoneNumber, password, checkbox } = data;
 
         if (!checkbox) {

@@ -12,7 +12,7 @@ export default function UserDashboardLayout({ children }: RootLayoutProps) {
                 <DashboardHeader />
                 <div className='flex '>
                     <Sidebars />
-                    <div>
+                    <div className='w-full'>
                         {children}
                     </div>
                 </div>

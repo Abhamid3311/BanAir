@@ -3,12 +3,15 @@ import Link from 'next/link';
 import { FaUserCircle } from 'react-icons/fa';
 import { useSession, signIn, signOut } from "next-auth/react"
 import Image from 'next/image';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../utils/firebase';
 
 
 export default function Header() {
     const { data: session } = useSession();
+    const [user] = useAuthState(auth);
 
-    // console.log(session?.user);
+    // console.log(user);
 
     return (
         <Navbar className='bg-textClr' >
@@ -27,16 +30,17 @@ export default function Header() {
             <div className="flex md:order-2">
 
                 {
-                    session?.user ?
-                        <Dropdown arrowIcon={false} inline label={!session.user.image ? <FaUserCircle className="text-3xl text-secondary " /> : <img src={`${session.user.image}`} alt="" srcSet="" className='w-[32px] h-[32px] rounded-full' />
+                    (session?.user) ?
+                        <Dropdown arrowIcon={false} inline label={!session?.user?.image ? <FaUserCircle className="text-3xl text-secondary " /> : <img src={`${session.user.image}`} alt="" srcSet="" className='w-[32px] h-[32px] rounded-full' />
 
                         } >
                             <Dropdown.Header>
-                                <span className="block text-sm">{session?.user?.name}</span>
-                                <span className="block truncate text-sm font-medium">{session?.user?.email}</span>
+                                <span className="block text-sm">{session?.user?.name || "User"}</span>
+                                <span className="block truncate text-sm font-medium">{session?.user?.email || user?.email}</span>
                             </Dropdown.Header>
                             <Dropdown.Item> <Link href={"/dashboard"}>Dashboard</Link></Dropdown.Item>
-                            <Dropdown.Item>Settings</Dropdown.Item>
+                            <Dropdown.Item> <Link href={"/dashboard/profile"}>Profile</Link></Dropdown.Item>
+                            <Dropdown.Item> <Link href={"/dashboard/feedback"}>Feedback</Link></Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Item onClick={() => signOut()}>Sign out</Dropdown.Item>
                         </Dropdown>

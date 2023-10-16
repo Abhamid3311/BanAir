@@ -1,24 +1,46 @@
 import { Sidebar } from 'flowbite-react';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
+import Link from 'next/link';
+import { useSession } from "next-auth/react"
+import { useAuthState, } from 'react-firebase-hooks/auth';
+import { auth } from '../utils/firebase';
+import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/router';
+
 
 export default function Sidebars() {
+    const { data: session } = useSession();
+    const [user] = useAuthState(auth);
+    const router = useRouter();
+
+
+    const handleLogout = () => {
+        if (user) {
+            signOut(auth);
+        } else if (session) {
+            // Use the session signOut
+            router.push('/api/auth/signout');  // Redirect to your NextAuth signout API route
+        }
+    }
+
     return (
         <div>
             <Sidebar aria-label="Sidebar with logo branding example">
-                
+
                 <Sidebar.Items>
                     <Sidebar.ItemGroup>
-                        <Sidebar.Item href="#" icon={HiChartPie} ><p> Dashboard</p> </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiViewBoards} ><p>Settings</p> </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiInbox} ><p>History</p> </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiUser} ><p> Feedback</p> </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiShoppingBag} ><p> Products</p> </Sidebar.Item>
+                        <Sidebar.Item icon={HiChartPie} ><Link href="/dashboard"> Dashboard</Link> </Sidebar.Item>
+
+                        <Sidebar.Item icon={HiInbox} ><Link href="/dashboard/booking-history">History</Link></Sidebar.Item>
+                        <Sidebar.Item icon={HiUser} ><Link href="/dashboard/feedback">  Feedback</Link> </Sidebar.Item>
+
 
                     </Sidebar.ItemGroup>
 
                     <Sidebar.ItemGroup>
-                        <Sidebar.Item href="#" icon={HiUser} ><p> Profile</p> </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiShoppingBag} ><p> Logout</p> </Sidebar.Item>
+                        <Sidebar.Item icon={HiUser} ><Link href="/dashboard/profile"> Profile</Link> </Sidebar.Item>
+                        <Sidebar.Item icon={HiViewBoards} ><Link href="/dashboard/settings">Settings</Link> </Sidebar.Item>
+                        <Sidebar.Item icon={HiShoppingBag} onClick={() => handleLogout()}><button> Logout</button> </Sidebar.Item>
                     </Sidebar.ItemGroup>
 
                 </Sidebar.Items>

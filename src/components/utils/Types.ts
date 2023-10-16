@@ -9,7 +9,7 @@ export interface IBannerData {
 
 
 export interface IFlightDeal {
-    id: number;
+    _id: number;
     from: string;
     startDate: string;
     to: string;
@@ -29,7 +29,7 @@ interface IReview {
 }
 
 export interface ITestimonial {
-    id: number;
+    _id: number;
     name: string;
     desi: string;
     country: string;

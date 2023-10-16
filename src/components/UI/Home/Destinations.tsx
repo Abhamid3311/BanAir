@@ -42,7 +42,7 @@ const Destinations = () => {
                     </div>
 
                     <p className='text-sm lg:text-base text-center lg:text-start'>Discover the latest offers & news and start planning
-                        <Link href={"/"} className='bg-secondary px-3 py-0.5 ml-2 text-xs lg:text-base rounded-full text-white  '>CONTACT US</Link>
+                        <Link href={"/help"} className='bg-secondary px-3 py-0.5 ml-2 text-xs lg:text-base rounded-full text-white  '>CONTACT US</Link>
                     </p>
 
 

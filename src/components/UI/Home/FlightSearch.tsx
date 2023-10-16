@@ -45,7 +45,7 @@ const FlightDeal = () => {
 const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) => {
 
     const firstValue = randomFlights[0];
-    const otherFourValue = randomFlights?.filter(data => data.id !== firstValue.id);
+    const otherFourValue = randomFlights?.filter(data => data._id !== firstValue._id);
 
     // console.log(firstValue, otherFourValue)
 
@@ -59,7 +59,7 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
 
             <div className='flex flex-col lg:flex-row items-start gap-5 lg:gap-6 my-8'>
                 <div className='w-full lg:w-1/2'>
-                    <Link href={`/package-details/${firstValue?.id}`}>
+                    <Link href={`/package-details/${firstValue?._id}`}>
                         <div className="w-full  bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl ">
                             <a href="#">
                                 <img className="rounded-t-lg w-full h-full md:h-[300px] lg:h-[460px]" src={firstValue?.img} alt="" />
@@ -72,9 +72,9 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
                                 <h3 className='text-xl font-bold mb-3'>${firstValue?.price}</h3>
 
                                 <Link
-                                    href={`/booking-now/${firstValue?.id}`}
+                                    href={`/booking-now/${firstValue?._id}`}
                                     className='px-3 py-1 border-[1px] border-secondary text-secondary rounded-md bg-white hover:bg-secondary hover:text-textClr  '>
-                                    Purchase Now</Link>
+                                    Book Now</Link>
                             </div>
                         </div>
                     </Link>
@@ -83,7 +83,7 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
 
                 <div className='w-full lg:w-1/2  grid grid-cols-2 lg:grid-cols-2 gap-2 lg:gap-6'>
                     {
-                        otherFourValue.map(data => <FlightCard key={data?.id} data={data} />)
+                        otherFourValue.map(data => <FlightCard key={data?._id} data={data} />)
                     }
 
                 </div>
@@ -96,9 +96,9 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
 
 
 const FlightCard = ({ data }: { data: IFlightDeal }) => {
-    const { id, from, to, startDate, endDate, price, img, type } = data;
+    const { _id, from, to, startDate, endDate, price, img, type } = data;
     return (
-        <Link href={`/package-details/${id}`}>
+        <Link href={`/package-details/${_id}`}>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl">
                 <a href="#">
                     <Image className="rounded-t-lg w-full h-[148px]" src={img} alt="" width={244} height={148} />
@@ -111,9 +111,9 @@ const FlightCard = ({ data }: { data: IFlightDeal }) => {
                     <h3 className='text-lg font-bold mb-2'>${price}</h3>
 
                     <Link
-                        href={`/booking-now/${id}`}
+                        href={`/booking-now/${_id}`}
                         className='px-3 py-1 border-[1px] border-secondary text-secondary rounded-md bg-white hover:bg-secondary hover:text-textClr'>
-                        Purchase Now</Link>
+                        Book Now</Link>
                 </div>
 
             </div>

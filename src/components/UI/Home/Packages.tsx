@@ -14,7 +14,7 @@ export default function Packages({ flights }: { flights: IFlightDeal[] }) {
 
                 <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mt-10">
                     {
-                        flights.map(flight => <FlightCard key={flight.id} flight={flight} />).slice(0, 8)
+                        flights.map(flight => <FlightCard key={flight._id} flight={flight} />).slice(0, 8)
                     }
 
                 </div>

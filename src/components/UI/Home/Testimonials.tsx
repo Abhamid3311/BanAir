@@ -65,7 +65,7 @@ export default function Testimonials({ testimonials }: { testimonials: ITestimon
                 <div className=''>
                     <Slider {...settings} className='py-5'>
                         {
-                            testimonials?.map(testi => <div key={testi.id} className='px-3 bg-lightBg'>
+                            testimonials?.map(testi => <div key={testi._id} className='px-3 bg-lightBg'>
                                 <div className='p-4 bg-white rounded-md relative  shadow-md  h-[200px] m-2'>
                                     <p className='text-sm lg:text-base'>{testi.comment}</p>
 

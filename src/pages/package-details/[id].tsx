@@ -12,7 +12,7 @@ import { TbArrowsExchange } from 'react-icons/tb';
 export default function PackagesDetails({ packageDetails }: { packageDetails: IFlightDeal }) {
     console.log(packageDetails);
 
-    const { id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = packageDetails;
+    const {_id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = packageDetails;
 
 
     return (
@@ -45,7 +45,7 @@ export default function PackagesDetails({ packageDetails }: { packageDetails: IF
                         </div>
                         <p >Descriptions: </p><p className='mb-3'>{desc}</p>
 
-                        <Link href={`/booking-now/${id}`}  > <Button color='warning'>Purchase Now</Button></Link>
+                        <Link href={`/booking-now/${_id}`}  > <Button color='warning'>Book Now</Button></Link>
                     </div>
 
 

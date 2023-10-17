@@ -8,10 +8,9 @@ import AdminLayout from './Admin/AdminLayout';
 
 interface RequireRoleProps {
     children: ReactElement;
-    role: UserRole;
 }
 
-const RequireRole: React.FC<RequireRoleProps> = ({ children, role }) => {
+const RequireRole: React.FC<RequireRoleProps> = ({ children }) => {
     const { user } = useAppSelector(state => state.user);
     const { data, isLoading } = useGetSingleUsersQuery(user.email);
 

@@ -35,9 +35,7 @@ export default function UserDashboardLayout({ children }: RootLayoutProps) {
 
     useEffect(() => {
         if (session) {
-            dispatch(setUser({
-                email: session?.user?.email,
-            }));
+            dispatch(setUser(session?.user?.email));
             dispatch(setLoading(false));
         } else {
             dispatch(setLoading(false))

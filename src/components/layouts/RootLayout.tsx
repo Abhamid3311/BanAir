@@ -15,6 +15,7 @@ export interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
     const { data: session } = useSession();
     const dispatch = useAppDispatch();
+    console.log(session)
 
 
     useEffect(() => {
@@ -34,9 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
     useEffect(() => {
         if (session) {
-            dispatch(setUser({
-                email: session?.user?.email,
-            }));
+            dispatch(setUser(session?.user?.email));
             dispatch(setLoading(false));
         } else {
             dispatch(setLoading(false))

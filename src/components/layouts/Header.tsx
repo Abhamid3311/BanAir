@@ -15,12 +15,12 @@ export default function Header() {
     const { data: session } = useSession();
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const { user } = useAppSelector(state => state.user);
-    const { data, isLoading } = useGetSingleUsersQuery(user.email);
+    const { user } = useAppSelector(state => state?.user);
+    const { data, isLoading } = useGetSingleUsersQuery(user?.email);
 
 
-    console.log(data)
-   
+    console.log(user)
+
 
 
 
@@ -54,12 +54,12 @@ export default function Header() {
             <div className="flex md:order-2">
 
                 {
-                    user.email ?
+                    user && user?.email ?
                         <Dropdown arrowIcon={false} inline label={<FaUserCircle className="text-3xl text-secondary " />} >
 
 
                             <Dropdown.Header>
-                                <span className="block text-sm">{user.email || "User"}</span>
+                                <span className="block text-sm">{user?.email || "User"}</span>
                             </Dropdown.Header>
                             <Dropdown.Item> <Link href={"/dashboard"}>Dashboard</Link></Dropdown.Item>
                             <Dropdown.Divider />

@@ -1,44 +1,49 @@
 import Table from '@/components/UI/PAges/Table';
 import AdminLayout from '@/components/layouts/Admin/AdminLayout';
-import { useGetUsersQuery } from '@/redux/features/users/userApi';
+import { useDeleteUserMutation, useGetUsersQuery } from '@/redux/features/users/userApi';
+import { useRouter } from 'next/router';
 import React from 'react'
 import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
+import { toast } from 'react-toastify';
 
 export default function UserManagment() {
     const { data: users, isLoading } = useGetUsersQuery(undefined);
+    const [deleteUsers, { isLoading: isDeleting }] = useDeleteUserMutation();
+    const router = useRouter()
     // console.log(users);
 
-    /*  //Handle Collection Delete
-     const handleDeleteBtn = id => {
-         const procced = window.confirm('You want to delete?');
-         if (procced) {
-             axios.delete(`${baseUrl}/collections/${id}`)
-                 .then(response => {
-                     // console.log(`Deleted post with ID ${id}`);
-                     toast.success("Deleted successfully!");
- 
-                 })
-                 .catch(error => {
-                     console.error(error);
-                     toast.error("Deleted Failed!");
-                 });
-         };
-     };
- 
- 
-     //View Collection
-     const handleCollectionViewBtn = id => {
-         navigate(`/dashboard/collections/view-collection/${id}`);
-     };
-     //Edit Collection
- 
-     const handleEditBtn = id => {
+
+    const handleDeleteBtn = (_id: number) => {
+        const procced = window.confirm('You want to delete?');
+        if (procced) {
+            deleteUsers(_id).unwrap()
+                .then((response) => {
+                    console.log(response);
+                    toast.success("Deleted Successfully!");
+                })
+                .catch((error) => {
+                    console.error(error);
+                    toast.error("Delete Failed!")
+                });
+        }
+
+    };
+
+    //handleUserViewBtn
+    const handleUserViewBtn = id => {
+        // console.log(id)
+        router.push(`/Admin-dashboard/user-details/${id}`)
+    };
+
+    //Edit Collection
+
+    /*  const handleEditBtn = id => {
          navigate(`/dashboard/edit-collection/${id}`);
-     };
- 
-     if (loading) { return <LoadingCard /> };
-     if (!loading && collection?.length === 0) { return <p className='pt-20'>No Collection Avaiable</p> }; */
+     }; */
+
+    if (isLoading) { return <p>Loading...</p> };
+    if (!isLoading && users?.length === 0) { return <p className='pt-20'>No user Avaiable</p> };
 
 
 
@@ -89,7 +94,7 @@ export default function UserManagment() {
                 Cell: ({ row }) => {
                     const { _id } = row.original;
                     return (<div className='flex items-center justify-center gap-2 '>
-                        <button >
+                        <button onClick={() => handleUserViewBtn(_id)}>
                             <div className='w-8 h-8 rounded-md bg-green-700 text-white  grid items-center justify-center'>
                                 <BsEyeFill className='text-lg   ' />
                             </div>
@@ -102,7 +107,7 @@ export default function UserManagment() {
                             </div>
                         </button> */}
 
-                        <button >
+                        <button onClick={() => handleDeleteBtn(_id)} disabled={isDeleting}>
                             <div className='w-8 h-8 rounded-md bg-[#FF0000] text-white grid items-center justify-center'>
                                 <AiFillDelete className='text-lg ' />
                             </div>

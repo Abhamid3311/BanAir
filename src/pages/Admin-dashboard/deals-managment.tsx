@@ -1,48 +1,42 @@
 import Table from '@/components/UI/PAges/Table';
 import AdminLayout from '@/components/layouts/Admin/AdminLayout';
-import { useGetFlightsQuery } from '@/redux/api/api';
-import React from 'react'
+import { useDeleteDealsMutation, useGetFlightsQuery } from '@/redux/api/api';
+import { Button, Modal } from 'flowbite-react';
+import React, { useState } from 'react'
 import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
+import { toast } from 'react-toastify';
 
 export default function DealsManagment() {
     const { data: deals, isLoading } = useGetFlightsQuery(undefined);
-    console.log(deals);
-
-    /*  //Handle Collection Delete
-     const handleDeleteBtn = id => {
-         const procced = window.confirm('You want to delete?');
-         if (procced) {
-             axios.delete(`${baseUrl}/collections/${id}`)
-                 .then(response => {
-                     // console.log(`Deleted post with ID ${id}`);
-                     toast.success("Deleted successfully!");
- 
-                 })
-                 .catch(error => {
-                     console.error(error);
-                     toast.error("Deleted Failed!");
-                 });
-         };
-     };
- 
- 
-     //View Collection
-     const handleCollectionViewBtn = id => {
-         navigate(`/dashboard/collections/view-collection/${id}`);
-     };
-     //Edit Collection
- 
-     const handleEditBtn = id => {
-         navigate(`/dashboard/edit-collection/${id}`);
-     };
- 
-     if (loading) { return <LoadingCard /> };
-     if (!loading && collection?.length === 0) { return <p className='pt-20'>No Collection Avaiable</p> }; */
+    const [deleteDeals, { isLoading: isDeleting }] = useDeleteDealsMutation();
 
 
 
-    const COLLECTIONS_COLUMNS = () => {
+    //Handle Book Delete
+    const handleDeleteBtn = (id: number) => {
+        deleteDeals(id).unwrap()
+            .then((response) => {
+                console.log(response);
+                toast.success("Deleted Successfully!");
+            })
+            .catch((error) => {
+                console.error(error);
+                toast.error("Delete Failed!")
+            });
+    };
+
+
+    /*   const handleEditBtn = id => {
+          navigate(`/dashboard/edit-collection/${id}`);
+      }; */
+
+    if (isLoading) { return <p>Loading...</p> };
+    if (!isLoading && deals?.length === 0) { return <p className='pt-20'>No Deals Avaiable</p> };
+
+
+
+    const DEALS_COLUMNS = () => {
         return [
             {
                 Header: "SL",
@@ -88,11 +82,11 @@ export default function DealsManagment() {
                 Cell: ({ row }) => {
                     const { _id } = row.original;
                     return (<div className='flex items-center justify-center gap-2 '>
-                        <button >
+                        {/* <button >
                             <div className='w-8 h-8 rounded-md bg-green-700 text-white  grid items-center justify-center'>
                                 <BsEyeFill className='text-lg   ' />
                             </div>
-                        </button>
+                        </button> */}
 
 
                         {/*  <button >
@@ -101,11 +95,13 @@ export default function DealsManagment() {
                             </div>
                         </button> */}
 
-                        <button >
+                        <button onClick={() => handleDeleteBtn(_id)} disabled={isDeleting}>
                             <div className='w-8 h-8 rounded-md bg-[#FF0000] text-white grid items-center justify-center'>
                                 <AiFillDelete className='text-lg ' />
                             </div>
                         </button>
+
+
                     </div>);
                 },
             },
@@ -115,11 +111,16 @@ export default function DealsManagment() {
     };
 
     return (
-        <div className='bg-lightBg text-textClr   min-h-screen w-full'>
-            {deals?.length && (
-                <Table columns={COLLECTIONS_COLUMNS()} data={deals} headline={"ALL USERS"} />
-            )}
-        </div>
+        <>
+
+            <div className='bg-lightBg text-textClr   min-h-screen w-full'>
+                {deals?.length && (
+                    <Table columns={DEALS_COLUMNS()} data={deals} headline={"ALL DEALS"} />
+                )}
+            </div>
+
+        </>
+
     )
 }
 

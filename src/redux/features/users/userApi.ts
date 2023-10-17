@@ -19,10 +19,22 @@ const userApi = api.injectEndpoints({
         getSingleUsers: builder.query({
             query: (email) => `/user/${email}`,
         }),
+        getSingleUsersById: builder.query({
+            query: (id) => `/user/${id}`,
+        }),
+
+        deleteUser: builder.mutation({
+            query: (id) => ({
+                url: `/user/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ["users"]
+        }),
+
     })
 });
 
 
 
 
-export const { useGetUsersQuery, useGetSingleUsersQuery, useAddUserMutation } = userApi;
+export const { useGetUsersQuery, useGetSingleUsersQuery, useAddUserMutation, useDeleteUserMutation, useGetSingleUsersByIdQuery } = userApi;

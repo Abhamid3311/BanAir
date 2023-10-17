@@ -2,16 +2,26 @@ import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
 import Link from 'next/link';
 import { FaUserCircle } from 'react-icons/fa';
 import { useSession, signIn, signOut } from "next-auth/react"
-import Image from 'next/image';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useRouter } from 'next/router';
 import { auth } from '../utils/firebase';
 
 
 export default function Header() {
     const { data: session } = useSession();
     const [user] = useAuthState(auth);
+    const router = useRouter();
 
     // console.log(user);
+
+    const handleLogout = () => {
+        if (user) {
+            signOut(auth);
+        } else if (session) {
+            // Use the session signOut
+            router.push('/api/auth/signout');
+        }
+    }
 
     return (
         <Navbar className='bg-textClr' >
@@ -42,7 +52,7 @@ export default function Header() {
                             <Dropdown.Item> <Link href={"/dashboard/profile"}>Profile</Link></Dropdown.Item>
                             <Dropdown.Item> <Link href={"/dashboard/feedback"}>Feedback</Link></Dropdown.Item>
                             <Dropdown.Divider />
-                            <Dropdown.Item onClick={() => signOut()}>Sign out</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleLogout()}>Sign out</Dropdown.Item>
                         </Dropdown>
                         :
                         <Link href={"/login"}>

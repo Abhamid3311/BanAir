@@ -2,14 +2,25 @@ import PageBanner from "@/components/UI/PAges/PageBanner";
 import RootLayout from "@/components/layouts/RootLayout";
 import { IFlightDeal } from "@/components/utils/Types";
 import { baseUrl } from "@/components/utils/url";
-import { Label, Select, TextInput } from "flowbite-react";
+import { Button, Label, Select, TextInput } from "flowbite-react";
 import Link from "next/link";
 import { useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useSession } from "next-auth/react"
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from "@/components/utils/firebase";
+import axios from "axios";
+import { toast } from 'react-toastify';
 
 export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlightDeal }) {
-    // console.log(purchaseDeals);
+
+
+    const [totalCost, setTotalCost] = useState(0);
     const [totalPerson, setTotalPerson] = useState(1);
-    console.log(totalPerson)
+    // console.log(totalPerson, totalCost);
+
+
+
 
 
 
@@ -64,10 +75,10 @@ export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlight
 
                     <div className="flex flex-col lg:flex-row items-start gap-2 ">
                         <div className="w-full lg:w-3/4">
-                            <BookingInfo setTotalPerson={setTotalPerson} />
+                            <BookingInfo setTotalPerson={setTotalPerson} totalCost={totalCost} purchaseDeals={purchaseDeals} />
                         </div>
                         <div className="w-full lg:w-1/4">
-                            <PaymentInfo purchaseDeals={purchaseDeals} totalPerson={totalPerson} />
+                            <PaymentInfo purchaseDeals={purchaseDeals} totalPerson={totalPerson} setTotalCost={setTotalCost} />
                         </div>
                     </div>
 
@@ -102,25 +113,55 @@ export const getServerSideProps = async (context) => {
 };
 
 
-const BookingInfo = ({ setTotalPerson }) => {
+const BookingInfo = ({ setTotalPerson, totalCost, purchaseDeals }) => {
+    const { data: session } = useSession();
+    const [user] = useAuthState(auth);
+
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        data.totalCost = totalCost;
+        data.deals = purchaseDeals;
+        data.userEmail = session?.user?.email || user?.email;
+        data.createdAt = new Date();
+        data.status = 1
+
+        // console.log(data)
+
+        const url = `${baseUrl}/bookings`;
+        axios.post(url, data)
+            .then(function (response) {
+                console.log(response);
+                toast.success("Your Package Booking Successfully. We will notify Soon!");
+                reset();
+            })
+            .catch(function (error) {
+                console.log(error);
+                toast.error("Your Package Booking Failed!")
+            });
+
+
+    };
+
+
     return <>
         <div className="bg-white  rounded-md shadow-md mt-5">
             <div className="w-full bg-primary px-5 py-3 rounded-t-md">
                 <h1 className="text-white text-xl font-bold">Your Information</h1>
             </div>
 
-            <form className="p-5">
+            <form className="p-5" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col lg:flex-row items-center gap-3 w-full">
 
                     <div className="w-full lg:w-1/5 " id="select">
-                        <div className="mb-2 block"><Label htmlFor="countries" value="Title*" /> </div>
-                        <Select id="countries" required>
+                        <div className="mb-2 block"><Label htmlFor="Title" value="Title" /> </div>
+                        <Select id="Title" {...register("title")}>
                             <option selected disabled>Choose Title </option>
-                            <option >Mr. </option>
-                            <option>Mrs. </option>
-                            <option>Miss. </option>
-                            <option>Ms. </option>
-                            <option>Undisclosed </option>
+                            <option value={"Mr."}>Mr. </option>
+                            <option value={"Mrs."}>Mrs. </option>
+                            <option value={"Miss."}>Miss. </option>
+                            <option value={"Ms."}>Ms. </option>
+                            <option value={" "}>Undisclosed </option>
                         </Select>
                     </div>
 
@@ -132,16 +173,18 @@ const BookingInfo = ({ setTotalPerson }) => {
                             placeholder="Enter First Name"
                             required
                             type="text"
+                            {...register("FirstName", { required: true })}
                         />
                     </div>
 
                     <div className="w-full lg:w-2/5 ">
-                        <div className="mb-2 block"><Label htmlFor="name" value="Last Name*" /> </div>
+                        <div className="mb-2 block"><Label htmlFor="LastName" value="Last Name*" /> </div>
                         <TextInput
-                            id="name"
+                            id="LastName"
                             placeholder="Enter Last Name"
                             required
                             type="text"
+                            {...register("LastName", { required: true })}
                         />
                     </div>
                 </div>
@@ -150,12 +193,11 @@ const BookingInfo = ({ setTotalPerson }) => {
 
                 <div className="flex flex-col lg:flex-row items-center gap-3 w-full my-3">
                     <div className="w-full  " id="select">
-                        <div className="mb-2 block"><Label htmlFor="countries" value="Gender*" /> </div>
-                        <Select id="countries" required>
+                        <div className="mb-2 block"><Label htmlFor="Gender" value="Gender*" /> </div>
+                        <Select id="Gender"  {...register("Gender", { required: true })}>
                             <option selected disabled>Choose Gender </option>
-                            <option >Male </option>
-                            <option>Femal</option>
-                            <option>Child</option>
+                            <option value={"Male"} >Male </option>
+                            <option value={"Femal"} >Femal</option>
                         </Select>
                     </div>
 
@@ -167,6 +209,7 @@ const BookingInfo = ({ setTotalPerson }) => {
                             placeholder="Enter Country Name"
                             required
                             type="text"
+                            {...register("Nationality", { required: true })}
                         />
                     </div>
 
@@ -176,23 +219,24 @@ const BookingInfo = ({ setTotalPerson }) => {
 
                 <div className="flex flex-col lg:flex-row items-center gap-3 w-full my-3">
                     <div className="w-full  ">
-                        <div className="mb-2 block"><Label htmlFor="name" value="Post Code*" /> </div>
+                        <div className="mb-2 block"><Label htmlFor="name" value="Post Code" /> </div>
                         <TextInput
                             id="name"
                             placeholder="Enter Post Code"
                             required
-                            type="text"
+                            type="number"
+                            {...register("PostCode")}
                         />
                     </div>
 
 
                     <div className="w-full  ">
-                        <div className="mb-2 block"><Label htmlFor="Nationality" value="Date Of Birth*" /> </div>
+                        <div className="mb-2 block"><Label htmlFor="birthDate" value="Date Of Birth*" /> </div>
                         <TextInput
-                            id="Nationality"
-                            placeholder="Enter Country Name"
+                            id="birthDate"
                             required
                             type="date"
+                            {...register("birthDate", { required: true })}
                         />
                     </div>
                 </div>
@@ -206,53 +250,61 @@ const BookingInfo = ({ setTotalPerson }) => {
                             placeholder="Enter Email"
                             required
                             type="email"
+                            {...register("email", { required: true })}
                         />
                     </div>
 
                     <div className="w-full  ">
-                        <div className="mb-2 block"><Label htmlFor="name" value="Phone Number*" /> </div>
+                        <div className="mb-2 block"><Label htmlFor="Phone" value="Phone Number*" /> </div>
                         <TextInput
-                            id="name"
+                            id="Phone"
                             placeholder="Enter Phone Number"
                             required
                             type="tel"
+                            {...register("phone", { required: true })}
                         />
                     </div>
                 </div>
 
                 <div className="w-full  my-3" id="select">
-                    <div className="mb-2 block"><Label htmlFor="countries" value="Select Person*" /> </div>
-                    <Select id="countries" onChange={(e) => setTotalPerson(e.target.value)}>
-                        <option selected>1</option>
-                        <option >2 </option>
-                        <option>3 </option>
-                        <option>4 </option>
-                        <option>5 </option>
-                        <option>6 </option>
-                        <option>7 </option>
+                    <div className="mb-2 block"><Label htmlFor="Person" value="Select Person*" /> </div>
+                    <Select
+                        id="Person"
+                        onChange={(e) => setTotalPerson(e.target.value)} required
+                    >
+                        <option value={1} selected>1</option>
+                        <option value={2}>2 </option>
+                        <option value={3}>3 </option>
+                        <option value={4}>4 </option>
+                        <option value={5}>5 </option>
+                        <option value={6}>6 </option>
+                        <option value={7}>7 </option>
                     </Select>
                 </div>
 
 
 
                 <div className="w-full  " id="select">
-                    <div className="mb-2 block"><Label htmlFor="countries" value="Select Meal Type" /> </div>
-                    <Select id="countries" >
-                        <option selected disabled>Choose Meal type (Optional) </option>
+                    <div className="mb-2 block"><Label htmlFor="Meal" value="Select Meal Type" /> </div>
+                    <Select id="Meal" {...register("MealType")} >
+                        <option selected disabled value={" "}>Choose Meal type (Optional) </option>
                         <option >Vegitarian </option>
-                        <option>Non Vegitarian  </option>
-                        <option>Diet </option>
-                        <option>Undisclosed </option>
+                        <option >Non Vegitarian  </option>
+                        <option >Suger free </option>
                     </Select>
                 </div>
 
                 <div className="w-full  my-3" id="select">
-                    <div className="mb-2 block"><Label htmlFor="countries" value="Select Wheel Chair" /> </div>
-                    <Select id="countries" >
-                        <option selected disabled>Request Wheel Chair (Optional) </option>
+                    <div className="mb-2 block"><Label htmlFor="Wheel" value="Select Wheel Chair" /> </div>
+                    <Select id="Wheel" {...register("wheelChair")}>
+                        <option selected disabled value={" "}>Request Wheel Chair (Optional) </option>
                         <option >yes </option>
-                        <option>No </option>
+                        <option >No </option>
                     </Select>
+                </div>
+
+                <div className="flex items-center justify-center ">
+                    <Button type="submit" color="warning" className="px-5 py-0.5">Submit</Button>
                 </div>
 
 
@@ -263,13 +315,14 @@ const BookingInfo = ({ setTotalPerson }) => {
 };
 
 
-const PaymentInfo = ({ purchaseDeals, totalPerson }: { purchaseDeals: IFlightDeal, totalPerson: number }) => {
-    const { id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = purchaseDeals;
+const PaymentInfo = ({ purchaseDeals, totalPerson, setTotalCost }: { purchaseDeals: IFlightDeal, totalPerson: number }) => {
+    const { _id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = purchaseDeals;
 
     const mainPrice = parseFloat(price) * totalPerson;  // Assuming price is a string or number representing the main price
-    const tax = mainPrice * 0.05;
+    const tax = Math.ceil(mainPrice * 0.05);
     const totalPrice = mainPrice + tax;
     const totalPayable = totalPrice - 10;
+    setTotalCost(totalPayable)
 
 
     return <>

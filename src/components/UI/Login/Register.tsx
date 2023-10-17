@@ -142,8 +142,8 @@ export default function Register() {
                     <Checkbox id="remember"  {...register("checkbox", { required: true })} />
                     <Label htmlFor="remember" >
                         <p className='text-xs'>
-                            <Link href="/" className='hover:underline text-primary'>Terms and Conditions</Link> &
-                            <Link href="/" className='hover:underline text-primary'> Privacy Policy</Link> </p>
+                            <Link href="/Terms&Conditions" className='hover:underline text-primary'>Terms and Conditions</Link> &
+                            <Link href="/Privacy-Policy" className='hover:underline text-primary'> Privacy Policy</Link> </p>
                     </Label>
                 </div>
 

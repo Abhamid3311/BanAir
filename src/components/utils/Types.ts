@@ -52,3 +52,12 @@ export interface IUser {
     password: string;
     checkbox: boolean
 }
+
+export interface ISlide {
+    id: number;
+    title: string;
+    desc: string;
+    btn: string;
+    btnLink: string;
+    img: string;
+  }

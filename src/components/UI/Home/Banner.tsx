@@ -3,6 +3,7 @@ import { bannerData } from "../../utils/StaticData";
 import { CSSProperties } from 'react';
 import { Button } from "flowbite-react";
 import Link from "next/link";
+import { ISlide } from "@/components/utils/Types";
 
 
 export default function Banner() {
@@ -31,7 +32,7 @@ export default function Banner() {
 };
 
 
-const BannerItem = ({ data }) => {
+const BannerItem = ({ data }: { data: ISlide }) => {
     const { id, title, desc, btn, btnLink, img } = data;
 
     const containerStyle: CSSProperties = {

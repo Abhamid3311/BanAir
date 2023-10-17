@@ -8,10 +8,13 @@ import { useAppDispatch } from '@/redux/hooks'
 import { setLoading, setUser } from '@/redux/features/users/userSlice'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/components/utils/firebase'
+import { useRouter } from 'next/router'
+import RequireRole from '../PrivateRoute'
 
 export default function AdminLayout({ children }: RootLayoutProps) {
     const { data: session } = useSession();
     const dispatch = useAppDispatch();
+    const router = useRouter();
 
 
     useEffect(() => {
@@ -42,7 +45,7 @@ export default function AdminLayout({ children }: RootLayoutProps) {
     }, [session, dispatch]);
 
 
-    
+
     return (
         <div>
             <>
@@ -54,7 +57,6 @@ export default function AdminLayout({ children }: RootLayoutProps) {
                     </div>
                 </div>
                 <ToastContainer />
-
             </>
         </div>
     )

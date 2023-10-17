@@ -8,14 +8,19 @@ import { auth } from '../utils/firebase';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setUser } from '@/redux/features/users/userSlice';
 import { signOut } from 'firebase/auth';
+import { useGetSingleUsersQuery } from '@/redux/features/users/userApi';
 
 
 export default function Header() {
     const { data: session } = useSession();
     const router = useRouter();
-    const { user } = useAppSelector(state => state.user);
-    console.log(user)
     const dispatch = useAppDispatch();
+    const { user } = useAppSelector(state => state.user);
+    const { data, isLoading } = useGetSingleUsersQuery(user.email);
+
+
+    console.log(data)
+   
 
 
 
@@ -45,7 +50,6 @@ export default function Header() {
                     BanAir
                 </span>
             </Navbar.Brand>
-            {/* <Image src={session?.user?.image} alt='' width={30} height={30} className='rounded-full' /> */}
 
             <div className="flex md:order-2">
 
@@ -58,8 +62,6 @@ export default function Header() {
                                 <span className="block text-sm">{user.email || "User"}</span>
                             </Dropdown.Header>
                             <Dropdown.Item> <Link href={"/dashboard"}>Dashboard</Link></Dropdown.Item>
-                            <Dropdown.Item> <Link href={"/dashboard/profile"}>Profile</Link></Dropdown.Item>
-                            <Dropdown.Item> <Link href={"/dashboard/feedback"}>Feedback</Link></Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Item onClick={() => handleLogout()}>Sign out</Dropdown.Item>
                         </Dropdown>

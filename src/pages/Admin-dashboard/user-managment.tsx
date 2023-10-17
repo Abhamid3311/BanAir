@@ -1,6 +1,6 @@
 import Table from '@/components/UI/PAges/Table';
 import AdminLayout from '@/components/layouts/Admin/AdminLayout';
-import { useGetUsersQuery } from '@/redux/api/api';
+import { useGetUsersQuery } from '@/redux/features/users/userApi';
 import React from 'react'
 import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';

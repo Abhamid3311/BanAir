@@ -6,20 +6,20 @@ import { useAuthState, } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { auth } from '@/components/utils/firebase';
+import { useAppDispatch } from '@/redux/hooks';
+import { setUser } from '@/redux/features/users/userSlice';
 
 export default function AdminSidebar() {
     const { data: session } = useSession();
     const [user] = useAuthState(auth);
     const router = useRouter();
+    const dispatch = useAppDispatch();
 
 
     const handleLogout = () => {
-        if (user) {
-            signOut(auth);
-        } else if (session) {
-            // Use the session signOut
-            router.push('/api/auth/signout');  // Redirect to your NextAuth signout API route
-        }
+        signOut(auth).then(() => {
+            dispatch(setUser(null));
+        })
     }
 
     return (

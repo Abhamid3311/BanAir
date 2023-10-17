@@ -1,11 +1,12 @@
 import { Navbar } from 'flowbite-react'
+import Link from 'next/link'
 import React from 'react'
 
 export default function AdminHeader() {
     return (
         <Navbar className='bg-textClr'>
-            <Navbar.Brand href="/">
-                <span className="self-center whitespace-nowrap text-2xl font-semibold text-secondary ">BanAir</span>
+            <Navbar.Brand >
+                <Link href={"/"} className="self-center whitespace-nowrap text-2xl font-semibold text-secondary ">BanAir</Link>
             </Navbar.Brand>
 
             <div className="flex">

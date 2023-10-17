@@ -9,10 +9,13 @@ import { setLoading, setUser } from '@/redux/features/users/userSlice'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/components/utils/firebase';
 import { useSession } from "next-auth/react"
+import { useRouter } from 'next/router'
+import RequireRole from '../PrivateRoute'
 
 export default function UserDashboardLayout({ children }: RootLayoutProps) {
     const { data: session } = useSession();
     const dispatch = useAppDispatch();
+    const router = useRouter();
 
 
     useEffect(() => {
@@ -46,6 +49,7 @@ export default function UserDashboardLayout({ children }: RootLayoutProps) {
     return (
         <div>
             <>
+
                 <DashboardHeader />
                 <div className='flex '>
                     <Sidebars />

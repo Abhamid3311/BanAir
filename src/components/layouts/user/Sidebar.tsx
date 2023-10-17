@@ -3,7 +3,7 @@ import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, Hi
 import Link from 'next/link';
 import { useSession } from "next-auth/react"
 import { useAuthState, } from 'react-firebase-hooks/auth';
-import { auth } from '../utils/firebase';
+import { auth } from '../../utils/firebase';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
 
@@ -21,7 +21,7 @@ export default function Sidebars() {
         } else if (session) {
             // Use the session signOut
             router.push('/api/auth/signout');
-            router.push("/") 
+            router.push("/")
         }
     }
 

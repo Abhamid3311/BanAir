@@ -1,4 +1,4 @@
-import UserDashboardLayout from '@/components/layouts/UserDashboardLayout';
+import UserDashboardLayout from '@/components/layouts/user/UserDashboardLayout';
 import { auth } from '@/components/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useSession } from "next-auth/react"

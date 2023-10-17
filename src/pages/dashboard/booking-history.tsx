@@ -1,4 +1,4 @@
-import UserDashboardLayout from '@/components/layouts/UserDashboardLayout';
+import UserDashboardLayout from '@/components/layouts/user/UserDashboardLayout';
 import React from 'react'
 
 export default function BookingHistory() {

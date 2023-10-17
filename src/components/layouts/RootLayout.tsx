@@ -32,10 +32,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
     }, [dispatch]);
 
-
-
-
-
     useEffect(() => {
         if (session) {
             dispatch(setUser({

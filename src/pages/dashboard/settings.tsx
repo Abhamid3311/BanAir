@@ -1,4 +1,4 @@
-import UserDashboardLayout from '@/components/layouts/UserDashboardLayout';
+import UserDashboardLayout from '@/components/layouts/user/UserDashboardLayout';
 import { auth } from '@/components/utils/firebase';
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -15,7 +15,7 @@ export default function Settings() {
             <h1 className='text-2xl font-bold text-primary mb-4'>Settings</h1>
 
             <div>
-                
+
 
 
             </div>

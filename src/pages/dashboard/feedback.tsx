@@ -1,4 +1,4 @@
-import UserDashboardLayout from '@/components/layouts/UserDashboardLayout';
+import UserDashboardLayout from '@/components/layouts/user/UserDashboardLayout';
 import { baseUrl } from '@/components/utils/url';
 import axios from 'axios';
 import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';

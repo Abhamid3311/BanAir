@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
-import AdminHeader from './AdminHeader'
-import AdminSidebar from './AdminSidebar'
-import { ToastContainer } from 'react-toastify'
 import { RootLayoutProps } from '../RootLayout'
-import { useSession } from "next-auth/react"
-import { useAppDispatch } from '@/redux/hooks'
+import Header from '../Header'
+import Sidebars from './Sidebar'
+import DashboardHeader from './DashboardHeader'
+import { ToastContainer } from 'react-toastify'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { setLoading, setUser } from '@/redux/features/users/userSlice'
 import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '@/components/utils/firebase'
+import { auth } from '@/components/utils/firebase';
+import { useSession } from "next-auth/react"
 
-export default function AdminLayout({ children }: RootLayoutProps) {
+export default function UserDashboardLayout({ children }: RootLayoutProps) {
     const { data: session } = useSession();
     const dispatch = useAppDispatch();
 
@@ -42,13 +43,12 @@ export default function AdminLayout({ children }: RootLayoutProps) {
     }, [session, dispatch]);
 
 
-    
     return (
         <div>
             <>
-                <AdminHeader />
+                <DashboardHeader />
                 <div className='flex '>
-                    <AdminSidebar />
+                    <Sidebars />
                     <div className='w-full'>
                         {children}
                     </div>
@@ -56,6 +56,7 @@ export default function AdminLayout({ children }: RootLayoutProps) {
                 <ToastContainer />
 
             </>
+
         </div>
     )
 }

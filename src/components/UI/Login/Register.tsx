@@ -3,32 +3,26 @@ import Link from 'next/link';
 import React from 'react';
 import SocialLogin from './SocialLogin';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
-import { auth } from '@/components/utils/firebase';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
-import { baseUrl } from '@/components/utils/url';
 import { useRouter } from 'next/router';
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { createUser } from '@/redux/features/users/userSlice';
-import { useAddUserMutation } from '@/redux/features/users/userApi';
+import { useAddUserMutation, useGetSingleUsersQuery } from '@/redux/features/users/userApi';
 
-
-interface SignupFormInputs {
-    email: string;
-    password: string;
-}
 
 
 
 export default function Register() {
     const dispatch = useAppDispatch();
     const router = useRouter();
+    const { user } = useAppSelector(state => state.user);
     const {
         register,
         handleSubmit, reset
     } = useForm();
 
     const [postUser, { isLoading, isError }] = useAddUserMutation();
+    
 
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -53,6 +47,8 @@ export default function Register() {
                 toast.error("User Added Failed!")
             });
     };
+
+
 
 
     // console.log(user)

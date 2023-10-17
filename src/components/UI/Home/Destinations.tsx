@@ -22,7 +22,7 @@ const Destinations = () => {
                         <div className='flex  items-center justify-between gap-5 lg:gap-10 bg-white rounded-md p-4 w-full'>
                             <div >
                                 <h2 className='text-xl lg:text-4xl font-bold text-textClr'>
-                                    <CountUp end={7200} />+</h2>
+                                    <CountUp end={7200} duration={5} />+</h2>
 
                                 <p className='text-primary text-sm lg:text-base'>Happy Customers</p>
                             </div>
@@ -33,7 +33,7 @@ const Destinations = () => {
 
                         <div className='flex items-center justify-between gap-5 lg:gap-10 bg-white rounded-md p-4 w-full'>
                             <div >
-                                <h2 className='text-xl lg:text-4xl font-bold text-textClr'> <CountUp end={100} />%</h2>
+                                <h2 className='text-xl lg:text-4xl font-bold text-textClr'> <CountUp end={100} duration={5} />%</h2>
                                 <p className='text-primary text-sm lg:text-base'>Client Setisfied</p>
                             </div>
 

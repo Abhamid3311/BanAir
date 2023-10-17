@@ -8,7 +8,7 @@ export const bannerData = [
         title: "It’s more than just a trip",
         desc: "Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account",
         btn: "Book Now",
-        btnLink: "/",
+        btnLink: "/where-we-fly",
         img: "/assetes/slider_bg1.jpg",
     },
     {
@@ -16,7 +16,7 @@ export const bannerData = [
         title: "A Lifetime of Discounts? It's Genius.",
         desc: "Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account",
         btn: "Register Now",
-        btnLink: "/",
+        btnLink: "/login",
         img: "/assetes/slider_bg2.jpg",
     },
     {
@@ -24,7 +24,7 @@ export const bannerData = [
         title: "It’s more than just a trip",
         desc: "Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account",
         btn: "Search Flight",
-        btnLink: "/",
+        btnLink: "/where-we-fly",
         img: "/assetes/slider_bg3.jpg",
     },
 ];
@@ -40,7 +40,7 @@ export const serviceOffer = [
         id: 1,
         title: "International Flight",
         desc: "Call +1 555 666 888 for booking assistance",
-        icon: "/assetes/plane.jpg"
+        icon: "/assetes/plane.png"
     },
     {
         id: 1,

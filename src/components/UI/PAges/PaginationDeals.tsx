@@ -13,7 +13,7 @@ interface PaginationProps {
 
 
 
-const Pagination: NextPage<PaginationProps> = ({ postPerPage, totalPost, paginate, handlePrevBtn, handleNextBtn, currentPage }) => {
+const PaginationDeals: NextPage<PaginationProps> = ({ postPerPage, totalPost, paginate, handlePrevBtn, handleNextBtn, currentPage }) => {
     const pageNumber = [];
     const totalPage = Math.ceil(totalPost / postPerPage);
 
@@ -58,4 +58,4 @@ const Pagination: NextPage<PaginationProps> = ({ postPerPage, totalPost, paginat
     );
 };
 
-export default Pagination;
+export default PaginationDeals;

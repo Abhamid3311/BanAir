@@ -60,10 +60,10 @@ const FlightOfferDeal = ({ randomFlights }: { randomFlights: IFlightDeal[] }) =>
             <div className='flex flex-col lg:flex-row items-start gap-5 lg:gap-6 my-8'>
                 <div className='w-full lg:w-1/2'>
                     <Link href={`/package-details/${firstValue?._id}`}>
-                        <div className="w-full  bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl ">
-                            <a href="#">
-                                <img className="rounded-t-lg w-full h-full md:h-[300px] lg:h-[460px]" src={firstValue?.img} alt="" />
-                            </a>
+                        <div className="w-full  bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl flight-card">
+                            <div className='flight-card-img'>
+                                <img className="rounded-t-lg w-full h-full md:h-[300px] lg:h-[460px] " src={firstValue?.img} alt="" />
+                            </div>
                             <div className="p-4">
                                 <h1 className=" text-xl lg:text-2xl font-bold tracking-tight text-gray-900 ">{`${firstValue?.from} to ${firstValue?.to}`}</h1>
                                 <p className=' mb-2 text-primary'> <span className='font-semibold mr-1'>{firstValue?.startDate}</span> to <span className='font-semibold ml-1'>{firstValue?.endDate}</span> </p>
@@ -99,10 +99,11 @@ const FlightCard = ({ data }: { data: IFlightDeal }) => {
     const { _id, from, to, startDate, endDate, price, img, type } = data;
     return (
         <Link href={`/package-details/${_id}`}>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl">
-                <a href="#">
+            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl flight-card">
+                <div  className='flight-card-img'>
                     <Image className="rounded-t-lg w-full h-[148px]" src={img} alt="" width={244} height={148} />
-                </a>
+                </div>
+
                 <div className="p-2 lg:p-4">
                     <h1 className=" text-base lg:text-xl font-bold tracking-tight text-gray-900 ">{`${from} to ${to}`}</h1>
                     <p className='text-xs lg:text-sm  mb-2 text-primary'> <span className='font-bold '>{startDate}</span> - <span className='font-bold '>{endDate}</span> </p>

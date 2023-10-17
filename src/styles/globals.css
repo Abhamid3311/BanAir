@@ -68,3 +68,20 @@
 .card:hover .normal-text {
     opacity: 0;
 }
+
+/*flight-card */
+
+.flight-card {
+    transition: all 0.3s ease;
+}
+.flight-card-img{
+    overflow: hidden;
+   
+}
+.flight-card-img img{
+    transition: all 0.3s linear;
+}
+
+.flight-card:hover .flight-card-img img {
+    transform: scale(1.25) rotate(5deg);
+}

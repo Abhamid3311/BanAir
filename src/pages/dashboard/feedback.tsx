@@ -116,6 +116,6 @@ export default function Feedback() {
 }
 
 
-Feedback.getLayout = function getLayout(page) {
+Feedback.getLayout = function getLayout(page: React.ReactNode) {
     return <UserDashboardLayout>{page}</UserDashboardLayout>;
 };

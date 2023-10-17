@@ -127,6 +127,6 @@ export default function PrivacyPolicy() {
         </div>
     )
 }
-PrivacyPolicy.getLayout = function getLayout(page) {
+PrivacyPolicy.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };

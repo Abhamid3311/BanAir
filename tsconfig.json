@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/UI/PAges/Table.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/UI/PAges/Table.js", "src/pages/booking-now/[id].tsx"],
   "exclude": ["node_modules"]
 }

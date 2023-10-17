@@ -8,11 +8,12 @@ import Link from 'next/link';
 import React from 'react'
 import { FaUserCircle } from 'react-icons/fa';
 import { TbArrowsExchange } from 'react-icons/tb';
+import { GetServerSidePropsContext } from 'next';
 
 export default function PackagesDetails({ packageDetails }: { packageDetails: IFlightDeal }) {
     console.log(packageDetails);
 
-    const {_id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = packageDetails;
+    const { _id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = packageDetails;
 
 
     return (
@@ -72,13 +73,13 @@ export default function PackagesDetails({ packageDetails }: { packageDetails: IF
 };
 
 
-PackagesDetails.getLayout = function getLayout(page) {
+PackagesDetails.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };
 
 
 //SSR
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const { params } = context;
     const res = await fetch(`${baseUrl}/deal/${params.id}`);
     const data = await res.json();

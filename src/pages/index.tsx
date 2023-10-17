@@ -28,7 +28,7 @@ export default function Home({ flights, filterdData, testimonials }: { flights: 
 }
 
 
-Home.getLayout = function getLayout(page) {
+Home.getLayout = function getLayout(page: React.ReactNode) {
   return <RootLayout>{page}</RootLayout>;
 };
 

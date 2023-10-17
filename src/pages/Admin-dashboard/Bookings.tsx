@@ -8,6 +8,6 @@ export default function Bookings() {
 }
 
 
-Bookings.getLayout = function getLayout(page) {
+Bookings.getLayout = function getLayout(page: React.ReactNode) {
     return <AdminLayout>{page}</AdminLayout>;
 };

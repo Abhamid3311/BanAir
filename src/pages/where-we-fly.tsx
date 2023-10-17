@@ -348,7 +348,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
     )
 };
 
-WhereWEFlyPage.getLayout = function getLayout(page) {
+WhereWEFlyPage.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };
 

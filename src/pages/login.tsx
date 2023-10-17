@@ -13,6 +13,6 @@ export default function LoginPage() {
     )
 }
 
-LoginPage.getLayout = function getLayout(page) {
+LoginPage.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };

@@ -11,12 +11,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "@/components/utils/firebase";
 import axios from "axios";
 import { toast } from 'react-toastify';
+import { GetServerSidePropsContext } from 'next';
 
 export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlightDeal }) {
 
 
-    const [totalCost, setTotalCost] = useState(0);
-    const [totalPerson, setTotalPerson] = useState(1);
+    const [totalCost, setTotalCost] = useState<number>(0);
+    const [totalPerson, setTotalPerson] = useState<number>(1);
     // console.log(totalPerson, totalCost);
 
 
@@ -99,9 +100,9 @@ PurchasePage.getLayout = function getLayout(page: React.ReactNode) {
 
 
 //SSR
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const { params } = context;
-    const res = await fetch(`${baseUrl}/deal/${params.id}`);
+    const res = await fetch(`${baseUrl}/deal/${params!.id}`);
     const data = await res.json();
     // console.log(data)
 
@@ -113,7 +114,14 @@ export const getServerSideProps = async (context) => {
 };
 
 
-const BookingInfo = ({ setTotalPerson, totalCost, purchaseDeals }) => {
+interface BookingInfoProps {
+    setTotalPerson: (total: number) => void;
+    totalCost: number;
+    purchaseDeals: IFlightDeal;
+}
+
+
+const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, purchaseDeals }) => {
     const { data: session } = useSession();
     const [user] = useAuthState(auth);
 
@@ -315,10 +323,17 @@ const BookingInfo = ({ setTotalPerson, totalCost, purchaseDeals }) => {
 };
 
 
-const PaymentInfo = ({ purchaseDeals, totalPerson, setTotalCost }: { purchaseDeals: IFlightDeal, totalPerson: number }) => {
+
+interface PaymentInfoProps {
+    purchaseDeals: IFlightDeal;
+    totalPerson: number;
+    setTotalCost: (cost: number) => void;
+}
+
+const PaymentInfo: React.FC<PaymentInfoProps> = ({ purchaseDeals, totalPerson, setTotalCost }) => {
     const { _id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = purchaseDeals;
 
-    const mainPrice = parseFloat(price) * totalPerson;  // Assuming price is a string or number representing the main price
+    const mainPrice = parseFloat(price) * totalPerson;
     const tax = Math.ceil(mainPrice * 0.05);
     const totalPrice = mainPrice + tax;
     const totalPayable = totalPrice - 10;
@@ -394,7 +409,7 @@ const PaymentInfo = ({ purchaseDeals, totalPerson, setTotalCost }: { purchaseDea
                             <div className="px-3 text-lg text-primary">
                                 <div className="flex items-center justify-between">
                                     <p>Person  x {totalPerson}</p>
-                                    <p>${price * totalPerson}</p>
+                                    <p>${mainPrice}</p>
                                 </div>
 
                                 <div className="flex items-center justify-between">

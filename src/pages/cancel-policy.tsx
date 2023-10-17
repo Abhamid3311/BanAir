@@ -66,6 +66,6 @@ export default function Cancelpolicy() {
 }
 
 
-Cancelpolicy.getLayout = function getLayout(page) {
+Cancelpolicy.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };

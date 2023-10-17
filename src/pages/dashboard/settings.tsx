@@ -24,6 +24,6 @@ export default function Settings() {
     )
 }
 
-Settings.getLayout = function getLayout(page) {
+Settings.getLayout = function getLayout(page: React.ReactNode) {
     return <UserDashboardLayout>{page}</UserDashboardLayout>;
 };

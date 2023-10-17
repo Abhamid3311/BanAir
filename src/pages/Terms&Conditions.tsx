@@ -64,6 +64,6 @@ export default function TermsConditions() {
         </div>
     )
 }
-TermsConditions.getLayout = function getLayout(page) {
+TermsConditions.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };

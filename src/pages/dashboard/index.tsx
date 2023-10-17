@@ -25,6 +25,6 @@ export default function DashboardPage() {
 }
 
 
-DashboardPage.getLayout = function getLayout(page) {
+DashboardPage.getLayout = function getLayout(page: React.ReactNode) {
     return <UserDashboardLayout>{page}</UserDashboardLayout>;
 };

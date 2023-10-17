@@ -10,6 +10,6 @@ export default function BookingHistory() {
     )
 }
 
-BookingHistory.getLayout = function getLayout(page) {
+BookingHistory.getLayout = function getLayout(page: React.ReactNode) {
     return <UserDashboardLayout>{page}</UserDashboardLayout>;
 };

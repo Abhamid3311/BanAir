@@ -56,6 +56,6 @@ export default function Help() {
 
 
 
-Help.getLayout = function getLayout(page) {
+Help.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };

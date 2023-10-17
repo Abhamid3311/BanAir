@@ -48,6 +48,6 @@ export default function Profile() {
 }
 
 
-Profile.getLayout = function getLayout(page) {
+Profile.getLayout = function getLayout(page: React.ReactNode) {
     return <UserDashboardLayout>{page}</UserDashboardLayout>;
 };

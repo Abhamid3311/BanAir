@@ -26,7 +26,7 @@ const Booking = () => {
 export default Booking;
 
 
-Booking.getLayout = function getLayout(page) {
+Booking.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };
 

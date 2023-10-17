@@ -15,6 +15,6 @@ export default function SignUp() {
 }
 
 
-SignUp.getLayout = function getLayout(page) {
+SignUp.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };

@@ -7,6 +7,9 @@ import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 
+
+
+
 export default function DealsManagment() {
     const { data: deals, isLoading } = useGetFlightsQuery(undefined);
     const [deleteDeals, { isLoading: isDeleting }] = useDeleteDealsMutation();
@@ -14,7 +17,7 @@ export default function DealsManagment() {
 
 
     //Handle Book Delete
-    const handleDeleteBtn = (id: number) => {
+    const handleDeleteBtn = (id: string) => {
         deleteDeals(id).unwrap()
             .then((response) => {
                 console.log(response);
@@ -33,6 +36,7 @@ export default function DealsManagment() {
 
     if (isLoading) { return <p>Loading...</p> };
     if (!isLoading && deals?.length === 0) { return <p className='pt-20'>No Deals Avaiable</p> };
+
 
 
 
@@ -125,6 +129,6 @@ export default function DealsManagment() {
 }
 
 
-DealsManagment.getLayout = function getLayout(page) {
+DealsManagment.getLayout = function getLayout(page: React.ReactNode) {
     return <AdminLayout>{page}</AdminLayout>;
 };

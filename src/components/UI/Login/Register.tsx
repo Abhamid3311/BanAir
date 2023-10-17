@@ -7,24 +7,29 @@ import { auth } from '@/components/utils/firebase';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import { baseUrl } from '@/components/utils/url';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import { useAppDispatch } from '@/redux/hooks';
+import { createUser } from '@/redux/features/users/userSlice';
+import { useAddUserMutation } from '@/redux/features/users/userApi';
+
+
+interface SignupFormInputs {
+    email: string;
+    password: string;
+}
+
 
 
 export default function Register() {
-    const { register, handleSubmit, reset } = useForm();
+    const dispatch = useAppDispatch();
     const router = useRouter();
+    const {
+        register,
+        handleSubmit, reset
+    } = useForm();
 
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    const [postUser, { isLoading, isError }] = useAddUserMutation();
 
-
-    if (loading) {
-        return <p>Loading...</p>;
-    };
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         const { name, email, phoneNumber, password, checkbox } = data;
@@ -33,35 +38,24 @@ export default function Register() {
             toast.error("Mark on Checkbox !")
             return
         };
+
+        dispatch(createUser({ email: data.email, password: data.password }));
+
         const newUser = { name, email, phoneNumber };
-
-        //User Register
-        await createUserWithEmailAndPassword(email, password);
-        if (error) {
-            console.log(error.message);
-            toast.error("Register Failed !")
-        } else {
-
-            //send to server
-            const url = `${baseUrl}/users`;
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(newUser)
+        postUser(newUser).unwrap()
+            .then((response) => {
+                console.log('User added successfully', response);
+                toast.success("User SignUp Successfully!")
+                router.push("/dashboard")
             })
-                .then(res => res.json())
-                .then(result => {
-                    console.log(result);
-                    toast.success("User Registration Success!");
-                    router.push("/dashboard")
-                    // reset();
-                })
-        }
+            .catch((error) => {
+                console.error('Error adding User', error);
+                toast.error("User Added Failed!")
+            });
     };
 
-    console.log(user)
+
+    // console.log(user)
 
 
 

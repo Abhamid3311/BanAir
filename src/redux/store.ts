@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import flightsReducer from './features/flights/flightsSlice'
 import { api } from './api/api';
+import userReducer from './features/users/userSlice';
 
 const store = configureStore({
     reducer: {
         flights: flightsReducer,
+        user: userReducer,
         [api.reducerPath]: api.reducer,
     },
     middleware: (getDefaultMiddleware) =>

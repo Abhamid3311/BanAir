@@ -10,8 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page);
 
-  return <SessionProvider session={pageProps.session}>
-    <Provider store={store}> {getLayout(<Component {...pageProps} />)}</Provider>
-  </SessionProvider>
+  return <SessionProvider session={pageProps.session}><Provider store={store}> {getLayout(<Component {...pageProps} />)}</Provider></SessionProvider>
+
+
 
 }

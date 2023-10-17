@@ -17,9 +17,11 @@ export default function Sidebars() {
     const handleLogout = () => {
         if (user) {
             signOut(auth);
+            router.push("/")
         } else if (session) {
             // Use the session signOut
-            router.push('/api/auth/signout');  // Redirect to your NextAuth signout API route
+            router.push('/api/auth/signout');
+            router.push("/") 
         }
     }
 

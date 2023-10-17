@@ -1,27 +1,37 @@
 import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
 import Link from 'next/link';
 import { FaUserCircle } from 'react-icons/fa';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signOut as nextAuthSignOut } from "next-auth/react"
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import { auth } from '../utils/firebase';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setUser } from '@/redux/features/users/userSlice';
+import { signOut } from 'firebase/auth';
 
 
 export default function Header() {
     const { data: session } = useSession();
-    const [user] = useAuthState(auth);
     const router = useRouter();
+    const { user } = useAppSelector(state => state.user);
+    console.log(user)
+    const dispatch = useAppDispatch();
 
-    // console.log(user);
 
+
+
+    //Handle Logout
     const handleLogout = () => {
-        if (user) {
-            signOut(auth);
-        } else if (session) {
-            // Use the session signOut
-            router.push('/api/auth/signout');
+        if (session) {
+            nextAuthSignOut();
+            dispatch(setUser(null));
+        } else {
+            signOut(auth).then(() => {
+                dispatch(setUser(null));
+            })
         }
     }
+
 
     return (
         <Navbar className='bg-textClr' >
@@ -40,13 +50,12 @@ export default function Header() {
             <div className="flex md:order-2">
 
                 {
-                    (session?.user) ?
-                        <Dropdown arrowIcon={false} inline label={!session?.user?.image ? <FaUserCircle className="text-3xl text-secondary " /> : <img src={`${session.user.image}`} alt="" srcSet="" className='w-[32px] h-[32px] rounded-full' />
+                    user.email ?
+                        <Dropdown arrowIcon={false} inline label={<FaUserCircle className="text-3xl text-secondary " />} >
 
-                        } >
+
                             <Dropdown.Header>
-                                <span className="block text-sm">{session?.user?.name || "User"}</span>
-                                <span className="block truncate text-sm font-medium">{session?.user?.email || user?.email}</span>
+                                <span className="block text-sm">{user.email || "User"}</span>
                             </Dropdown.Header>
                             <Dropdown.Item> <Link href={"/dashboard"}>Dashboard</Link></Dropdown.Item>
                             <Dropdown.Item> <Link href={"/dashboard/profile"}>Profile</Link></Dropdown.Item>
@@ -62,7 +71,6 @@ export default function Header() {
                         </Link>
 
                 }
-
 
 
 

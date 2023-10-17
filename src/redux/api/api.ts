@@ -5,14 +5,13 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
+    tagTypes: ["users"],
 
     endpoints: (builder) => ({
         getFlights: builder.query({
             query: () => `/deal`,
         }),
-        getUsers: builder.query({
-            query: () => `/users`,
-        }),
+      
         getDeals: builder.query({
             query: () => `/users`,
         }),
@@ -21,4 +20,4 @@ export const api = createApi({
 })
 
 
-export const { useGetFlightsQuery,useGetUsersQuery } = api;
+export const { useGetFlightsQuery } = api;

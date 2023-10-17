@@ -3,12 +3,27 @@ import { auth } from '@/components/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useSession } from "next-auth/react"
 import { FaUserCircle } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { useGetSingleUsersQuery } from '@/redux/features/users/userApi';
 
 export default function Profile() {
     const [user] = useAuthState(auth);
     const { data: session } = useSession();
+    const [email, setEmail] = useState("");
 
-    console.log(session)
+    useEffect(() => {
+        if (user?.email) {
+            setEmail(user.email)
+        }
+
+    }, [user])
+    const { data: profileUser, isLoading } = useGetSingleUsersQuery(email);
+
+
+
+    console.log(profileUser)
+
+    // console.log(session)
 
     return (
         <div className='bg-lightBg text-textClr p-5  min-h-screen w-full'>
@@ -17,7 +32,7 @@ export default function Profile() {
             <div>
                 <div>
                     {!session?.user?.image ?
-                        <FaUserCircle className="text-3xl text-secondary " />
+                        <FaUserCircle className="text-5xl text-secondary " />
                         : <img src={`${session?.user?.image}`} alt="" srcSet="" className='w-[120px] h-[120px] rounded-full' />
                     }
                 </div>

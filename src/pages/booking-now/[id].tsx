@@ -91,7 +91,7 @@ export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlight
     )
 };
 
-PurchasePage.getLayout = function getLayout(page) {
+PurchasePage.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };
 

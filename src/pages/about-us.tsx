@@ -40,7 +40,7 @@ export default function AboutPage({ testimonials }: { testimonials: ITestimonial
                                 <li>Dislike Men Who are so Beguiled</li>
                             </div>
 
-                           <Link href={"/help"}><Button color='warning'>Contact Us</Button></Link> 
+                            <Link href={"/help"}><Button color='warning'>Contact Us</Button></Link>
 
 
 
@@ -70,9 +70,11 @@ export default function AboutPage({ testimonials }: { testimonials: ITestimonial
 }
 
 
-AboutPage.getLayout = function getLayout(page) {
+AboutPage.getLayout = function getLayout(page: React.ReactNode) {
     return <RootLayout>{page}</RootLayout>;
 };
+
+
 
 
 export const getStaticProps = async () => {

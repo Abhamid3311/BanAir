@@ -8,7 +8,7 @@ import { SessionProvider } from 'next-auth/react';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const getLayout = Component.getLayout || ((page) => page);
+  const getLayout = Component.getLayout || ((page: React.ReactNode) => page);
 
   return <SessionProvider session={pageProps.session}><Provider store={store}> {getLayout(<Component {...pageProps} />)}</Provider></SessionProvider>
 

@@ -24,6 +24,6 @@ export default function AdminDashboard() {
     )
 }
 
-AdminDashboard.getLayout = function getLayout(page) {
+AdminDashboard.getLayout = function getLayout(page: React.ReactNode) {
     return <AdminLayout>{page}</AdminLayout>;
 };

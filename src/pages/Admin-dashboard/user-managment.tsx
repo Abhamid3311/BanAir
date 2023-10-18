@@ -31,7 +31,7 @@ export default function UserManagment() {
     };
 
     //handleUserViewBtn
-    const handleUserViewBtn = id => {
+    const handleUserViewBtn = (id: string) => {
         // console.log(id)
         router.push(`/Admin-dashboard/user-details/${id}`)
     };
@@ -52,7 +52,7 @@ export default function UserManagment() {
             {
                 Header: "SL",
                 id: "index",
-                accessor: (_row, i) => i + 1,
+                accessor: (_row: any, i: number) => i + 1,
             },
             {
                 Header: "Name",
@@ -76,7 +76,7 @@ export default function UserManagment() {
                 Header: "Role",
                 accessor: "role",
                 sortType: 'basic',
-                Cell: ({ row }) => {
+                Cell: ({ row }: { row: any }) => {
                     const { role } = row.original;
                     // console.log(avaiability)
                     return (<div>
@@ -91,7 +91,7 @@ export default function UserManagment() {
             {
                 Header: 'Action',
                 accessor: 'action',
-                Cell: ({ row }) => {
+                Cell: ({ row }: { row: any }) => {
                     const { _id } = row.original;
                     return (<div className='flex items-center justify-center gap-2 '>
                         <button onClick={() => handleUserViewBtn(_id)}>
@@ -132,6 +132,6 @@ export default function UserManagment() {
 }
 
 
-UserManagment.getLayout = function getLayout(page) {
+UserManagment.getLayout = function getLayout(page: React.ReactNode) {
     return <AdminLayout>{page}</AdminLayout>;
 };

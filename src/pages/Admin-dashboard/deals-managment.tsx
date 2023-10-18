@@ -54,7 +54,7 @@ export default function DealsManagment() {
             {
                 Header: "SL",
                 id: "index",
-                accessor: (_row: IFlightDeal, i: number) => i + 1,
+                accessor: (_row: any, i: number) => i + 1,
             },
             {
                 Header: "From",
@@ -78,7 +78,7 @@ export default function DealsManagment() {
                 Header: "Status",
                 accessor: "status",
                 sortType: 'basic',
-                Cell: ({ row }) => {
+                Cell: ({ row }: { row: any }) => {
                     const { status } = row.original;
                     return (<div>
                         {status === "Available" ?
@@ -92,7 +92,7 @@ export default function DealsManagment() {
             {
                 Header: 'Action',
                 accessor: 'action',
-                Cell: ({ row }) => {
+                Cell: ({ row }: { row: any }) => {
                     const { _id } = row.original;
                     return (<div className='flex items-center justify-center gap-2 '>
                         {/* <button >

@@ -14,12 +14,14 @@ import { useGetSingleUsersQuery } from '@/redux/features/users/userApi';
 export default function Header() {
     const { data: session } = useSession();
     const router = useRouter();
+    const currentPath = router.pathname;
     const dispatch = useAppDispatch();
     const { user } = useAppSelector(state => state?.user);
     const { data, isLoading } = useGetSingleUsersQuery(user?.email);
 
 
-    console.log(user)
+
+    console.log(currentPath)
 
 
 
@@ -80,13 +82,13 @@ export default function Header() {
             </div>
 
             <Navbar.Collapse>
-                <Navbar.Link active className='text-white active:text-secondary'><Link href={"/"}>HOME</Link></Navbar.Link>
-                <Navbar.Link className='text-white active:text-secondary'><Link href={"/where-we-fly"}>OUR PACKAGES</Link></Navbar.Link>
+                <Navbar.Link active={currentPath === "/"} className='text-white active:text-secondary'><Link href={"/"}>HOME</Link></Navbar.Link>
+                <Navbar.Link active={currentPath === "/where-we-fly"} className='text-white active:text-secondary'><Link href={"/where-we-fly"}>OUR PACKAGES</Link></Navbar.Link>
                 {/* <Navbar.Link className='text-white active:text-secondary'><Link href={"/booking"}>BOOKING</Link></Navbar.Link> */}
 
-                <Navbar.Link className='text-white active:text-secondary' ><Link href={"/about-us"}>ABOUT US </Link></Navbar.Link>
+                <Navbar.Link active={currentPath === "/about-us"} className='text-white active:text-secondary' ><Link href={"/about-us"}>ABOUT US </Link></Navbar.Link>
                 {/* <Navbar.Link className='text-white active:text-secondary' ><Link href={"/"}>LOYALITY </Link></Navbar.Link> */}
-                <Navbar.Link className='text-white active:text-secondary'><Link href={"/help"}>HELP </Link></Navbar.Link>
+                <Navbar.Link active={currentPath === "/help"} className='text-white active:text-secondary'><Link href={"/help"}>HELP </Link></Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     )

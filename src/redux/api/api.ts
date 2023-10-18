@@ -22,13 +22,13 @@ export const api = createApi({
         }),
 
         getBooking: builder.query({
-            query: () => `/booking`,
+            query: () => `/bookings`,
             providesTags: ["booking"]
         }),
 
         deleteBooking: builder.mutation({
             query: (id) => ({
-                url: `/booking/${id}`,
+                url: `/bookings/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ["booking"]
@@ -40,4 +40,4 @@ export const api = createApi({
 })
 
 
-export const { useGetFlightsQuery, useDeleteDealsMutation, useGetBookingQuery,useDeleteBookingMutation } = api;
+export const { useGetFlightsQuery, useDeleteDealsMutation, useGetBookingQuery, useDeleteBookingMutation } = api;

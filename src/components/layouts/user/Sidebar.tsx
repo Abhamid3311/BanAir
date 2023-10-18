@@ -18,6 +18,7 @@ export default function Sidebars() {
         if (user) {
             signOut(auth);
             router.push("/")
+
         } else if (session) {
             nextAuthSignOut();
             router.push("/")

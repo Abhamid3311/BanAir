@@ -19,6 +19,7 @@ export default function AdminSidebar() {
     const handleLogout = () => {
         signOut(auth).then(() => {
             dispatch(setUser(null));
+            router.push("/")
         })
     }
 

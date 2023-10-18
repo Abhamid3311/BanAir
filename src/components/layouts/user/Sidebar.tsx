@@ -1,11 +1,11 @@
 import { Sidebar } from 'flowbite-react';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
 import Link from 'next/link';
-import { useSession } from "next-auth/react"
 import { useAuthState, } from 'react-firebase-hooks/auth';
 import { auth } from '../../utils/firebase';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import { useSession, signOut as nextAuthSignOut } from "next-auth/react"
 
 
 export default function Sidebars() {
@@ -19,8 +19,7 @@ export default function Sidebars() {
             signOut(auth);
             router.push("/")
         } else if (session) {
-            // Use the session signOut
-            router.push('/api/auth/signout');
+            nextAuthSignOut();
             router.push("/")
         }
     }

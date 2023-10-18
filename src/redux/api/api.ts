@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
-    tagTypes: ["users", "deals"],
+    tagTypes: ["users", "deals", "booking"],
 
     endpoints: (builder) => ({
         getFlights: builder.query({
@@ -21,8 +21,23 @@ export const api = createApi({
             invalidatesTags: ["deals"]
         }),
 
+        getBooking: builder.query({
+            query: () => `/booking`,
+            providesTags: ["booking"]
+        }),
+
+        deleteBooking: builder.mutation({
+            query: (id) => ({
+                url: `/booking/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ["booking"]
+        }),
+
+
+
     }),
 })
 
 
-export const { useGetFlightsQuery,useDeleteDealsMutation } = api;
+export const { useGetFlightsQuery, useDeleteDealsMutation, useGetBookingQuery,useDeleteBookingMutation } = api;

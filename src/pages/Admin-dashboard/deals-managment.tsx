@@ -6,16 +6,9 @@ import React, { useState } from 'react'
 import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
 import { toast } from 'react-toastify';
-import { ColumnInstance } from 'react-table';
-import { IFlightDeal } from '@/components/utils/Types';
 
 
-/* interface CustomColumn extends ColumnInstance {
-    id: string;
-    accessor: keyof IFlightDeal | ((row: IFlightDeal, i: number) => any);
-    Cell?: (props: any) => React.ReactNode; // Adjust this based on your cell rendering logic
-}
- */
+
 
 
 

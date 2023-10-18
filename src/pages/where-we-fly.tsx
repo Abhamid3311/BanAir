@@ -320,7 +320,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
 
                         <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-5 w-full lg:w-4/5'>
                             {
-                                currentPosts?.map(data => <FlightCard key={data.id} flight={data} />)
+                                currentPosts?.map(data => <FlightCard key={data._id} flight={data} />)
                             }
                         </div>
                     </div>

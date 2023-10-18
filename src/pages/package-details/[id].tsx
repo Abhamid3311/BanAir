@@ -81,7 +81,7 @@ PackagesDetails.getLayout = function getLayout(page: React.ReactNode) {
 //SSR
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const { params } = context;
-    const res = await fetch(`${baseUrl}/deal/${params.id}`);
+    const res = await fetch(`${baseUrl}/deal/${params?.id}`);
     const data = await res.json();
     // console.log(data)
 

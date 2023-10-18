@@ -3,14 +3,13 @@ import { getAuth } from 'firebase/auth';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDZe6OncrK8We8VpEZ4SsO0PrucT3JKB1k",
-    authDomain: "banair.firebaseapp.com",
-    projectId: "banair",
-    storageBucket: "banair.appspot.com",
-    messagingSenderId: "826276583483",
-    appId: "1:826276583483:web:17f0f03c6399564f0c641e"
+    apiKey: "AIzaSyDNHXAGTSgXPKviXXLX3rLD--MS5KGQDfs",
+    authDomain: "sunrise-com.firebaseapp.com",
+    projectId: "sunrise-com",
+    storageBucket: "sunrise-com.appspot.com",
+    messagingSenderId: "580824599310",
+    appId: "1:580824599310:web:df8810d230b473f92aa55f"
 };
-
 
 
 

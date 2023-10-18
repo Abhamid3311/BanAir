@@ -278,7 +278,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                     <div className="mb-2 block"><Label htmlFor="Person" value="Select Person*" /> </div>
                     <Select
                         id="Person"
-                        onChange={(e) => setTotalPerson(e.target.value)} required
+                        onChange={(e) => setTotalPerson(parseInt(e.target.value, 10))} required
                     >
                         <option value={1} selected>1</option>
                         <option value={2}>2 </option>

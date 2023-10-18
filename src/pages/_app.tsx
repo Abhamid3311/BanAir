@@ -6,12 +6,22 @@ import { Provider } from 'react-redux';
 import store from '@/redux/store';
 import { SessionProvider } from 'next-auth/react';
 import 'react-toastify/dist/ReactToastify.css';
+import { NextComponentType } from 'next';
+
+type CustomComponentType = NextComponentType & {
+  getLayout?: (page: React.ReactNode) => React.ReactNode;
+};
 
 export default function App({ Component, pageProps }: AppProps) {
-  const getLayout = Component.getLayout || ((page: React.ReactNode) => page);
+  const getLayout = ('getLayout' in Component
+    ? (Component as CustomComponentType).getLayout
+    : undefined) || ((page: React.ReactNode) => page);
 
-  return <SessionProvider session={pageProps.session}><Provider store={store}> {getLayout(<Component {...pageProps} />)}</Provider></SessionProvider>
-
-
-
+  return (
+    <SessionProvider session={pageProps.session}>
+      <Provider store={store}>
+        {getLayout && getLayout(<Component {...pageProps} />)}
+      </Provider>
+    </SessionProvider>
+  );
 }

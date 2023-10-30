@@ -22,7 +22,7 @@ export default function Home({ flights, filterdData, testimonials }: { flights: 
       <Packages flights={flights} />
       <Testimonials testimonials={testimonials} />
       <Plans />
-      <BackToTopButton />
+      {/* <BackToTopButton /> */}
     </div>
   )
 }

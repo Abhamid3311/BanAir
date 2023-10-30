@@ -7,6 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { setLoading, setUser } from '@/redux/features/users/userSlice';
 import { auth } from '../utils/firebase';
 import { useSession } from "next-auth/react"
+import BackToTopButton from '../UI/PAges/BackToTopButton';
 
 export interface RootLayoutProps {
     children: ReactNode;
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
             <Footers />
             <ToastContainer />
+            <BackToTopButton /> 
         </>
     )
 }

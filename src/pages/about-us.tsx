@@ -1,4 +1,5 @@
 import Destinations from '@/components/UI/Home/Destinations';
+import Plans from '@/components/UI/Home/Plans';
 import Testimonials from '@/components/UI/Home/Testimonials';
 import PageBanner from '@/components/UI/PAges/PageBanner'
 import RootLayout from '@/components/layouts/RootLayout';
@@ -63,6 +64,7 @@ export default function AboutPage({ testimonials }: { testimonials: ITestimonial
                 </div>
                 <Destinations />
                 <Testimonials testimonials={testimonials} />
+                <Plans /> 
             </div>
 
         </div>

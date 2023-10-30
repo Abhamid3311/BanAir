@@ -342,7 +342,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
                 </div>
             </div>
 
-            <BackToTopButton />
+            {/* <BackToTopButton /> */}
         </>
 
     )

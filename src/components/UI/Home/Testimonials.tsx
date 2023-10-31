@@ -3,8 +3,24 @@ import { ITestimonial } from '../../utils/Types'
 import Slider from 'react-slick';
 import { FaUserCircle } from "react-icons/fa";
 
+//Add Star
+const renderStarRating = (ratings: number | undefined) => {
+    const stars = [];
+    const ratingValue = ratings || 0;
+    for (let i = 1; i <= 5; i++) {
+        stars.push(
+            <span key={i} className={i <= ratingValue ? 'text-secondary' : 'text-gray-300'}>
+                &#9733;
+            </span>
+        );
+    }
+    return stars;
+};
+
+
+
 export default function Testimonials({ testimonials }: { testimonials: ITestimonial[] }) {
-    // console.log(testimonials);
+    console.log(testimonials);
 
     const settings = {
         className: "center",
@@ -15,7 +31,7 @@ export default function Testimonials({ testimonials }: { testimonials: ITestimon
         autoplaySpeed: 1000,
         speed: 500,
         infinite: true,
-        centerPadding: "20px",
+        centerPadding: "10px",
         slidesToShow: 3,
         responsive: [
             {
@@ -66,7 +82,10 @@ export default function Testimonials({ testimonials }: { testimonials: ITestimon
                     <Slider {...settings} className='py-5'>
                         {
                             testimonials?.map(testi => <div key={testi._id} className='px-3 bg-lightBg'>
-                                <div className='p-4 bg-white rounded-md relative  shadow-md  h-[200px] m-2'>
+                                <div className='p-4 bg-white rounded-md relative  shadow-md h-[310px] lg:h-[230px] m-2'>
+                                    <div className='text-2xl'>
+                                        {renderStarRating(testi.ratings)}
+                                    </div>
                                     <p className='text-sm lg:text-base'>{testi.comment}</p>
 
 
@@ -74,8 +93,8 @@ export default function Testimonials({ testimonials }: { testimonials: ITestimon
                                         <div className='flex items-center gap-2'>
                                             <FaUserCircle className="text-4xl" />
                                             <div>
-                                                <h1 className='text-lg font-bold text-primary'>{testi.name}</h1>
-                                                <p className='text-sm italic'><span>{testi.desi}</span>, <span>{testi.country}</span></p>
+                                                <h1 className='text-base lg:text-lg font-bold text-primary'>{testi.name}</h1>
+                                                <p className='text-xs lg:text-sm italic'><span>{testi.desi}</span>, <span>{testi.country}</span></p>
                                             </div>
                                         </div>
                                     </div>

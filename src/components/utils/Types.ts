@@ -34,6 +34,7 @@ export interface ITestimonial {
     desi: string;
     country: string;
     comment: string;
+    ratings: number;
 }
 
 export interface IPlans {
@@ -60,4 +61,4 @@ export interface ISlide {
     btn: string;
     btnLink: string;
     img: string;
-  }
+}

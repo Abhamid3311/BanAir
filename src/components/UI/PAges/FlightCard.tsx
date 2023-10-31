@@ -2,11 +2,27 @@ import { IFlightDeal } from '@/components/utils/Types'
 import { Button } from 'flowbite-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { TbArrowsExchange } from 'react-icons/tb'
+import { TbArrowsExchange } from 'react-icons/tb';
+
+
+//Add Star
+const renderStarRating = (ratings: number | undefined) => {
+    const stars = [];
+    const ratingValue = ratings || 0;
+    for (let i = 1; i <= 5; i++) {
+        stars.push(
+            <span key={i} className={i <= ratingValue ? 'text-secondary' : 'text-gray-300'}>
+                &#9733;
+            </span>
+        );
+    }
+    return stars;
+};
+
+
+
 
 export default function FlightCard({ flight }: { flight: IFlightDeal }) {
-    // console.log(flight);
-
     const { _id, from, to, startDate, endDate, price, img, type, desc, ratings, status } = flight;
 
 
@@ -18,7 +34,9 @@ export default function FlightCard({ flight }: { flight: IFlightDeal }) {
                         <div>
                             <h1 className=" text-base lg:text-xl font-bold tracking-tight  ">{from} to {to}</h1>
                             <p className='text-sm lg:text-base'>Status: {status}</p>
-                            <p className='text-sm lg:text-base'>Ratings: {ratings} Stars</p>
+                            <p className='text-sm lg:text-base'>Ratings:
+                                <span className='text-lg'>{renderStarRating(ratings)} </span>
+                            </p>
                         </div>
 
                         <hr className='my-2' />

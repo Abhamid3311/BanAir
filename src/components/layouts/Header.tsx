@@ -9,20 +9,50 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setUser } from '@/redux/features/users/userSlice';
 import { signOut } from 'firebase/auth';
 import { useGetSingleUsersQuery } from '@/redux/features/users/userApi';
-import Image from 'next/image';
+import { CSSProperties, useEffect, useState } from 'react';
 
 
 export default function Header() {
     const { data: session } = useSession();
+    const [isNavbarFixed, setIsNavbarFixed] = useState(false);
     const router = useRouter();
     const currentPath = router.pathname;
     const dispatch = useAppDispatch();
     const { user } = useAppSelector(state => state?.user);
     const { data, isLoading } = useGetSingleUsersQuery(user?.email);
 
-
-
     // console.log(currentPath)
+
+
+    //Fixed & Design Navbar depend On Scroll Logic
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > window.innerHeight / 2) {
+                setIsNavbarFixed(true);
+            } else {
+                setIsNavbarFixed(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const navbarStyle = isNavbarFixed
+        ? {
+            position: 'fixed',
+            top: 0,
+            width: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            zIndex: 100,
+            transition: 'all 0.3s ease',
+        }
+        : {
+            backgroundColor: '#111827',
+        }
 
 
 
@@ -38,11 +68,11 @@ export default function Header() {
                 dispatch(setUser(null));
             })
         }
-    }
+    };
 
 
     return (
-        <Navbar className='bg-textClr' >
+        <Navbar className=' text-white' style={navbarStyle as CSSProperties} >
             <Navbar.Brand href="/">
                 {/* <img src="/assetes/logo.png" alt=" Logo"   className="mr-3 h-20 w-20" /> */}
 

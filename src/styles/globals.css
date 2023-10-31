@@ -89,5 +89,5 @@ body {
 }
 
 .flight-card:hover .flight-card-img img {
-    transform: scale(1.25) rotate(5deg);
+    transform: scale(1.15) rotate(5deg);
 }

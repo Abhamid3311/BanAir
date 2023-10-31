@@ -44,7 +44,7 @@ const BannerItem = ({ data }: { data: ISlide }) => {
 
             <div className=" max-w-7xl mx-auto px-5 lg:px-0 flex items-center h-4/5 ">
                 <div className="w-full lg:w-1/2 py-10 lg:py-0">
-                    <h1 className="text-2xl lg:text-5xl font-bold text-start mb-3 w-full">{title}</h1>
+                    <h1 className="text-2xl capitalize lg:text-[46px] font-bold text-start mb-3 w-full">{title}</h1>
                     <p className="text-sm lg:text-base">{desc}</p>
 
                     <Link href={btnLink}>  <Button color="warning" className="px-3 lg:px-6 font-bold mt-3">{btn}</Button></Link>

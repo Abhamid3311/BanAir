@@ -1,6 +1,6 @@
 import PageBanner from "@/components/UI/PAges/PageBanner";
 import RootLayout from "@/components/layouts/RootLayout";
-import { IFlightDeal } from "@/components/utils/Types";
+import { BookingInfoProps, IFlightDeal, PaymentInfoProps } from "@/components/utils/Types";
 import { baseUrl } from "@/components/utils/url";
 import { Button, Label, Select, TextInput } from "flowbite-react";
 import Link from "next/link";
@@ -14,14 +14,9 @@ import { toast } from 'react-toastify';
 import { GetServerSidePropsContext } from 'next';
 
 export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlightDeal }) {
-
-
     const [totalCost, setTotalCost] = useState<number>(0);
     const [totalPerson, setTotalPerson] = useState<number>(1);
     // console.log(totalPerson, totalCost);
-
-
-
 
 
 
@@ -34,6 +29,8 @@ export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlight
                         <Link href={"/"}>Home</Link> / <span className='text-secondary'>Booking Details</span></p>
                 </div>
             </PageBanner>
+
+
 
             <div className='bg-lightBg text-textClr py-10'>
                 <div className="max-w-7xl mx-auto px-3 lg:px-0">
@@ -78,12 +75,12 @@ export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlight
                         <div className="w-full lg:w-3/4">
                             <BookingInfo setTotalPerson={setTotalPerson} totalCost={totalCost} purchaseDeals={purchaseDeals} />
                         </div>
+
+                        
                         <div className="w-full lg:w-1/4">
                             <PaymentInfo purchaseDeals={purchaseDeals} totalPerson={totalPerson} setTotalCost={setTotalCost} />
                         </div>
                     </div>
-
-
 
                 </div>
             </div>
@@ -92,34 +89,9 @@ export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlight
     )
 };
 
-PurchasePage.getLayout = function getLayout(page: React.ReactNode) {
-    return <RootLayout>{page}</RootLayout>;
-};
 
 
-
-
-//SSR
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-    const { params } = context;
-    const res = await fetch(`${baseUrl}/deal/${params!.id}`);
-    const data = await res.json();
-    // console.log(data)
-
-    return {
-        props: {
-            purchaseDeals: data,
-        }
-    }
-};
-
-
-interface BookingInfoProps {
-    setTotalPerson: (total: number) => void;
-    totalCost: number;
-    purchaseDeals: IFlightDeal;
-}
-
+//Booking Info
 
 const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, purchaseDeals }) => {
     const { data: session } = useSession();
@@ -323,12 +295,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
 };
 
 
-
-interface PaymentInfoProps {
-    purchaseDeals: IFlightDeal;
-    totalPerson: number;
-    setTotalCost: (cost: number) => void;
-}
+//Payments Info
 
 const PaymentInfo: React.FC<PaymentInfoProps> = ({ purchaseDeals, totalPerson, setTotalCost }) => {
     const { _id, from, to, startDate, endDate, price, img, type, desc, ratings, status, reviews } = purchaseDeals;
@@ -454,3 +421,25 @@ const PaymentInfo: React.FC<PaymentInfoProps> = ({ purchaseDeals, totalPerson, s
         </div>
     </>
 }
+
+
+
+
+PurchasePage.getLayout = function getLayout(page: React.ReactNode) {
+    return <RootLayout>{page}</RootLayout>;
+};
+
+
+//SSR
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    const { params } = context;
+    const res = await fetch(`${baseUrl}/deal/${params!.id}`);
+    const data = await res.json();
+    // console.log(data)
+
+    return {
+        props: {
+            purchaseDeals: data,
+        }
+    }
+};

@@ -62,3 +62,15 @@ export interface ISlide {
     btnLink: string;
     img: string;
 }
+
+export interface BookingInfoProps {
+    setTotalPerson: (total: number) => void;
+    totalCost: number;
+    purchaseDeals: IFlightDeal;
+}
+
+export interface PaymentInfoProps {
+    purchaseDeals: IFlightDeal;
+    totalPerson: number;
+    setTotalCost: (cost: number) => void;
+}

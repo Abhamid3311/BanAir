@@ -74,9 +74,9 @@ export default function Footers() {
                     </div>
 
 
-                    <div className="w-full bg-gray-900 px-4 py-6 sm:flex sm:items-center sm:justify-between">
+                    <div className="w-full bg-gray-900 px-4 py-4 sm:flex sm:items-center sm:justify-between">
                         <Footer.Copyright
-                            by="BDAIR"
+                            by="BanAir || All Rights Reserved"
                             href="/"
                             year={2023}
                         />

@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setUser } from '@/redux/features/users/userSlice';
 import { signOut } from 'firebase/auth';
 import { useGetSingleUsersQuery } from '@/redux/features/users/userApi';
+import Image from 'next/image';
 
 
 export default function Header() {
@@ -43,11 +44,9 @@ export default function Header() {
     return (
         <Navbar className='bg-textClr' >
             <Navbar.Brand href="/">
-                {/*   <img
-                    alt="Flowbite React Logo"
-                    className="mr-3 h-6 sm:h-9"
-                    src="/favicon.svg"
-                /> */}
+                {/* <img src="/assetes/logo.png" alt=" Logo"   className="mr-3 h-20 w-20" /> */}
+
+
                 <span className="self-center whitespace-nowrap text-2xl font-semibold text-secondary">
                     BanAir
                 </span>

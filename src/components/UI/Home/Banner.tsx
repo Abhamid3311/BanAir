@@ -36,8 +36,7 @@ const BannerItem = ({ data }: { data: ISlide }) => {
     const { id, title, desc, btn, btnLink, img } = data;
 
     const containerStyle: CSSProperties = {
-        backgroundImage: `linear-gradient(rgba(0, 53, 128, 0.8), rgba(0, 53, 128, 0.8)), url(${img})`,
-
+        backgroundImage: `linear-gradient(rgba(0, 0, 0.2, 0.5), rgba(0, 0, 0.2, 0.5)), url(${img})`,
     };
 
     return (

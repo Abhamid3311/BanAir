@@ -9,7 +9,7 @@ export const bannerData = [
         desc: "Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account",
         btn: "Book Now",
         btnLink: "/where-we-fly",
-        img: "/assetes/slider_bg1.jpg",
+        img: "/assetes/banner/banner-1.jpg",
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ export const bannerData = [
         desc: "Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account",
         btn: "Register Now",
         btnLink: "/login",
-        img: "/assetes/slider_bg2.jpg",
+        img: "/assetes/banner/banner-2.jpg",
     },
     {
         id: 3,
@@ -25,8 +25,24 @@ export const bannerData = [
         desc: "Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account",
         btn: "Search Flight",
         btnLink: "/where-we-fly",
-        img: "/assetes/slider_bg3.jpg",
+        img: "/assetes/banner/banner-3.jpg",
     },
+     {
+         id: 4,
+         title: "It’s more than just a trip",
+         desc: "Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account",
+         btn: "Search Flight",
+         btnLink: "/where-we-fly",
+         img: "/assetes/banner/banner-4.jpg",
+     },
+     {
+         id: 5,
+         title: "It’s more than just a trip",
+         desc: "Get rewarded for your travels – unlock instant savings of 10% or more with a free Geairinfo.com account",
+         btn: "Search Flight",
+         btnLink: "/where-we-fly",
+         img: "/assetes/banner/banner-5.jpg",
+     },
 ];
 
 export const serviceOffer = [

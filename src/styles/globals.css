@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .slick-slide {
-    margin: 0 15px;
-} */
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
 .banner-img {
     background-size: cover;
@@ -25,8 +28,9 @@
     width: 100%;
 }
 
+
 .page-Banner {
-    background-image: linear-gradient(rgba(0, 53, 128, 0.8), rgba(0, 53, 128, 0.8)), url("/assetes/slider_bg3.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0.2, 0.7), rgba(0, 0, 0.2, 0.7)), url("/assetes/banner/banner-4.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -74,11 +78,13 @@
 .flight-card {
     transition: all 0.3s ease;
 }
-.flight-card-img{
+
+.flight-card-img {
     overflow: hidden;
-   
+
 }
-.flight-card-img img{
+
+.flight-card-img img {
     transition: all 0.3s linear;
 }
 

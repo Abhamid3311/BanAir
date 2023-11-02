@@ -116,7 +116,7 @@ export default function WhereWEFlyPage({ flightsPlan }: { flightsPlan: IFlightDe
             <div className='bg-lightBg'>
                 <PageBanner>
                     <div className='text-center '>
-                        <h1 className='text-5xl font-bold  '>OUR PACKAGES</h1>
+                        <h1 className='text-5xl font-bold  '>Our Packages</h1>
                         <p className='text-semibold   mt-2'><Link href={"/"}>HOME</Link> / <span className='text-secondary'>OUR PACKAGES</span></p>
                     </div>
                 </PageBanner>

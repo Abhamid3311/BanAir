@@ -74,3 +74,38 @@ export interface PaymentInfoProps {
     totalPerson: number;
     setTotalCost: (cost: number) => void;
 }
+
+
+export type FlightType = {
+    aircraft: null;
+    airline: { name: string; iata: string; icao: string };
+    arrival: { airport: string; estimated: string; iata: string; icao: string; scheduled: string; terminal: string; timezone: string };
+    departure: { airport: string; estimated: string; gate: string; iata: string; icao: string; scheduled: string; terminal: string; timezone: string };
+    flight: { iata: string; icao: string; number: string; codeshared: { airline_name: string; airline_iata: string; airline_icao: string; flight_number: string; flight_iata: string } };
+    flight_date: string;
+    flight_status: string;
+    live: null;
+};
+
+
+export type AirportType = {
+    airport_id: string;
+    airport_name: string;
+    city_iata_code: string;
+    country_iso2: string;
+    country_name: string;
+    geoname_id: string;
+    gmt: string;
+    iata_code: string;
+    icao_code: string;
+    id: string;
+    latitude: string;
+    longitude: string;
+    phone_number: string | null;
+    timezone: string;
+};
+
+export interface BookingProps {
+    airports: AirportType[];
+    flights: FlightType[];
+}

@@ -1,9 +1,13 @@
 import PageBanner from '@/components/UI/PAges/PageBanner';
+import SearchFlights from '@/components/UI/bookingPage/SearchFlights';
 import RootLayout from '@/components/layouts/RootLayout';
+import { AirportType, FlightType } from '@/components/utils/Types';
 import Link from 'next/link';
-import React from 'react';
 
-const Booking = () => {
+
+
+const Booking = ({ airports, flights }: { airports: AirportType[], flights: FlightType[] }) => {
+
 
     return (
         <div className='bg-lightBg'>
@@ -13,12 +17,9 @@ const Booking = () => {
                     <p className='text-semibold   mt-2'><Link href={"/"}>HOME</Link> / <span className='text-secondary'>BOOKING</span></p>
                 </div>
             </PageBanner>
-
-            <div className=''>
-
+            <SearchFlights airports={airports} flights={flights} />
 
 
-            </div>
         </div>
     );
 };
@@ -34,14 +35,17 @@ Booking.getLayout = function getLayout(page: React.ReactNode) {
 
 
 
-/* export const getStaticProps = async () => {
-    const res = await fetch(`http://api.aviationstack.com/v1/airports?access_key=${process.env.AIRPORT_API_KEY}&limit=100`);
-    // const res = await fetch(`http://api.aviationstack.com/v1/flights?access_key=${process.env.AIRPORT_API_KEY}&limit=100`);
-    const data = await res.json();
+export const getStaticProps = async () => {
+    const res1 = await fetch(`http://api.aviationstack.com/v1/airports?access_key=${process.env.AIRPORT_API_KEY}&limit=100`);
+    const res2 = await fetch(`http://api.aviationstack.com/v1/flights?access_key=${process.env.AIRPORT_API_KEY}&limit=100`);
+    const airportData = await res1.json();
+    const flightData = await res2.json();
+
 
     return {
         props: {
-            realFlights: data.data,
+            airports: airportData.data,
+            flights: flightData.data,
         }
     }
-}; */
+};

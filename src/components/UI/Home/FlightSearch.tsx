@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { serviceOffer } from '../../utils/StaticData';
 import Image from 'next/image';
-import { IFlightDeal } from '../../utils/Types';
+import { AirportType, FlightType, IFlightDeal } from '../../utils/Types';
 import Link from 'next/link';
 import { Button } from 'flowbite-react';
+import SearchFlights from '../bookingPage/SearchFlights';
 
-export default function FlightSearch({ filterdData }: { filterdData: IFlightDeal[] }) {
+export default function FlightSearch({ filterdData, airports, flights }: { filterdData: IFlightDeal[], airports: AirportType[], flights: FlightType[] }) {
 
 
     return (
-        <div className='bg-lightBg text-textClr min-h-screen'>
+        <div className='bg-lightBg text-textClr '>
+            <div className='relative bottom-0 lg:bottom-20'>
+                <SearchFlights airports={airports} flights={flights} />
+            </div>
+
             <div className=''>
                 <FlightDeal />
                 <FlightOfferDeal randomFlights={filterdData} />
@@ -24,7 +29,7 @@ export default function FlightSearch({ filterdData }: { filterdData: IFlightDeal
 
 const FlightDeal = () => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 max-w-7xl mx-auto px-5 lg:px-0 py-10 lg:py-20'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 max-w-7xl mx-auto px-5 lg:px-0 pb-7 '>
             {
                 serviceOffer.map(data => <div key={data.id} className='bg-white text-primary p-5 rounded-md w-full flex items-center gap-3 shadow-md hover:shadow-xl'>
                     <Image src={data.icon} alt={data.title} width={53} height={53} />
@@ -100,7 +105,7 @@ const FlightCard = ({ data }: { data: IFlightDeal }) => {
     return (
         <Link href={`/package-details/${_id}`}>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl flight-card">
-                <div  className='flight-card-img'>
+                <div className='flight-card-img'>
                     <Image className="rounded-t-lg w-full h-[148px]" src={img} alt="" width={244} height={148} />
                 </div>
 

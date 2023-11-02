@@ -1,24 +1,36 @@
 import { BookingProps } from "@/components/utils/Types";
 import { Datepicker } from "flowbite-react";
+import { useState } from "react";
 
 
-const SearchFlights: React.FC<BookingProps> = ({ airports }) => {
+const SearchFlights: React.FC<BookingProps> = ({ airports, flights }) => {
+    const [departureAita, setDepartureAita] = useState('')
+    const [arrivalAita, setarrivalAita] = useState('')
+    console.log(departureAita, arrivalAita)
+    // console.log(airports)
 
-    console.log(airports)
+
+
+    const handleSearchFlightForm = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const getFilteredData = flights.filter(fli => fli.departure.iata === departureAita || fli.arrival.iata === arrivalAita);
+        console.log(getFilteredData)
+    };
 
 
     return (
-        <div className='min-h-screen my-10 max-w-7xl mx-auto'>
-            <div className='bg-white p-4 rounded-md shadow-md'>
+        <div className=' py-10 max-w-7xl mx-auto px-5 lg:px-0'>
+            <div className='bg-white p-4 rounded-md shadow-md px-5 '>
                 <h1 className='text-3xl font-bold text-primary text-center'>Search Flights</h1>
-                <form className='py-5'>
+                <form className='py-5' onSubmit={handleSearchFlightForm}>
 
                     <div className='flex flex-col lg:flex-row items-center gap-5 w-full'>
                         <div className="relative w-full">
-                            <select id="floating_outlined4" className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-yellow-400 peer">
+                            <select id="floating_outlined4" className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-yellow-400 peer" onChange={(e) => setDepartureAita(e.target.value)}>
                                 <option selected disabled>Choose Departure Airport</option>
                                 {
-                                    airports.map(arrival => <option key={arrival.id} value={arrival.airport_name}>{`${arrival.airport_name}, ${arrival.country_name}`}</option>)
+                                    airports.map(departure => <option key={departure.id} value={departure.iata_code}>{`${departure.airport_name}, ${departure.country_name}`}</option>)
+
                                 }
                             </select>
 
@@ -27,10 +39,10 @@ const SearchFlights: React.FC<BookingProps> = ({ airports }) => {
 
 
                         <div className="relative w-full">
-                            <select id="floating_outlined4" className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-yellow-400 peer">
+                            <select id="floating_outlined4" className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-yellow-400 peer" onChange={(e) => setarrivalAita(e.target.value)}>
                                 <option selected disabled>Choose Arrival Airport</option>
                                 {
-                                    airports.map(arrival => <option key={arrival.id} value={arrival.airport_name}>{`${arrival.airport_name}, ${arrival.country_name}`}</option>)
+                                    airports.map(arrival => <option key={arrival.id} value={arrival.iata_code}>{`${arrival.airport_name}, ${arrival.country_name}`}</option>)
                                 }
                             </select>
 

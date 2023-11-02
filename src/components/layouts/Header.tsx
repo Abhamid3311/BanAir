@@ -104,20 +104,30 @@ export default function Header() {
                         </Link>
 
                 }
-
-
-
                 <Navbar.Toggle />
             </div>
 
             <Navbar.Collapse>
-                <Navbar.Link active={currentPath === "/"} className='text-white active:text-secondary'><Link href={"/"}>HOME</Link></Navbar.Link>
-                <Navbar.Link active={currentPath === "/where-we-fly"} className='text-white active:text-secondary'><Link href={"/where-we-fly"}>OUR PACKAGES</Link></Navbar.Link>
-                <Navbar.Link className='text-white active:text-secondary'><Link href={"/booking"}>BOOKING</Link></Navbar.Link>
+                <Navbar.Link active={currentPath === "/"} className='text-white active:text-secondary'>
+                    <Link href={"/"}>HOME</Link>
+                </Navbar.Link>
 
-                <Navbar.Link active={currentPath === "/about-us"} className='text-white active:text-secondary' ><Link href={"/about-us"}>ABOUT US </Link></Navbar.Link>
-                {/* <Navbar.Link className='text-white active:text-secondary' ><Link href={"/"}>LOYALITY </Link></Navbar.Link> */}
-                <Navbar.Link active={currentPath === "/help"} className='text-white active:text-secondary'><Link href={"/help"}>HELP </Link></Navbar.Link>
+                <Navbar.Link active={currentPath === "/where-we-fly"} className='text-white active:text-secondary'>
+                    <Link href={"/where-we-fly"}>OUR PACKAGES</Link>
+                </Navbar.Link>
+
+                <Navbar.Link active={currentPath === "/check-flights"} className='text-white active:text-secondary'>
+                    <Link href={"/check-flights"}>FLIGHTS</Link>
+                </Navbar.Link>
+
+                <Navbar.Link active={currentPath === "/about-us"} className='text-white active:text-secondary' >
+                    <Link href={"/about-us"}>ABOUT US </Link>
+                </Navbar.Link>
+
+
+                <Navbar.Link active={currentPath === "/help"} className='text-white active:text-secondary'>
+                    <Link href={"/help"}>HELP </Link>
+                </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     )

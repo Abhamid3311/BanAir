@@ -16,12 +16,12 @@ const AvailableFlightCard = ({ flight }: { flight: FlightType }) => {
                 <p className='mt-2'>Date: {`${departureDate} -- ${arrivalDate}`}</p>
 
 
-                <div className='flex items-center gap-2'>
-                    <p>Airport:</p>
-                    <h1>{flight.departure.airport}</h1>
-                    <span className='text-secondary'>to</span>
-                    <h1>{flight.arrival.airport}</h1>
+                <div className='flex items-center gap-1'>
+                    {/* <p>Airport:</p> */}
+                  
                 </div>
+
+                <h1>Airports: {`${flight.departure.airport}`} <span className='text-secondary'>to</span> {flight.arrival.airport} </h1>
 
 
 

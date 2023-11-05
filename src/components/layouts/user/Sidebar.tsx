@@ -27,7 +27,7 @@ export default function Sidebars() {
 
     return (
         <div>
-            <Sidebar aria-label="Sidebar with logo branding example">
+            <Sidebar  aria-label="Sidebar with logo branding example">
 
                 <Sidebar.Items>
                     <Sidebar.ItemGroup>

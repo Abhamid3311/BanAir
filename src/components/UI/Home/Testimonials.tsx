@@ -20,7 +20,7 @@ const renderStarRating = (ratings: number | undefined) => {
 
 
 export default function Testimonials({ testimonials }: { testimonials: ITestimonial[] }) {
-    console.log(testimonials);
+    // console.log(testimonials);
 
     const settings = {
         className: "center",

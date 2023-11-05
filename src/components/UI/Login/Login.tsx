@@ -18,7 +18,7 @@ export default function Login() {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         dispatch(loginUser({ email: data.email, password: data.password }));
-        toast.success("Logged in Succesfully")
+        // toast.success("Logged in Succesfully")
     };
 
 
@@ -30,6 +30,7 @@ export default function Login() {
                     console.log(user.email);
                     const response = await axios.get(`${baseUrl}/user/${user.email}`);
                     const userData = response.data;
+                    console.log(userData)
 
                     // Check user role
                     if (userData.role === 'admin') {

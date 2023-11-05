@@ -27,7 +27,7 @@ export default function Sidebars() {
 
     return (
         <div>
-            <Sidebar  aria-label="Sidebar with logo branding example">
+            <Sidebar aria-label="Sidebar with logo branding example">
 
                 <Sidebar.Items>
                     <Sidebar.ItemGroup>
@@ -42,7 +42,7 @@ export default function Sidebars() {
                     <Sidebar.ItemGroup>
                         <Sidebar.Item icon={HiUser} ><Link href="/dashboard/profile"> Profile</Link> </Sidebar.Item>
                         <Sidebar.Item icon={HiViewBoards} ><Link href="/dashboard/settings">Settings</Link> </Sidebar.Item>
-                        <Sidebar.Item icon={HiShoppingBag} onClick={() => handleLogout()}><button> Logout</button> </Sidebar.Item>
+                        <Sidebar.Item icon={HiShoppingBag} onClick={handleLogout}><button> Logout</button> </Sidebar.Item>
                     </Sidebar.ItemGroup>
 
                 </Sidebar.Items>

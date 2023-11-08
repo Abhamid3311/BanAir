@@ -16,15 +16,20 @@ export default function Bookings() {
 
     //Handle Book Delete
     const handleDeleteBtn = (id: string) => {
-        deleteBooking(id).unwrap()
-            .then((response) => {
-                console.log(response);
-                toast.success("Deleted Successfully!");
-            })
-            .catch((error) => {
-                console.error(error);
-                toast.error("Delete Failed!")
-            });
+
+        const procced = window.confirm('You want to delete?');
+        if (procced) {
+            deleteBooking(id).unwrap()
+                .then((response) => {
+                    console.log(response);
+                    toast.success("Deleted Successfully!");
+                })
+                .catch((error) => {
+                    console.error(error);
+                    toast.error("Delete Failed!")
+                });
+        }
+
     };
 
 

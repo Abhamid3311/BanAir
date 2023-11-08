@@ -14,8 +14,14 @@ export default function UserDetails() {
             <h1 className='font-bold text-lg'>User Details</h1>
             <div>
                 <h1>Name: {data?.name}</h1>
-                <h1>Email: {data?.email}</h1>
-                <h1>Phone Number: {data?.phoneNumber}</h1>
+                <p>
+                    Role: 
+                    {data?.role === "admin" ?
+                        <span className='text-green-700 font-semibold'> Admin</span> :
+                        <span className='text-red-700 font-semibold'> User</span>}
+                </p>
+                <p>Email: {data?.email}</p>
+                <p>Phone Number: {data?.phoneNumber}</p>
             </div>
 
         </div>

@@ -76,7 +76,7 @@ export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlight
                             <BookingInfo setTotalPerson={setTotalPerson} totalCost={totalCost} purchaseDeals={purchaseDeals} />
                         </div>
 
-                        
+
                         <div className="w-full lg:w-1/4">
                             <PaymentInfo purchaseDeals={purchaseDeals} totalPerson={totalPerson} setTotalCost={setTotalCost} />
                         </div>
@@ -249,7 +249,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                 <div className="w-full  my-3" id="select">
                     <div className="mb-2 block"><Label htmlFor="Person" value="Select Person*" /> </div>
                     <Select
-                        id="Person"
+                        id="Person" {...register("total_person", { required: true })}
                         onChange={(e) => setTotalPerson(parseInt(e.target.value, 10))} required
                     >
                         <option value={1} selected>1</option>
@@ -262,12 +262,23 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                     </Select>
                 </div>
 
+                <div className="w-full ">
+                    <div className="mb-2 block"><Label htmlFor="Address" value="Address*" /> </div>
+                    <TextInput
+                        id="Address"
+                        placeholder="Enter Address"
+                        required
+                        type="text"
+                        {...register("address", { required: true })}
+                    />
+                </div>
 
 
-                <div className="w-full  " id="select">
+
+                <div className="w-full" id="select">
                     <div className="mb-2 block"><Label htmlFor="Meal" value="Select Meal Type" /> </div>
                     <Select id="Meal" {...register("MealType")} >
-                        <option selected disabled value={" "}>Choose Meal type (Optional) </option>
+                        <option selected disabled value={"No Issue"}>Choose Meal type (Optional) </option>
                         <option >Vegitarian </option>
                         <option >Non Vegitarian  </option>
                         <option >Suger free </option>
@@ -277,7 +288,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                 <div className="w-full  my-3" id="select">
                     <div className="mb-2 block"><Label htmlFor="Wheel" value="Select Wheel Chair" /> </div>
                     <Select id="Wheel" {...register("wheelChair")}>
-                        <option selected disabled value={" "}>Request Wheel Chair (Optional) </option>
+                        <option selected disabled value={"No"}>Request Wheel Chair (Optional) </option>
                         <option >yes </option>
                         <option >No </option>
                     </Select>

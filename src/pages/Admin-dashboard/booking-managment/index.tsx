@@ -5,10 +5,12 @@ import React from 'react'
 import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 export default function Bookings() {
     const { data: bookings, isLoading } = useGetBookingQuery(undefined);
     const [deleteBooking, { isLoading: isDeleting }] = useDeleteBookingMutation();
+    const router = useRouter()
 
     console.log(bookings)
 
@@ -16,7 +18,6 @@ export default function Bookings() {
 
     //Handle Book Delete
     const handleDeleteBtn = (id: string) => {
-
         const procced = window.confirm('You want to delete?');
         if (procced) {
             deleteBooking(id).unwrap()
@@ -35,6 +36,11 @@ export default function Bookings() {
 
     if (isLoading) { return <p>Loading...</p> };
     if (!isLoading && bookings?.length === 0) { return <p className='pt-20'>No bookings Avaiable</p> };
+
+    //handleUserViewBtn
+    const handleUserViewBtn = (id: string) => {
+        router.push(`/Admin-dashboard/booking-managment/booking-details/${id}`)
+    };
 
 
 
@@ -85,12 +91,11 @@ export default function Bookings() {
                 Cell: ({ row }: { row: any }) => {
                     const { _id } = row.original;
                     return (<div className='flex items-center justify-center gap-2 '>
-                        <button >
+                        <button onClick={() => handleUserViewBtn(_id)}>
                             <div className='w-8 h-8 rounded-md bg-green-700 text-white  grid items-center justify-center'>
                                 <BsEyeFill className='text-lg   ' />
                             </div>
                         </button>
-
 
                         <button onClick={() => handleDeleteBtn(_id)} disabled={isDeleting}>
                             <div className='w-8 h-8 rounded-md bg-[#FF0000] text-white grid items-center justify-center'>

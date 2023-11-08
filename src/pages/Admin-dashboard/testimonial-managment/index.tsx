@@ -1,9 +1,7 @@
 import Table from '@/components/UI/PAges/Table';
 import AdminLayout from '@/components/layouts/Admin/AdminLayout';
 import { useDeleteReviewMutation, useGetReviewQuery } from '@/redux/api/api';
-
 import { useRouter } from 'next/router';
-import React from 'react'
 import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
 import { toast } from 'react-toastify';

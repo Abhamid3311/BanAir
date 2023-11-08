@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import flightsReducer from './features/flights/flightsSlice'
+import flightsReducer from './features/packages/packagesSlice'
 import { api } from './api/api';
 import userReducer from './features/users/userSlice';
 

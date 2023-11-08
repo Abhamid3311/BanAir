@@ -1,10 +1,10 @@
 import Table from '@/components/UI/PAges/Table';
 import AdminLayout from '@/components/layouts/Admin/AdminLayout';
-import { useDeleteDealsMutation, useGetFlightsQuery } from '@/redux/api/api';
-import { Button, Modal } from 'flowbite-react';
-import React, { useState } from 'react'
+import { useDeleteFlightsMutation, useGetFlightsQuery } from '@/redux/features/packages/packagesApi';
+import React from 'react'
 import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
+import { RiEditBoxFill } from 'react-icons/ri';
 import { toast } from 'react-toastify';
 
 
@@ -14,32 +14,30 @@ import { toast } from 'react-toastify';
 
 export default function DealsManagment() {
     const { data: deals, isLoading } = useGetFlightsQuery(undefined);
-    const [deleteDeals, { isLoading: isDeleting }] = useDeleteDealsMutation();
+    const [deleteDeals, { isLoading: isDeleting }] = useDeleteFlightsMutation();
 
 
 
     //Handle Book Delete
-    const handleDeleteBtn = (id: string) => {
-        deleteDeals(id).unwrap()
-            .then((response) => {
-                console.log(response);
-                toast.success("Deleted Successfully!");
-            })
-            .catch((error) => {
-                console.error(error);
-                toast.error("Delete Failed!")
-            });
+    const handleDeleteBtn = (_id: string) => {
+        const procced = window.confirm('You want to delete?');
+        if (procced) {
+            deleteDeals(_id).unwrap()
+                .then((response) => {
+                    console.log(response);
+                    toast.success("Deleted Successfully!");
+                })
+                .catch((error) => {
+                    console.error(error);
+                    toast.error("Delete Failed!")
+                });
+        }
+
     };
 
 
-    /*   const handleEditBtn = id => {
-          navigate(`/dashboard/edit-collection/${id}`);
-      }; */
-
     if (isLoading) { return <p>Loading...</p> };
-    if (!isLoading && deals?.length === 0) { return <p className='pt-20'>No Deals Avaiable</p> };
-
-
+    if (!isLoading && deals?.length === 0) { return <p className='pt-20'>No Packages Avaiable</p> };
 
 
     const DEALS_COLUMNS = () => {
@@ -88,18 +86,18 @@ export default function DealsManagment() {
                 Cell: ({ row }: { row: any }) => {
                     const { _id } = row.original;
                     return (<div className='flex items-center justify-center gap-2 '>
-                        {/* <button >
+                        <button >
                             <div className='w-8 h-8 rounded-md bg-green-700 text-white  grid items-center justify-center'>
                                 <BsEyeFill className='text-lg   ' />
                             </div>
-                        </button> */}
+                        </button>
 
 
-                        {/*  <button >
+                        <button >
                             <div className='w-8 h-8 rounded-md bg-[#0068A3] text-white grid items-center justify-center'>
                                 <RiEditBoxFill className='text-lg  ' />
                             </div>
-                        </button> */}
+                        </button>
 
                         <button onClick={() => handleDeleteBtn(_id)} disabled={isDeleting}>
                             <div className='w-8 h-8 rounded-md bg-[#FF0000] text-white grid items-center justify-center'>

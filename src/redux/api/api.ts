@@ -5,22 +5,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
-    tagTypes: ["users", "deals", "booking"],
+    tagTypes: ["users", "deals", "booking", "reviews"],
 
     endpoints: (builder) => ({
-        getFlights: builder.query({
-            query: () => `/deal`,
-            providesTags: ["deals"]
-        }),
-
-        deleteDeals: builder.mutation({
-            query: (id) => ({
-                url: `/deal/${id}`,
-                method: 'DELETE',
-            }),
-            invalidatesTags: ["deals"]
-        }),
-
         getBooking: builder.query({
             query: () => `/bookings`,
             providesTags: ["booking"]
@@ -35,9 +22,28 @@ export const api = createApi({
         }),
 
 
+        //! Reviews
+        getReview: builder.query({
+            query: () => "/testimonial",
+            providesTags: ["reviews"]
+        }),
+
+        getSingleReview: builder.query({
+            query: (id) => `/testimonial/${id}`,
+        }),
+
+        deleteReview: builder.mutation({
+            query: (id) => ({
+                url: `/testimonial/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ["reviews"]
+        }),
+
+
 
     }),
-})
+});
 
 
-export const { useGetFlightsQuery, useDeleteDealsMutation, useGetBookingQuery, useDeleteBookingMutation } = api;
+export const { useGetBookingQuery, useDeleteBookingMutation, useGetReviewQuery, useGetSingleReviewQuery, useDeleteReviewMutation } = api;

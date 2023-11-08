@@ -3,6 +3,7 @@ import AdminLayout from '@/components/layouts/Admin/AdminLayout';
 import { useDeleteBookingMutation, useGetBookingQuery } from '@/redux/api/api';
 import React from 'react'
 import { AiFillDelete } from 'react-icons/ai';
+import { BsEyeFill } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 
 export default function Bookings() {
@@ -79,18 +80,12 @@ export default function Bookings() {
                 Cell: ({ row }: { row: any }) => {
                     const { _id } = row.original;
                     return (<div className='flex items-center justify-center gap-2 '>
-                        {/* <button >
+                        <button >
                             <div className='w-8 h-8 rounded-md bg-green-700 text-white  grid items-center justify-center'>
                                 <BsEyeFill className='text-lg   ' />
                             </div>
-                        </button> */}
+                        </button>
 
-
-                        {/*  <button >
-                            <div className='w-8 h-8 rounded-md bg-[#0068A3] text-white grid items-center justify-center'>
-                                <RiEditBoxFill className='text-lg  ' />
-                            </div>
-                        </button> */}
 
                         <button onClick={() => handleDeleteBtn(_id)} disabled={isDeleting}>
                             <div className='w-8 h-8 rounded-md bg-[#FF0000] text-white grid items-center justify-center'>

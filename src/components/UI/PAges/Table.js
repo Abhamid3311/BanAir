@@ -82,7 +82,7 @@ function Table({ columns, data, headline }) {
                         {headerGroups.map((headerGroup, ind) => (
                             <tr {...headerGroup.getHeaderGroupProps()} key={ind} >
                                 {headerGroup.headers.map((column, i) => (
-                                    <th key={i} {...column.getHeaderProps(column.getSortByToggleProps())} className="bg-cardBg text-greenText  text-center   p-3 ">{column.render('Header')}
+                                    <th key={i} {...column.getHeaderProps(column.getSortByToggleProps())} className="bg-gray-800 text-white  text-center   p-3 ">{column.render('Header')}
                                         <span>
                                             {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
                                         </span>
@@ -99,12 +99,12 @@ function Table({ columns, data, headline }) {
                             return (
                                 (i % 2 == 1) ? <tr {...row.getRowProps()} key={i} className="m-2 p-2 text-center ">
                                     {row.cells.map((cell, i) => {
-                                        return <td key={i} {...cell.getCellProps()} className="m-2 p-2 text-center bg-cardBg text-primary ">{cell.render('Cell')}</td>
+                                        return <td key={i} {...cell.getCellProps()} className="m-2 p-2 text-center bg-gray-800 text-white  ">{cell.render('Cell')}</td>
                                     })}
                                 </tr> :
                                     <tr {...row.getRowProps()} key={i} className="m-2 p-2 text-center">
                                         {row.cells.map((cell, i) => {
-                                            return <td key={i} {...cell.getCellProps()} className="m-2 p-2 text-center bg-gray-800 text-white ">{cell.render('Cell')}</td>
+                                            return <td key={i} {...cell.getCellProps()} className="m-2 p-2 text-center  bg-white text-primary">{cell.render('Cell')}</td>
                                         })}
                                     </tr>
                             )

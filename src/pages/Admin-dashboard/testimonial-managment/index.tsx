@@ -1,23 +1,26 @@
 import Table from '@/components/UI/PAges/Table';
 import AdminLayout from '@/components/layouts/Admin/AdminLayout';
-import { useDeleteUserMutation, useGetUsersQuery } from '@/redux/features/users/userApi';
+import { useDeleteReviewMutation, useGetReviewQuery } from '@/redux/api/api';
+
 import { useRouter } from 'next/router';
 import React from 'react'
 import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 
-export default function UserManagment() {
-    const { data: users, isLoading } = useGetUsersQuery(undefined);
-    const [deleteUsers, { isLoading: isDeleting }] = useDeleteUserMutation();
+
+
+export default function Testimonials() {
+    const { data: reviews, isLoading } = useGetReviewQuery(undefined);
+    const [deleteReview, { isLoading: isDeleting }] = useDeleteReviewMutation();
     const router = useRouter()
-    // console.log(users);
+    console.log(reviews);
 
 
     const handleDeleteBtn = (_id: number) => {
         const procced = window.confirm('You want to delete?');
         if (procced) {
-            deleteUsers(_id).unwrap()
+            deleteReview(_id).unwrap()
                 .then((response) => {
                     console.log(response);
                     toast.success("Deleted Successfully!");
@@ -32,22 +35,17 @@ export default function UserManagment() {
 
     //handleUserViewBtn
     const handleUserViewBtn = (id: string) => {
-        // console.log(id)
-        router.push(`/Admin-dashboard/user-details/${id}`)
+        router.push(`/Admin-dashboard/testimonial-managment/testimonial-details/${id}`)
     };
 
-    //Edit Collection
 
-    /*  const handleEditBtn = id => {
-         navigate(`/dashboard/edit-collection/${id}`);
-     }; */
 
     if (isLoading) { return <p>Loading...</p> };
-    if (!isLoading && users?.length === 0) { return <p className='pt-20'>No user Avaiable</p> };
+    if (!isLoading && reviews?.length === 0) { return <p className='pt-20'>No Reviews Avaiable</p> };
 
 
 
-    const COLLECTIONS_COLUMNS = () => {
+    const REVIEWS_COLUMNS = () => {
         return [
             {
                 Header: "SL",
@@ -67,27 +65,12 @@ export default function UserManagment() {
 
             },
             {
-                Header: "Number",
-                accessor: "phoneNumber",
+                Header: "Ratings",
+                accessor: "ratings",
                 sortType: 'basic',
 
             },
-            {
-                Header: "Role",
-                accessor: "role",
-                sortType: 'basic',
-                Cell: ({ row }: { row: any }) => {
-                    const { role } = row.original;
-                    // console.log(avaiability)
-                    return (<div>
-                        {role === "admin" ?
-                            <p className='text-green-700 font-semibold'>Admin</p> :
-                            <p className='text-red-700 font-semibold'>User</p>}
 
-                    </div>);
-                },
-
-            },
             {
                 Header: 'Action',
                 accessor: 'action',
@@ -99,13 +82,6 @@ export default function UserManagment() {
                                 <BsEyeFill className='text-lg   ' />
                             </div>
                         </button>
-
-
-                        {/*  <button >
-                            <div className='w-8 h-8 rounded-md bg-[#0068A3] text-white grid items-center justify-center'>
-                                <RiEditBoxFill className='text-lg  ' />
-                            </div>
-                        </button> */}
 
                         <button onClick={() => handleDeleteBtn(_id)} disabled={isDeleting}>
                             <div className='w-8 h-8 rounded-md bg-[#FF0000] text-white grid items-center justify-center'>
@@ -123,8 +99,8 @@ export default function UserManagment() {
 
     return (
         <div className='bg-lightBg text-textClr   min-h-screen w-full'>
-            {users?.length && (
-                <Table columns={COLLECTIONS_COLUMNS()} data={users} headline={"ALL USERS"} />
+            {reviews?.length && (
+                <Table columns={REVIEWS_COLUMNS()} data={reviews} headline={"ALL REVIEWS"} />
             )}
         </div>
 
@@ -132,6 +108,6 @@ export default function UserManagment() {
 }
 
 
-UserManagment.getLayout = function getLayout(page: React.ReactNode) {
+Testimonials.getLayout = function getLayout(page: React.ReactNode) {
     return <AdminLayout>{page}</AdminLayout>;
 };

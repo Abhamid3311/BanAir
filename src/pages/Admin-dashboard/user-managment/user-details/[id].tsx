@@ -13,9 +13,9 @@ export default function UserDetails() {
         <div className="bg-white p-4 ">
             <h1 className='font-bold text-lg'>User Details</h1>
             <div>
-                <h1>Name:{data?.name}</h1>
-                <h1>Email:{data?.email}</h1>
-                <h1>Phone Number{data?.phoneNumber}</h1>
+                <h1>Name: {data?.name}</h1>
+                <h1>Email: {data?.email}</h1>
+                <h1>Phone Number: {data?.phoneNumber}</h1>
             </div>
 
         </div>

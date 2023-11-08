@@ -19,13 +19,14 @@ const userApi = api.injectEndpoints({
         getSingleUsers: builder.query({
             query: (email) => `/user/${email}`,
         }),
+
         getSingleUsersById: builder.query({
-            query: (id) => `/user/${id}`,
+            query: (id) => `/users/${id}`,
         }),
 
         deleteUser: builder.mutation({
             query: (id) => ({
-                url: `/user/${id}`,
+                url: `/users/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ["users"]

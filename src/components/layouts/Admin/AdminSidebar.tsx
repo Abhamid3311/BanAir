@@ -27,7 +27,7 @@ export default function AdminSidebar() {
     }
 
     return (
-        <div>
+        <div className='w-14 lg:w-60'>
             <Sidebar aria-label="Sidebar with logo branding example">
 
                 <Sidebar.Items>

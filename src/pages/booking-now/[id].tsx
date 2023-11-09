@@ -134,7 +134,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                 <div className="flex flex-col lg:flex-row items-center gap-3 w-full">
 
                     <div className="w-full lg:w-1/5 " id="select">
-                        <div className="mb-2 block"><Label htmlFor="Title" value="Title" /> </div>
+                        <div className="mb-1 block"><Label htmlFor="Title" value="Title" /> </div>
                         <Select id="Title" {...register("title")}>
                             <option selected disabled>Choose Title </option>
                             <option value={"Mr."}>Mr. </option>
@@ -147,7 +147,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
 
 
                     <div className="w-full lg:w-2/5 ">
-                        <div className="mb-2 block"><Label htmlFor="name" value="First Name*" /> </div>
+                        <div className="mb-1 block"><Label htmlFor="name" value="First Name*" /> </div>
                         <TextInput
                             id="name"
                             placeholder="Enter First Name"
@@ -158,7 +158,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                     </div>
 
                     <div className="w-full lg:w-2/5 ">
-                        <div className="mb-2 block"><Label htmlFor="LastName" value="Last Name*" /> </div>
+                        <div className="mb-1 block"><Label htmlFor="LastName" value="Last Name*" /> </div>
                         <TextInput
                             id="LastName"
                             placeholder="Enter Last Name"
@@ -173,7 +173,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
 
                 <div className="flex flex-col lg:flex-row items-center gap-3 w-full my-3">
                     <div className="w-full  " id="select">
-                        <div className="mb-2 block"><Label htmlFor="Gender" value="Gender*" /> </div>
+                        <div className="mb-1 block"><Label htmlFor="Gender" value="Gender*" /> </div>
                         <Select id="Gender"  {...register("Gender", { required: true })}>
                             <option selected disabled>Choose Gender </option>
                             <option value={"Male"} >Male </option>
@@ -183,7 +183,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
 
 
                     <div className="w-full  ">
-                        <div className="mb-2 block"><Label htmlFor="Nationality" value="Nationality*" /> </div>
+                        <div className="mb-1 block"><Label htmlFor="Nationality" value="Nationality*" /> </div>
                         <TextInput
                             id="Nationality"
                             placeholder="Enter Country Name"
@@ -199,7 +199,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
 
                 <div className="flex flex-col lg:flex-row items-center gap-3 w-full my-3">
                     <div className="w-full  ">
-                        <div className="mb-2 block"><Label htmlFor="name" value="Post Code" /> </div>
+                        <div className="mb-1 block"><Label htmlFor="name" value="Post Code" /> </div>
                         <TextInput
                             id="name"
                             placeholder="Enter Post Code"
@@ -211,7 +211,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
 
 
                     <div className="w-full  ">
-                        <div className="mb-2 block"><Label htmlFor="birthDate" value="Date Of Birth*" /> </div>
+                        <div className="mb-1 block"><Label htmlFor="birthDate" value="Date Of Birth*" /> </div>
                         <TextInput
                             id="birthDate"
                             required
@@ -224,7 +224,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
 
                 <div className="flex flex-col lg:flex-row items-center gap-3 w-full my-3">
                     <div className="w-full ">
-                        <div className="mb-2 block"><Label htmlFor="Nationality" value="Email*" /> </div>
+                        <div className="mb-1 block"><Label htmlFor="Nationality" value="Email*" /> </div>
                         <TextInput
                             id="Nationality"
                             placeholder="Enter Email"
@@ -235,7 +235,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                     </div>
 
                     <div className="w-full  ">
-                        <div className="mb-2 block"><Label htmlFor="Phone" value="Phone Number*" /> </div>
+                        <div className="mb-1 block"><Label htmlFor="Phone" value="Phone Number*" /> </div>
                         <TextInput
                             id="Phone"
                             placeholder="Enter Phone Number"
@@ -247,7 +247,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                 </div>
 
                 <div className="w-full  my-3" id="select">
-                    <div className="mb-2 block"><Label htmlFor="Person" value="Select Person*" /> </div>
+                    <div className="mb-1 block"><Label htmlFor="Person" value="Select Person*" /> </div>
                     <Select
                         id="Person" {...register("total_person", { required: true })}
                         onChange={(e) => setTotalPerson(parseInt(e.target.value, 10))} required
@@ -263,7 +263,7 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                 </div>
 
                 <div className="w-full ">
-                    <div className="mb-2 block"><Label htmlFor="Address" value="Address*" /> </div>
+                    <div className="mb-1 block"><Label htmlFor="Address" value="Address*" /> </div>
                     <TextInput
                         id="Address"
                         placeholder="Enter Address"
@@ -275,10 +275,10 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
 
 
 
-                <div className="w-full" id="select">
-                    <div className="mb-2 block"><Label htmlFor="Meal" value="Select Meal Type" /> </div>
+                <div className="w-full my-3" id="select">
+                    <div className="mb-1 block"><Label htmlFor="Meal" value="Select Meal Type" /> </div>
                     <Select id="Meal" {...register("MealType")} >
-                        <option selected disabled value={"No Issue"}>Choose Meal type (Optional) </option>
+                        <option selected disabled value={"--"}>Choose Meal type (Optional) </option>
                         <option >Vegitarian </option>
                         <option >Non Vegitarian  </option>
                         <option >Suger free </option>
@@ -286,9 +286,9 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                 </div>
 
                 <div className="w-full  my-3" id="select">
-                    <div className="mb-2 block"><Label htmlFor="Wheel" value="Select Wheel Chair" /> </div>
+                    <div className="mb-1 block"><Label htmlFor="Wheel" value="Select Wheel Chair" /> </div>
                     <Select id="Wheel" {...register("wheelChair")}>
-                        <option selected disabled value={"No"}>Request Wheel Chair (Optional) </option>
+                        <option selected disabled value={"--"}>Request Wheel Chair (Optional) </option>
                         <option >yes </option>
                         <option >No </option>
                     </Select>

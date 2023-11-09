@@ -10,6 +10,7 @@ import { useAppDispatch } from '@/redux/hooks';
 import { setUser } from '@/redux/features/users/userSlice';
 import { BiLogOutCircle, BiSolidCommentDetail, BiSolidPackage } from 'react-icons/bi';
 import { RxBorderWidth } from 'react-icons/rx';
+import { LuPackagePlus } from 'react-icons/lu';
 
 export default function AdminSidebar() {
     const { data: session } = useSession();
@@ -32,13 +33,24 @@ export default function AdminSidebar() {
                 <Sidebar.Items>
                     <Sidebar.ItemGroup>
                         <Sidebar.Item icon={HiChartPie} ><Link href="/Admin-dashboard"> Overview</Link> </Sidebar.Item>
-
                         <Sidebar.Item icon={HiUser} ><Link href="/Admin-dashboard/user-managment">Users</Link></Sidebar.Item>
-                        <Sidebar.Item icon={BiSolidPackage} ><Link href="/Admin-dashboard/package-managment">Packages</Link> </Sidebar.Item>
-                        <Sidebar.Item icon={RxBorderWidth} ><Link href="/Admin-dashboard/booking-managment">Booking</Link></Sidebar.Item>
-                        <Sidebar.Item icon={BiSolidCommentDetail} ><Link href="/Admin-dashboard/testimonial-managment">Reviews</Link></Sidebar.Item>
 
+                        <Sidebar.Item icon={BiSolidPackage} >
+                            <Link href="/Admin-dashboard/package-managment">Packages</Link>
+                        </Sidebar.Item>
 
+                        <Sidebar.Item icon={LuPackagePlus} >
+                            <Link href="/Admin-dashboard/package-managment/add-package">Add Packages</Link>
+                        </Sidebar.Item>
+
+                        <Sidebar.Item icon={RxBorderWidth} >
+                            <Link href="/Admin-dashboard/booking-managment">Booking</Link>
+                        </Sidebar.Item>
+
+                        <Sidebar.Item icon={BiSolidCommentDetail} >
+                            <Link href="/Admin-dashboard/testimonial-managment">Reviews</Link>
+                        </Sidebar.Item>
+                        
                     </Sidebar.ItemGroup>
 
                     <Sidebar.ItemGroup>

@@ -21,6 +21,7 @@ export default function Header() {
     const { user } = useAppSelector(state => state?.user);
     const { data, isLoading } = useGetSingleUsersQuery(user?.email);
 
+
     // console.log(currentPath)
 
 
@@ -71,6 +72,7 @@ export default function Header() {
     };
 
 
+
     return (
         <Navbar className=' text-white' style={navbarStyle as CSSProperties} >
             <Navbar.Brand href="/">
@@ -92,7 +94,14 @@ export default function Header() {
                             <Dropdown.Header>
                                 <span className="block text-sm">{user?.email || "User"}</span>
                             </Dropdown.Header>
-                            <Dropdown.Item> <Link href={"/dashboard"}>Dashboard</Link></Dropdown.Item>
+                            {
+                                data?.role === 'admin' ?
+                                    <Dropdown.Item> <Link href={"/Admin-dashboard"}>Admin Dashboard</Link></Dropdown.Item> :
+                                    <Dropdown.Item> <Link href={"/dashboard"}>Dashboard</Link></Dropdown.Item>
+                            }
+
+
+
                             <Dropdown.Divider />
                             <Dropdown.Item onClick={() => handleLogout()}>Sign out</Dropdown.Item>
                         </Dropdown>

@@ -9,9 +9,9 @@ export default function AddPackage() {
     const { register, handleSubmit, reset } = useForm();
     const [postPackage, { isLoading, isError }] = useAddPackageMutation();
 
-    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        // console.log(data)
 
+    //Handle ADD Package Form
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         postPackage(data).unwrap()
             .then((response) => {
                 console.log('Package added successfully', response);
@@ -111,7 +111,7 @@ export default function AddPackage() {
                             <Select id="Status"  {...register("status", { required: true })}>
                                 <option selected disabled>Choose Status </option>
                                 <option value={"Available"} >Available</option>
-                                <option value={"Not-Available"} >Not Available</option>
+                                <option value={"Not Available"} >Not Available</option>
                             </Select>
                         </div>
                     </div>

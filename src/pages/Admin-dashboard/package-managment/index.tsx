@@ -6,6 +6,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
 import { RiEditBoxFill } from 'react-icons/ri';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 
 
@@ -15,6 +16,7 @@ import { toast } from 'react-toastify';
 export default function DealsManagment() {
     const { data: deals, isLoading } = useGetFlightsQuery(undefined);
     const [deleteDeals, { isLoading: isDeleting }] = useDeleteFlightsMutation();
+    const router = useRouter()
 
 
 
@@ -33,6 +35,16 @@ export default function DealsManagment() {
                 });
         }
 
+    };
+
+    //handle View Btn
+    const handleUserViewBtn = (id: string) => {
+        router.push(`/Admin-dashboard/package-managment/package-details/${id}`)
+    };
+
+    //handle edit Btn
+    const handleUserEditBtn = (id: string) => {
+        router.push(`/Admin-dashboard/package-managment/edit-package/${id}`)
     };
 
 
@@ -86,14 +98,14 @@ export default function DealsManagment() {
                 Cell: ({ row }: { row: any }) => {
                     const { _id } = row.original;
                     return (<div className='flex items-center justify-center gap-2 '>
-                        <button >
+                        <button onClick={() => handleUserViewBtn(_id)}>
                             <div className='w-8 h-8 rounded-md bg-green-700 text-white  grid items-center justify-center'>
                                 <BsEyeFill className='text-lg   ' />
                             </div>
                         </button>
 
 
-                        <button >
+                        <button onClick={() => handleUserEditBtn(_id)}>
                             <div className='w-8 h-8 rounded-md bg-[#0068A3] text-white grid items-center justify-center'>
                                 <RiEditBoxFill className='text-lg  ' />
                             </div>
@@ -116,13 +128,11 @@ export default function DealsManagment() {
 
     return (
         <>
-
             <div className='bg-lightBg text-textClr   min-h-screen w-full'>
                 {deals?.length && (
                     <Table columns={DEALS_COLUMNS()} data={deals} headline={"ALL DEALS"} />
                 )}
             </div>
-
         </>
 
     )

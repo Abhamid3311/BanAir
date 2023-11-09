@@ -10,6 +10,15 @@ const packageApi = api.injectEndpoints({
             query: (id) => `/deal/${id}`,
         }),
 
+        addPackage: builder.mutation({
+            query: (data) => ({
+                url: "/deal",
+                method: 'POST',
+                body: data,
+            }),
+            invalidatesTags: ["deals"]
+        }),
+
         deleteFlights: builder.mutation({
             query: (id) => ({
                 url: `/deal/${id}`,
@@ -21,4 +30,4 @@ const packageApi = api.injectEndpoints({
 });
 
 
-export const { useGetFlightsQuery, useDeleteFlightsMutation,useGetSinglePackagesQuery } = packageApi;
+export const { useGetFlightsQuery, useDeleteFlightsMutation, useGetSinglePackagesQuery, useAddPackageMutation } = packageApi;

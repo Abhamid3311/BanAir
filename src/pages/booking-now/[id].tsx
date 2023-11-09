@@ -9,9 +9,9 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useSession } from "next-auth/react"
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "@/components/utils/firebase";
-import axios from "axios";
 import { toast } from 'react-toastify';
 import { GetServerSidePropsContext } from 'next';
+import { useAddBookingMutation } from "@/redux/api/api";
 
 export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlightDeal }) {
     const [totalCost, setTotalCost] = useState<number>(0);
@@ -96,31 +96,28 @@ export default function PurchasePage({ purchaseDeals }: { purchaseDeals: IFlight
 const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, purchaseDeals }) => {
     const { data: session } = useSession();
     const [user] = useAuthState(auth);
-
     const { register, handleSubmit, reset } = useForm();
+    const [postBooking, { isLoading, isError }] = useAddBookingMutation();
 
+
+    //Post Package Booking
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         data.totalCost = totalCost;
         data.deals = purchaseDeals;
         data.userEmail = session?.user?.email || user?.email;
         data.createdAt = new Date();
-        data.status = 1
+        data.status = 1;
 
-        // console.log(data)
-
-        const url = `${baseUrl}/bookings`;
-        axios.post(url, data)
-            .then(function (response) {
-                console.log(response);
+        postBooking(data).unwrap()
+            .then((response) => {
+                console.log('Booking added successfully', response);
                 toast.success("Your Package Booking Successfully. We will notify Soon!");
                 reset();
             })
-            .catch(function (error) {
-                console.log(error);
-                toast.error("Your Package Booking Failed!")
+            .catch((error) => {
+                console.error('Error Booking', error);
+                toast.error("Booking Failed!")
             });
-
-
     };
 
 
@@ -295,7 +292,9 @@ const BookingInfo: React.FC<BookingInfoProps> = ({ setTotalPerson, totalCost, pu
                 </div>
 
                 <div className="flex items-center justify-center ">
-                    <Button type="submit" color="warning" className="px-5 py-0.5">Submit</Button>
+                    <Button disabled={isLoading} type="submit" color="warning" className="px-5 py-0.5">
+                        {isLoading ? "Submitting..." : "Submit"}
+                    </Button>
                 </div>
 
 

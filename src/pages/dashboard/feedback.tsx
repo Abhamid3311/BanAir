@@ -1,6 +1,6 @@
 import UserDashboardLayout from '@/components/layouts/user/UserDashboardLayout';
 import { baseUrl } from '@/components/utils/url';
-import axios from 'axios';
+import { useAddReviewMutation } from '@/redux/api/api';
 import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
 import React from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
@@ -8,17 +8,20 @@ import { toast } from 'react-toastify';
 
 export default function Feedback() {
     const { register, handleSubmit, reset } = useForm();
+    const [postReview, { isLoading, isError }] = useAddReviewMutation();
 
+
+    //Handle Add feedback form
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const url = `${baseUrl}/testimonial`;
-        axios.post(url, data)
-            .then(function (response) {
-                console.log(response);
+        postReview(data).unwrap()
+            .then((response) => {
+                console.log('feedback successfully', response);
                 toast.success("Thank You For Your feedback");
                 reset();
             })
-            .catch(function (error) {
-                console.log(error);
+            .catch((error) => {
+                console.error('Error adding feedback', error);
+                toast.error("feedback Failed!")
             });
     };
 
@@ -103,7 +106,9 @@ export default function Feedback() {
                     </div>
 
                     <div className='flex items-center justify-center gap-3'>
-                        <Button color='warning' type='submit' className='px-4 py-0.5'>Submit</Button>
+                        <Button disabled={isLoading} color='warning' type='submit' className='px-4 py-0.5'>
+                            {isLoading ? "Submitting..." : "Submit"}
+                        </Button>
                         <Button color='failure' className='px-4 py-0.5' onClick={() => reset()}>Reset</Button>
                     </div>
 

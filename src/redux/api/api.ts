@@ -8,6 +8,8 @@ export const api = createApi({
     tagTypes: ["users", "deals", "booking", "reviews"],
 
     endpoints: (builder) => ({
+
+        //! Bookings
         getBooking: builder.query({
             query: () => `/bookings`,
             providesTags: ["booking"]
@@ -15,6 +17,15 @@ export const api = createApi({
 
         getSingleBooking: builder.query({
             query: (id) => `/bookings/${id}`,
+        }),
+
+        addBooking: builder.mutation({
+            query: (data) => ({
+                url: "/bookings",
+                method: 'POST',
+                body: data,
+            }),
+            invalidatesTags: ["booking"]
         }),
 
         deleteBooking: builder.mutation({
@@ -36,6 +47,15 @@ export const api = createApi({
             query: (id) => `/testimonial/${id}`,
         }),
 
+        addReview: builder.mutation({
+            query: (data) => ({
+                url: "/testimonial",
+                method: 'POST',
+                body: data,
+            }),
+            invalidatesTags: ["reviews"]
+        }),
+
         deleteReview: builder.mutation({
             query: (id) => ({
                 url: `/testimonial/${id}`,
@@ -50,4 +70,4 @@ export const api = createApi({
 });
 
 
-export const { useGetBookingQuery, useDeleteBookingMutation, useGetReviewQuery, useGetSingleReviewQuery, useDeleteReviewMutation, useGetSingleBookingQuery } = api;
+export const { useGetBookingQuery, useDeleteBookingMutation, useGetReviewQuery, useGetSingleReviewQuery, useDeleteReviewMutation, useGetSingleBookingQuery,useAddBookingMutation,useAddReviewMutation } = api;

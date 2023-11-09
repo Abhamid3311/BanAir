@@ -30,7 +30,7 @@ export default function AdminSidebar() {
         <div className='w-14 lg:w-60'>
             <Sidebar aria-label="Sidebar with logo branding example">
 
-                <Sidebar.Items>
+                <Sidebar.Items className='w-14 lg:w-60'>
                     <Sidebar.ItemGroup>
                         <Sidebar.Item icon={HiChartPie} ><Link href="/Admin-dashboard"> Overview</Link> </Sidebar.Item>
                         <Sidebar.Item icon={HiUser} ><Link href="/Admin-dashboard/user-managment">Users</Link></Sidebar.Item>
@@ -40,7 +40,7 @@ export default function AdminSidebar() {
                         </Sidebar.Item>
 
                         <Sidebar.Item icon={LuPackagePlus} >
-                            <Link href="/Admin-dashboard/package-managment/add-package">Add Packages</Link>
+                            <Link href="/Admin-dashboard/package-managment/add-package">Add Package</Link>
                         </Sidebar.Item>
 
                         <Sidebar.Item icon={RxBorderWidth} >

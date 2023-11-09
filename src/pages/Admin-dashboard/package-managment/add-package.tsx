@@ -1,5 +1,4 @@
 import AdminLayout from '@/components/layouts/Admin/AdminLayout';
-import { baseUrl } from '@/components/utils/url';
 import { useAddPackageMutation } from '@/redux/features/packages/packagesApi';
 import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
 import React from 'react'

@@ -22,8 +22,8 @@ export default function AdminSidebar() {
     const handleLogout = () => {
         signOut(auth).then(() => {
             dispatch(setUser(null));
-            router.push("/")
         })
+        router.push("/")
     }
 
     return (
@@ -50,7 +50,7 @@ export default function AdminSidebar() {
                         <Sidebar.Item icon={BiSolidCommentDetail} >
                             <Link href="/Admin-dashboard/testimonial-managment">Reviews</Link>
                         </Sidebar.Item>
-                        
+
                     </Sidebar.ItemGroup>
 
                     <Sidebar.ItemGroup>

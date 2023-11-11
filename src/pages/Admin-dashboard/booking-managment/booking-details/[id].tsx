@@ -1,29 +1,56 @@
 import AdminLayout from '@/components/layouts/Admin/AdminLayout';
-import { useGetSingleBookingQuery } from '@/redux/api/api';
+import { useGetSingleBookingQuery, useUpdateBookingStatusMutation } from '@/redux/api/api';
 import { Button } from 'flowbite-react';
 import moment from 'moment';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 export default function BookingDetails() {
     const router = useRouter();
     const { id } = router.query;
     const { data, isLoading } = useGetSingleBookingQuery(id);
+    const [updateStatus, { isLoading: isUpdating }] = useUpdateBookingStatusMutation();
     console.log(data);
-
-
-    /* const { _id, title, FirstName, LastName, Gender, Nationality, PostCode, birthDate, email, phone, totalCost, status, userEmail, wheelChair, deals, createdAt, total_person, MealType, address } = data; */
 
 
     if (isLoading) {
         return <p>Loading...</p>
-    }
+    };
+
+    //handle Accept Btn To change Status
+    const handleAcceptBtn = (id: number) => {
+        const newData = { ...data, status: 2 }
+        updateStatus({ newData, id }).unwrap()
+            .then((response) => {
+                console.log('Booking Accept successfully', response);
+                toast.success("Booking Accepted!");
+            })
+            .catch((error) => {
+                console.error('Error Booking Accept', error);
+                toast.error("Booking Accept Failed!")
+            });
+    };
+
+    //handle Declined Btn To change Status
+    const handleDeclinedBtn = (id: number) => {
+        const newData = { ...data, status: 3 }
+        updateStatus({ newData, id }).unwrap()
+            .then((response) => {
+                console.log('Booking Accept successfully', response);
+                toast.success("Booking Accepted!");
+            })
+            .catch((error) => {
+                console.error('Error Booking Accept', error);
+                toast.error("Booking Accept Failed!")
+            });
+    };
 
 
     return (
         <div>
             <div className="bg-white p-4 ">
-                <div className='flex flex-col items-center justify-center'>
-                    <h1 className='font-bold text-2xl text-primary mb-4 '>Booking Details</h1>
+                <div className=''>
+                    <h1 className='font-bold text-2xl text-primary mb-4 text-center'>Booking Details</h1>
 
 
                     <div className='mt-10'>
@@ -81,7 +108,8 @@ export default function BookingDetails() {
                                     {
                                         data?.status == 1 ? <p className='text-secondary'>Pending</p>
                                             : data?.status == 2 ? <p className='text-green-500'>Confirmed</p>
-                                                : <p className='text-red-500'>Canceled</p>
+                                                : data?.status == 3 ? <p className='text-red-500'>Canceled</p>
+                                                    : <p className='text-blue-500'>N/A</p>
                                     }
 
 
@@ -105,8 +133,8 @@ export default function BookingDetails() {
 
 
                         <div className='flex items-center gap-2 my-4'>
-                            <Button color='success'>Accept</Button>
-                            <Button color='failure'>Declined</Button>
+                            <Button color='success' onClick={() => handleAcceptBtn(data?._id)}>Accept</Button>
+                            <Button color='failure' onClick={() => handleDeclinedBtn(data?._id)}>Declined</Button>
                         </div>
 
                     </div>

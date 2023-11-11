@@ -77,9 +77,11 @@ export default function Bookings() {
                 Cell: ({ row }: { row: any }) => {
                     const { status } = row.original;
                     return (<div>
-                        {status === "Available" ?
-                            <p className='text-green-700 font-semibold'>Pending</p> :
-                            <p className='text-red-700 font-semibold'>Done</p>}
+                        {status === 1 ? <p className='text-secondary'>Pending</p> :
+                            status === 2 ? <p className='text-green-500'>Confirmed</p> :
+                                status === 3 ? <p className='text-red-500'>Canceled</p> :
+                                    <p className='text-blue-500'>N/A</p>
+                        }
 
                     </div>);
                 },

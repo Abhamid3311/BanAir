@@ -1,8 +1,7 @@
 import AdminLayout from '@/components/layouts/Admin/AdminLayout';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
-import { useGetSinglePackagesQuery } from '@/redux/features/packages/packagesApi';
-import { useAddPackageMutation } from '@/redux/features/packages/packagesApi';
+import { useGetSinglePackagesQuery, useUpdatePackageMutation } from '@/redux/features/packages/packagesApi';
 import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
 
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
@@ -12,26 +11,71 @@ export default function EditPackage() {
     const router = useRouter();
     const { id } = router.query;
     const { data } = useGetSinglePackagesQuery(id);
-    console.log(data);
+    const [updatePackage, { isLoading }] = useUpdatePackageMutation();
+    const [startDateType, setStartDateType] = useState('text');
+    const [endDateType, setEndDateType] = useState('text');
 
-    const { register, handleSubmit, reset } = useForm();
-    const [postPackage, { isLoading, isError }] = useAddPackageMutation();
+
+
+    // console.log(data);
+
+    const { register, handleSubmit, reset, setValue } = useForm({
+        defaultValues: {
+            from: data?.from || '',
+            to: data?.to || '',
+            startDate: data?.startDate || '',
+            endDate: data?.endDate || '',
+            type: data?.type || '',
+            ratings: data?.ratings || '',
+            status: data?.status || '',
+            price: data?.price || '',
+            img: data?.img || '',
+            desc: data?.desc || '',
+        },
+    });
+
+    useEffect(() => {
+        if (data) {
+            setValue('from', data.from || '');
+            setValue('to', data.to || '');
+            setValue('startDate', data.startDate || '');
+            setValue('endDate', data.endDate || '');
+            setValue('type', data.type || "");
+            setValue('ratings', data.ratings || '');
+            setValue('status', data.status || '');
+            setValue('price', data.price || '');
+            setValue('img', data.img || '');
+            setValue('desc', data.desc || '');
+        }
+    }, [data, setValue]);
 
 
     //Handle Update Package Form
-    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        // console.log(data)
+    const onSubmit: SubmitHandler<FieldValues> = async (formData) => {
+        try {
+            const updatedData = {
+                from: formData.from,
+                to: formData.to,
+                startDate: formData.startDate,
+                endDate: formData.endDate,
+                type: formData.type,
+                ratings: formData.ratings,
+                status: formData.status, // Make sure 'status' is included
+                price: formData.price,
+                img: formData.img,
+                desc: formData.desc,
+            };
 
-        postPackage(data).unwrap()
-            .then((response) => {
-                console.log('Package added successfully', response);
-                toast.success("Package Added Successfully!");
-                reset();
-            })
-            .catch((error) => {
-                console.error('Error adding Package', error);
-                toast.error("Package Added Failed!")
-            });
+            console.log(updatedData)
+
+            const response = await updatePackage({ data: updatedData, id }).unwrap();
+            console.log('Package Updated successfully', response);
+            toast.success("Package Updated Successfully!");
+            reset();
+        } catch (error) {
+            console.error('Error Updated Package', error);
+            toast.error("Package Updated Failed!");
+        }
     };
 
 
@@ -49,7 +93,6 @@ export default function EditPackage() {
                                 id="From"
                                 placeholder="Departure City Name"
                                 required
-                                defaultValue={data?.from}
                                 type="text"
                                 {...register("from", { required: true })}
                             />
@@ -61,7 +104,6 @@ export default function EditPackage() {
                                 id="From"
                                 placeholder="Arrival City Name"
                                 required
-                                defaultValue={data?.to}
                                 type="text"
                                 {...register("to", { required: true })}
                             />
@@ -74,9 +116,8 @@ export default function EditPackage() {
                             <TextInput
                                 id="From"
                                 placeholder="Departure Date"
-                                required
-                                defaultValue={data?.startDate}
-                                type="date"
+                                type={startDateType === 'date' ? 'date' : 'text'}
+                                onClick={() => setStartDateType('date')}
                                 {...register("startDate", { required: true })}
                             />
                         </div>
@@ -86,9 +127,8 @@ export default function EditPackage() {
                             <TextInput
                                 id="endDate"
                                 placeholder="Arrival Date"
-                                required
-                                defaultValue={data?.endDate}
-                                type="date"
+                                type={endDateType === 'date' ? 'date' : 'text'}
+                                onFocus={() => setEndDateType('date')}
                                 {...register("endDate", { required: true })}
                             />
                         </div>
@@ -98,7 +138,7 @@ export default function EditPackage() {
 
                         <div className="w-full  " id="select">
                             <div className="mb-1 block"><Label htmlFor="Type" value="Type*" /> </div>
-                            <Select id="Type" defaultValue={data?.type}  {...register("type", { required: true })}>
+                            <Select id="Type"   {...register("type", { required: true })}>
                                 <option selected disabled>Choose Flight Types</option>
                                 <option value="Economy Class">Economy Class</option>
                                 <option value="Premium Economy">Premium Economy</option>
@@ -109,7 +149,7 @@ export default function EditPackage() {
 
                         <div className="w-full  " id="select">
                             <div className="mb-1 block"><Label htmlFor="Ratings" value="Ratings*" /> </div>
-                            <Select id="Ratings" defaultValue={data?.ratings}   {...register("ratings", { required: true })}>
+                            <Select id="Ratings"    {...register("ratings", { required: true })}>
                                 <option selected disabled>Select Ratings</option>
                                 <option >1 </option>
                                 <option>2</option>
@@ -121,7 +161,7 @@ export default function EditPackage() {
 
                         <div className="w-full  " id="select">
                             <div className="mb-1 block"><Label htmlFor="Status" value="Status*" /> </div>
-                            <Select id="Status" defaultValue={data?.status}   {...register("status", { required: true })}>
+                            <Select id="Status"  {...register("status", { required: true })}>
                                 <option selected disabled>Choose Status </option>
                                 <option value={"Available"} >Available</option>
                                 <option value={"Not Available"} >Not Available</option>
@@ -136,7 +176,6 @@ export default function EditPackage() {
                                 id="price"
                                 placeholder="Price/person"
                                 required
-                                defaultValue={data?.price}
                                 type="number"
                                 {...register("price", { required: true })}
                             />
@@ -148,7 +187,6 @@ export default function EditPackage() {
                                 id="img"
                                 placeholder="Add Image Link"
                                 required
-                                defaultValue={data?.img}
                                 type="text"
                                 {...register("img", { required: true })}
                             />
@@ -159,7 +197,7 @@ export default function EditPackage() {
                         <div className="mb-2 block">
                             <Label htmlFor="comment" value="Descriptions*" />
                         </div>
-                        <Textarea defaultValue={data?.desc}  {...register("desc", { required: true })} id="comment" placeholder="Write Descriptions..." required rows={4} />
+                        <Textarea  {...register("desc", { required: true })} id="comment" placeholder="Write Descriptions..." required rows={4} />
                     </div>
 
                     <div className='flex items-center justify-center my-3'>

@@ -8,6 +8,7 @@ const packageApi = api.injectEndpoints({
         }),
         getSinglePackages: builder.query({
             query: (id) => `/deal/${id}`,
+            providesTags: ["deals"]
         }),
 
         addPackage: builder.mutation({
@@ -26,8 +27,17 @@ const packageApi = api.injectEndpoints({
             }),
             invalidatesTags: ["deals"]
         }),
+
+        updatePackage: builder.mutation({
+            query: ({ data, id }) => ({
+                url: `/deal/${id}`,
+                method: 'PUT',
+                body: data,
+            }),
+            invalidatesTags: ["deals"]
+        }),
     })
 });
 
 
-export const { useGetFlightsQuery, useDeleteFlightsMutation, useGetSinglePackagesQuery, useAddPackageMutation } = packageApi;
+export const { useGetFlightsQuery, useDeleteFlightsMutation, useGetSinglePackagesQuery, useAddPackageMutation, useUpdatePackageMutation } = packageApi;

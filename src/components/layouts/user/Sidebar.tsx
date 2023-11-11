@@ -23,6 +23,7 @@ export default function Sidebars() {
             nextAuthSignOut();
             router.push("/")
         }
+        router.push("/")
     }
 
     return (

@@ -1,6 +1,7 @@
 import { BookingProps } from "@/components/utils/Types";
 import { Datepicker } from "flowbite-react";
 import { useState } from "react";
+import { toast } from 'react-toastify';
 
 
 const SearchFlights: React.FC<BookingProps> = ({ airports, flights }) => {
@@ -15,6 +16,7 @@ const SearchFlights: React.FC<BookingProps> = ({ airports, flights }) => {
         e.preventDefault();
         const getFilteredData = flights.filter(fli => fli.departure.iata === departureAita || fli.arrival.iata === arrivalAita);
         console.log(getFilteredData)
+        toast.info("Project Under Development!")
     };
 
 
